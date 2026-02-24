@@ -357,6 +357,14 @@ export default function App(){
   const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEKEND"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <style>{`
+      .map-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;min-height:520px}
+      .map-sidebar{display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:600px}
+      @media(max-width:800px){
+        .map-grid{grid-template-columns:1fr;min-height:auto}
+        .map-sidebar{max-height:none}
+      }
+    `}</style>
     <div style={{borderBottom:"1px solid #282828",padding:"12px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
       <div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:8,height:8,borderRadius:"50%",background:X.r,boxShadow:`0 0 8px ${X.r}`}}/><span style={{fontFamily:F.h,fontSize:20,letterSpacing:"0.1em"}}>#NotAStatistic</span></div>
       <div style={{fontFamily:F.m,fontSize:10,color:"#999"}}>ALL-ISLAND · RSA + PSNI · FEB 2026</div>
@@ -394,12 +402,12 @@ export default function App(){
             background:filt===f.id?"#222":"transparent",border:`1px solid ${filt===f.id?"#555":X.br}`,
             color:filt===f.id?"#fff":"#aaa",padding:"6px 14px",borderRadius:3,cursor:"pointer",fontFamily:F.m,fontSize:10}}>{f.l}</button>))}
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 380px",gap:18,minHeight:520}}>
+        <div className="map-grid">
           <div style={{background:"#0d0d0d",border:"1px solid #222",borderRadius:4,padding:"12px"}}>
             <div style={{fontFamily:F.m,fontSize:10,color:"#999",marginBottom:6}}>CLICK COUNTY → CONSTITUENCY → TD/MLA NAME → EMAIL OPENS</div>
             <CMap sel={sel} onSel={setSel} filt={filt}/>
           </div>
-          <div style={{display:"flex",flexDirection:"column",gap:10,overflowY:"auto",maxHeight:600}}>
+          <div className="map-sidebar">
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
               <Stat label="ALL ISLAND" value="247" sub="2025 total"/><Stat label="REPUBLIC" value="190" sub="Garda total"/>
               <Stat label="NORTH" value="57" sub="PSNI total" accent={X.o}/><Stat label="VULNERABLE" value="88+" sub="Peds, cyclists, bikes" accent={X.g}/>
