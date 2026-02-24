@@ -223,6 +223,31 @@ function RepPanel({name}){
       </div>
     </div>
     {/* Constituencies */}
+    {(()=>{
+      // Compute rank and context
+      const allCounties=Object.entries(COUNTIES).map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5}));
+      const ranked=allCounties.sort((a,b)=>b.pc-a.pc);
+      const rank=ranked.findIndex(c=>c.name===name)+1;
+      const jurCounts=allCounties.filter(c=>c.j===(isNI?"NI":"ROI"));
+      const jurDeaths=jurCounts.reduce((s,c)=>s+c.d,0);
+      const jurPop=jurCounts.reduce((s,c)=>s+c.pop,0);
+      const natAvg=(jurDeaths/jurPop)*1e5;
+      const ratio=(pc/natAvg).toFixed(1);
+      const pctOfTotal=jurDeaths>0?((v.d/jurDeaths)*100).toFixed(1):"0.0";
+      const freqDays=v.d>0?Math.round(365/v.d):null;
+      return(<div style={{padding:"12px 16px",background:"#0d0d0d",border:`1px solid ${X.br}`,borderRadius:4,marginBottom:0}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:10}}>
+          <div><div style={{fontFamily:F.m,fontSize:9,color:X.l}}>RANK (PER CAPITA)</div><div style={{fontFamily:F.h,fontSize:22,color:X.g}}>#{rank}<span style={{fontFamily:F.m,fontSize:9,color:"#888"}}> / 32</span></div></div>
+          <div><div style={{fontFamily:F.m,fontSize:9,color:X.l}}>VS {isNI?"NI":"ROI"} AVG</div><div style={{fontFamily:F.h,fontSize:22,color:parseFloat(ratio)>1.2?X.r:parseFloat(ratio)<0.8?X.c:X.t}}>{ratio}×</div></div>
+          <div><div style={{fontFamily:F.m,fontSize:9,color:X.l}}>% OF {isNI?"NI":"ROI"}</div><div style={{fontFamily:F.h,fontSize:22,color:X.t}}>{pctOfTotal}%</div></div>
+        </div>
+        {freqDays&&<div style={{fontFamily:F.b,fontSize:12,color:X.t,lineHeight:1.5}}>
+          {freqDays<=30?`One death roughly every ${freqDays} days in ${name}.`:freqDays<=90?`About one death every ${freqDays} days in ${name}.`:`${v.d} ${v.d===1?"death":"deaths"} recorded in ${name} in 2025.`}
+          {v.d>v.p24?` That's ${v.d-v.p24} more than 2024.`:v.d<v.p24?` Down ${v.p24-v.d} from 2024.`:` Same as 2024.`}
+          {parseFloat(ratio)>1.5?` ${name}'s per-capita rate is well above the ${isNI?"NI":"national"} average.`:""}
+        </div>}
+      </div>);
+    })()}
     <div style={{padding:"14px 18px",background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,borderLeft:`3px solid ${X.c}`}}>
       <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.c,marginBottom:10}}>
         {isNI?"EMAIL YOUR MLAs":"EMAIL YOUR TDs"} — CLICK YOUR CONSTITUENCY
@@ -326,7 +351,7 @@ function ActPage(){const[cp,setCp]=useState(null);
 }
 
 export default function App(){
-  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");
+  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
   const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEKEND"},{id:"act",l:"TAKE ACTION"}];
@@ -338,6 +363,24 @@ export default function App(){
     </div>
     <Counter/>
     <div style={{height:2,background:`linear-gradient(90deg,transparent,${X.r},transparent)`,margin:"0 40px"}}/>
+    {/* Pledge banner */}
+    <div style={{margin:"14px 20px 0",padding:"12px 20px",background:pledged?"#0a2a1a":"#1a1a1a",border:`1px solid ${pledged?X.c:"#333"}`,borderRadius:6,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:10,maxWidth:700,marginLeft:"auto",marginRight:"auto"}}>
+      {pledged?(<>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{fontSize:22}}>✓</span>
+          <div><div style={{fontFamily:F.h,fontSize:18,color:X.c}}>YOU'VE TAKEN ACTION</div>
+          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>Now tell others — public pressure works</div></div>
+        </div>
+        <a href="https://twitter.com/intent/tweet?text=I%20just%20emailed%20my%20TD%20about%20Ireland%27s%20road%20safety%20crisis.%20247%20killed%20in%202025.%20Have%20you%3F%20%E2%86%92%20stoproaddeaths.vercel.app%20%23NotAStatistic" target="_blank" rel="noopener" style={{background:X.c,color:"#000",padding:"8px 16px",borderRadius:4,fontFamily:F.h,fontSize:14,textDecoration:"none",whiteSpace:"nowrap"}}>SHARE ON X →</a>
+      </>):(<>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{fontSize:22}}>✉</span>
+          <div><div style={{fontFamily:F.h,fontSize:18,color:"#fff"}}>HAVE YOU EMAILED YOUR TD OR MLA?</div>
+          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>Click a county on the map below → pick your constituency → click a name → email opens</div></div>
+        </div>
+        <button onClick={()=>setPledged(true)} style={{background:X.r,color:"#fff",border:"none",padding:"8px 16px",borderRadius:4,fontFamily:F.h,fontSize:14,cursor:"pointer",whiteSpace:"nowrap"}}>I'VE EMAILED THEM ✓</button>
+      </>)}
+    </div>
     <div style={{display:"flex",justifyContent:"center",gap:4,padding:"18px 12px 0",flexWrap:"wrap"}}>
       {tabs.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{
         background:tab===t.id?(t.id==="act"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"?X.c:X.r):X.br}`,
@@ -357,10 +400,10 @@ export default function App(){
             <CMap sel={sel} onSel={setSel} filt={filt}/>
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:10,overflowY:"auto",maxHeight:600}}>
-            {!sel&&<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
               <Stat label="ALL ISLAND" value="247" sub="2025 total"/><Stat label="REPUBLIC" value="190" sub="Garda total"/>
               <Stat label="NORTH" value="57" sub="PSNI total" accent={X.o}/><Stat label="VULNERABLE" value="88+" sub="Peds, cyclists, bikes" accent={X.g}/>
-            </div>}
+            </div>
             {sel?(<>
               <RepPanel name={sel}/>
               <button onClick={()=>setSel(null)} style={{background:"none",border:"none",color:"#999",cursor:"pointer",fontFamily:F.m,fontSize:10,padding:4}}>← BACK TO RANKING</button>
@@ -390,17 +433,55 @@ export default function App(){
       {tab==="trend"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
           <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS · 2019–2025</div>
-          <div style={{display:"flex",alignItems:"flex-end",gap:6,height:140,paddingTop:10}}>
-            {YR.map((y,i)=>{const hR=(y.r/255)*115;const hN=(y.n/255)*115;const last=i===6;return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
-              <span style={{fontFamily:F.m,fontSize:10,color:last?X.r:X.t,fontWeight:last?600:400}}>{y.t}</span>
-              <div style={{width:"100%",display:"flex",flexDirection:"column",gap:1}}><div style={{width:"100%",height:hN,background:last?X.o:"#666",borderRadius:"2px 2px 0 0"}}/><div style={{width:"100%",height:hR,background:last?X.r:i>=4?"#cc2222":"#444",borderRadius:"0 0 2px 2px"}}/></div>
-              <span style={{fontFamily:F.m,fontSize:9,color:last?X.r:"#999"}}>{y.y}</span></div>)})}
-          </div>
-          <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:8}}>
+          {(()=>{
+            const mx=270,chartH=160,chartW=560,barW=50,gap=20,padL=40,padB=25,padT=20;
+            const totalW=YR.length*(barW+gap)-gap;
+            const startX=padL+(chartW-padL-totalW)/2;
+            const yScale=(v)=>padT+(chartH-padT-padB)*(1-v/mx);
+            // EU trajectory: -3% from 2019 baseline of 196
+            const eu=[196,190,184,179,174,169,164];
+            // Vision Zero 2030 target for ROI = 72, scaled all-island ~120
+            const vz=120;
+            return(<svg viewBox={`0 0 ${chartW} ${chartH+10}`} style={{width:"100%"}}>
+              {/* Vision Zero target line */}
+              <line x1={padL-5} y1={yScale(vz)} x2={chartW-10} y2={yScale(vz)} stroke={X.c} strokeWidth="1" strokeDasharray="6 3" opacity="0.7"/>
+              <text x={padL-8} y={yScale(vz)-4} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">TARGET</text>
+              <text x={padL-8} y={yScale(vz)+8} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">~120</text>
+              {/* EU trajectory line */}
+              {eu.map((v,i)=>{
+                if(i===0)return null;
+                const x1=startX+((i-1)*(barW+gap))+barW/2;
+                const x2=startX+(i*(barW+gap))+barW/2;
+                return <line key={`eu${i}`} x1={x1} y1={yScale(eu[i-1])} x2={x2} y2={yScale(v)} stroke={X.g} strokeWidth="1.5" strokeDasharray="4 3"/>;
+              })}
+              {eu.map((v,i)=>{
+                const cx=startX+(i*(barW+gap))+barW/2;
+                return <circle key={`eud${i}`} cx={cx} cy={yScale(v)} r={2.5} fill={X.g}/>;
+              })}
+              <text x={startX+6*(barW+gap)+barW/2+6} y={yScale(eu[6])} fill={X.g} fontSize="8" fontFamily={F.m} dominantBaseline="middle">{eu[6]}</text>
+              {/* Bars */}
+              {YR.map((y,i)=>{
+                const x=startX+i*(barW+gap);
+                const hR=(y.r/mx)*(chartH-padT-padB);
+                const hN=(y.n/mx)*(chartH-padT-padB);
+                const last=i===6;
+                const baseY=chartH-padB;
+                return(<g key={i}>
+                  <rect x={x} y={baseY-hR} width={barW} height={hR} fill={last?X.r:"#cc2222"} rx="1"/>
+                  <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={last?X.o:"#cc6622"} rx="1"/>
+                  <text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={last?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={last?"600":"400"}>{y.t}</text>
+                  <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={last?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
+                </g>);
+              })}
+            </svg>);
+          })()}
+          <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:4,flexWrap:"wrap"}}>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.r,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>REPUBLIC</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.o,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>NI</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.g}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.g}}>IF IRELAND MATCHED EU (−3%)</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>VISION ZERO TARGET</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>All-island deaths peaked at 255 in 2023. Vision Zero target: 72 by 2030 — actual 2025: 190 (164% above). Ireland's trajectory is worst in the EU: +31% since 2019 vs EU average -3%.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow dashed line shows where Ireland would be if we'd matched the EU average decline of 3% since 2019: <strong style={{color:X.g}}>164 deaths</strong>, not 247. The teal line is the all-island equivalent of Vision Zero's 72 target for the Republic. We are moving in the wrong direction.</div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="ROI TARGET" value="72" sub="Vision Zero 2030" accent={X.c}/><Stat label="ACTUAL" value="190" sub="164% above"/><Stat label="VS EU" value="+31%" sub="Worst trajectory" accent={X.g}/></div>
       </div>)}
