@@ -443,7 +443,15 @@ export default function App(){
     <div style={{background:X.r,padding:"26px 20px",textAlign:"center",marginTop:28}}>
       <div style={{fontFamily:F.h,fontSize:30,color:"#fff"}}>EVERY DOT IS A PERSON. DEMAND YOUR TD AND MLA ACT NOW.</div>
       <div style={{fontFamily:F.b,fontSize:14,color:"#ffffffdd",marginTop:8,maxWidth:580,margin:"8px auto 0",lineHeight:1.5}}>Mandatory lower speed limits. Protected infrastructure. Enforce existing laws. All-island coordination. Meet the targets or resign.</div>
-      <div style={{fontFamily:F.m,fontSize:11,color:"#ffffffaa",marginTop:12}}>#NotAStatistic · SHARE · TAG YOUR REPRESENTATIVES</div>
+      <div style={{fontFamily:F.m,fontSize:11,color:"#ffffffaa",marginTop:12,display:"flex",justifyContent:"center",gap:8,alignItems:"center",flexWrap:"wrap"}}>
+        <span>#NotAStatistic</span>
+        <span>·</span>
+        <a href="https://twitter.com/intent/tweet?text=247%20people%20killed%20on%20Irish%20roads%20in%202025.%20190%20in%20the%20Republic.%2057%20in%20NI.%20One%20every%2035%20hours.%20Find%20your%20TD%20or%20MLA%20and%20demand%20action%20%E2%86%92%20stoproaddeaths.vercel.app%20%23NotAStatistic" target="_blank" rel="noopener" style={{color:"#fff",textDecoration:"underline",fontWeight:600}}>SHARE ON X</a>
+        <span>·</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://stoproaddeaths.vercel.app" target="_blank" rel="noopener" style={{color:"#fff",textDecoration:"underline",fontWeight:600}}>FACEBOOK</a>
+        <span>·</span>
+        <a href="#" onClick={(e)=>{e.preventDefault();setTab("act");window.scrollTo(0,0)}} style={{color:"#fff",textDecoration:"underline",fontWeight:600}}>TAKE ACTION NOW</a>
+      </div>
     </div>
     <div style={{padding:"16px 20px",borderTop:"1px solid #282828",textAlign:"center"}}>
       <div style={{fontFamily:F.m,fontSize:10,color:"#888",lineHeight:1.8}}>DATA: AN GARDA SÍOCHÁNA (190 TOTAL) · RSA PROVISIONAL REVIEW 2025 (185 PUBLIC ROADS) · PSNI · EC/ETSC<br/>SITE USES GARDA TOTAL (190) WHICH INCLUDES CAR PARKS AND NON-PUBLIC ROADS. RSA OFFICIAL FIGURE IS 185.<br/>TD/MLA DATA FROM OIREACHTAS.IE AND NIASSEMBLY.GOV.UK · EMAIL ADDRESSES AUTO-GENERATED — VERIFY BEFORE SENDING<br/>2026 INCIDENTS FROM MEDIA REPORTS. THIS IS A CAMPAIGN TOOL, NOT AN OFFICIAL DATA SOURCE.</div>
