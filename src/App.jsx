@@ -390,17 +390,8 @@ function ActPage(){const[cp,setCp]=useState(null);const[tpl,setTpl]=useState("ro
       <div style={{...txt,marginTop:12}}>Key person: <strong style={{color:"#fff"}}>Minister for Infrastructure — Liz Kimmins MLA</strong></div>
     </div>
     <div style={sec}>
-      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:4,height:28,background:X.g,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:28,color:"#fff"}}>FIVE DEMANDS</div></div>
-      <div style={txt}>We're not asking politicians to "care about road safety." We're asking them to say <strong style={{color:"#fff"}}>yes or no</strong> to five structural changes that evidence shows will save lives:</div>
-      {DEMANDS.map(d=><div key={d.id} style={{padding:"12px 16px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,marginBottom:6}}>
-        <div style={{fontFamily:F.h,fontSize:16,color:X.r,marginBottom:4}}>{d.id}. {d.short.toUpperCase()}</div>
-        <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5}}>{d.detail}</div>
-        {d.ni_note&&<div style={{fontFamily:F.m,fontSize:11,color:X.l,marginTop:4,fontStyle:"italic"}}>NI: {d.ni_note}</div>}
-      </div>)}
-    </div>
-    <div style={sec}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:4,height:28,background:X.g,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:28,color:"#fff"}}>EMAIL TEMPLATE</div></div>
-      <div style={txt}>This template is pre-filled when you click a TD/MLA name on the map. The right version (ROI or NI) is used automatically. You can also copy it:</div>
+      <div style={txt}>The email asks politicians to say <strong style={{color:"#fff"}}>yes or no</strong> to our five structural demands (see the <strong style={{color:X.c}}>DEMANDS</strong> tab). The right version (ROI or NI) is used automatically when you click a name on the map. You can also copy it:</div>
       <div style={{display:"flex",gap:8,marginBottom:8}}>
         <button onClick={()=>setTpl("roi")} style={{background:tpl==="roi"?X.c:"#222",color:tpl==="roi"?"#000":"#999",border:"none",padding:"6px 14px",borderRadius:3,cursor:"pointer",fontFamily:F.h,fontSize:12}}>REPUBLIC</button>
         <button onClick={()=>setTpl("ni")} style={{background:tpl==="ni"?X.o:"#222",color:tpl==="ni"?"#000":"#999",border:"none",padding:"6px 14px",borderRadius:3,cursor:"pointer",fontFamily:F.h,fontSize:12}}>NORTHERN IRELAND</button>
@@ -423,7 +414,7 @@ export default function App(){
   const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
@@ -462,8 +453,8 @@ export default function App(){
     </div>
     <div style={{display:"flex",justifyContent:"center",gap:4,padding:"18px 12px 0",flexWrap:"wrap"}}>
       {tabs.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{
-        background:tab===t.id?(t.id==="act"||t.id==="tracker"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"?X.c:X.r):X.br}`,
-        color:tab===t.id?(t.id==="act"||t.id==="tracker"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
+        background:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?X.c:X.r):X.br}`,
+        color:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
         fontFamily:F.m,fontSize:11,letterSpacing:"0.12em",fontWeight:tab===t.id?600:400}}>{t.l}</button>))}
     </div>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"20px"}}>
@@ -674,7 +665,7 @@ export default function App(){
                 <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.7}}>
                   {DEMANDS.map(d=><div key={d.id} style={{marginBottom:6}}><span style={{color:X.r,fontFamily:F.h}}>{d.id}.</span> {d.short}</div>)}
                 </div>
-                <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginTop:12}}>YES OR NO. 14 DAYS TO RESPOND. THEN WE PUBLISH.</div>
+                <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginTop:12}}>YES OR NO. 14 DAYS TO RESPOND. THEN WE PUBLISH. <span onClick={()=>setTab("demands")} style={{color:X.c,cursor:"pointer",textDecoration:"underline"}}>READ THE FULL DEMANDS →</span></div>
               </div>
               {ACTION_COUNT>0&&<div style={{fontFamily:F.b,fontSize:14,color:X.c,marginTop:20}}>{ACTION_COUNT}+ people have already emailed their TDs through this site.</div>}
               <button onClick={()=>setTab("map")} style={{marginTop:16,background:X.r,color:"#fff",border:"none",padding:"12px 24px",borderRadius:4,fontFamily:F.h,fontSize:16,cursor:"pointer"}}>EMAIL YOUR TD NOW →</button>
@@ -682,6 +673,33 @@ export default function App(){
           </>)}
         </div>);
       })()}
+      {tab==="demands"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
+        <div style={{fontFamily:F.h,fontSize:44,color:"#fff",textAlign:"center",margin:"30px 0 8px"}}>FIVE DEMANDS</div>
+        <div style={{fontFamily:F.b,fontSize:15,color:X.t,textAlign:"center",lineHeight:1.6,maxWidth:560,margin:"0 auto 8px"}}>
+          Ireland doesn't need more awareness campaigns. It needs structural change with clear ownership. These are five concrete, trackable actions we are asking every TD and MLA to commit to — yes or no.
+        </div>
+        <div style={{fontFamily:F.m,fontSize:11,color:X.l,textAlign:"center",marginBottom:28}}>
+          Based on <a href="https://www.irishtimes.com/opinion/2025/12/03/pr-campaigns-are-not-enough-to-stop-people-dying-on-our-roads-here-is-what-we-need-to-do/" target="_blank" rel="noopener" style={{color:X.c}}>analysis published in The Irish Times, 3 Dec 2025</a>
+        </div>
+        {DEMANDS.map(d=><div key={d.id} style={{background:"#0a0a0a",border:"1px solid #222",borderRadius:6,padding:"20px 24px",marginBottom:12}}>
+          <div style={{display:"flex",alignItems:"baseline",gap:10,marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:36,color:X.r,lineHeight:1}}>{d.id}</div>
+            <div style={{fontFamily:F.h,fontSize:22,color:"#fff",letterSpacing:"0.02em"}}>{d.short.toUpperCase()}</div>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.65,marginBottom:d.ni_note?8:0}}>{d.detail}</div>
+          {d.ni_note&&<div style={{fontFamily:F.b,fontSize:13,color:X.l,lineHeight:1.5,borderLeft:`2px solid ${X.o}`,paddingLeft:12,marginTop:8}}><strong style={{color:X.o}}>Northern Ireland:</strong> {d.ni_note}</div>}
+        </div>)}
+        <div style={{background:"#0d1a0d",border:`1px solid ${X.g}`,borderRadius:6,padding:"20px 24px",marginTop:20,marginBottom:12}}>
+          <div style={{fontFamily:F.h,fontSize:18,color:X.g,marginBottom:8}}>WHY THESE FIVE?</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.65}}>
+            Ireland's road deaths have risen 31% since 2019 while the EU average fell 12%. The Government's target of 72 deaths by 2030 is now 164% off trajectory. The reason is not mysterious: responsibility for road safety is spread across so many bodies that <em style={{color:"#fff"}}>nobody is accountable for outcomes</em>. The RSA was recently weakened further. Enforcement has collapsed — speeding detections down 43% in a decade. Known death traps sit unchanged for years. We set targets without giving anyone the tools or budget to hit them.<br/><br/>
+            These five demands target the five structural failures. They are binary — a politician can say yes or no. We will publish every response.
+          </div>
+        </div>
+        <div style={{textAlign:"center",margin:"24px 0"}}>
+          <button onClick={()=>setTab("act")} style={{background:X.c,color:"#000",border:"none",padding:"14px 28px",borderRadius:4,fontFamily:F.h,fontSize:16,cursor:"pointer",letterSpacing:"0.04em"}}>EMAIL YOUR TD/MLA NOW →</button>
+        </div>
+      </div>)}
       {tab==="act"&&<ActPage/>}
     </div>
     <div style={{background:X.r,padding:"26px 20px",textAlign:"center",marginTop:28}}>
