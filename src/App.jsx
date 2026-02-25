@@ -136,6 +136,8 @@ const INCIDENTS = [
   {date:"22 Feb",loc:"Co Donegal",desc:"Fatal collision — details emerging.",type:"driver",lat:54.65,lng:-8.11},
   {date:"22 Feb",loc:"South-East",desc:"Fatal collision — details emerging.",type:"driver",lat:52.35,lng:-7.05},
   {date:"22 Feb",loc:"Cork/Waterford",desc:"Fatal collision — details emerging.",type:"driver",lat:52.15,lng:-7.85},
+  {date:"24 Feb",loc:"Rusheen, Riverstown, Co Sligo",desc:"Motorcyclist in his 50s killed in collision with lorry on L1303.",type:"motorcyclist",lat:54.05,lng:-8.43},
+  {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Two young men (late teens) killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
 ];
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
 const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247}];
@@ -164,7 +166,7 @@ const EMAIL_BODY = `Dear [TD/MLA name],
 
 I am writing as your constituent. I am deeply concerned about the road safety crisis across the island of Ireland. In 2025, 247 people were killed on our roads — 190 in the Republic and 57 in Northern Ireland. This is the worst year in over a decade, and an 8% increase on 2024.
 
-Last weekend alone (22 Feb 2026), seven people were killed, including a 16-year-old girl walking her dog and three parents in a single crash in Co Armagh — leaving at least 11 children without a parent.
+Last weekend alone (22 Feb 2026), seven people were killed, including a 16-year-old girl walking her dog and three parents in a single crash in Co Armagh. By Tuesday, three more were dead — two teenagers in Donegal and a motorcyclist in Sligo. Ten killed in one week.
 
 Ireland's Vision Zero target of 72 deaths by 2030 is now 164% above target. While the rest of the EU reduces road deaths, Ireland's have risen 31% since 2019.
 
@@ -322,7 +324,7 @@ function Counter(){const[c,setC]=useState(0);useEffect(()=>{let n=0;const t=setI
       <div style={{width:1,background:"#444"}}/>
       <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.o}}>57</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>NORTHERN IRELAND · PSNI</div></div>
     </div>
-    <div style={{fontFamily:F.b,fontSize:15,color:X.t,marginTop:16,lineHeight:1.7,maxWidth:520,margin:"16px auto 0"}}>One person killed every 35 hours. Seven killed last weekend alone.<br/>Roads don't recognise the border. Neither should the response.</div>
+    <div style={{fontFamily:F.b,fontSize:15,color:X.t,marginTop:16,lineHeight:1.7,maxWidth:520,margin:"16px auto 0"}}>One person killed every 35 hours. Ten killed this week alone.<br/>Roads don't recognise the border. Neither should the response.</div>
   </div>
 )}
 
@@ -370,7 +372,7 @@ export default function App(){
   const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEKEND"},{id:"tracker",l:"TD TRACKER"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
@@ -528,9 +530,9 @@ export default function App(){
       </div>)}
       {tab==="latest"&&(<div style={{maxWidth:600,margin:"0 auto"}}>
         <div style={{background:"#ff1a1a10",border:"1px solid #ff1a1a30",borderRadius:4,padding:"20px 24px",marginBottom:16,textAlign:"center"}}>
-          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>7</div>
-          <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · ONE WEEKEND</div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,marginTop:8}}>22 Feb 2026. Four Republic. Three NI.<br/>A teenager. Three parents. At least 11 children left without a mother or father.</div>
+          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>10</div>
+          <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · ONE WEEK</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,marginTop:8}}>22–25 Feb 2026. Seven killed last weekend. Three more by Tuesday.<br/>Two teenagers. Three parents. A motorcyclist. At least 11 children left without a parent.</div>
         </div>
         {INCIDENTS.map((inc,i)=>(<div key={i} style={{padding:"14px 16px",background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${inc.type==="pedestrian"?X.o:X.r}`,borderRadius:3,marginBottom:8}}>
           <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
@@ -541,7 +543,7 @@ export default function App(){
         </div>))}
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"16px 20px",marginTop:8}}>
           <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:4}}>2026 YEAR TO DATE · REPUBLIC</div>
-          <span style={{fontFamily:F.h,fontSize:34,color:X.r}}>22+</span>
+          <span style={{fontFamily:F.h,fontSize:34,color:X.r}}>25+</span>
           <span style={{fontFamily:F.b,fontSize:13,color:X.t,marginLeft:10}}>dead in 8 weeks. At this rate, 2026 will exceed 2025.</span>
         </div>
       </div>)}
