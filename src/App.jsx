@@ -144,7 +144,7 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
-const CAMPAIGN_SENT_DATE = "2026-03-01";
+const CAMPAIGN_SENT_DATE = "2026-02-25";
 // UPDATE THIS: bump as people report emailing their TDs
 const ACTION_COUNT = 0;
 // UPDATE THIS: add responses as they come in
@@ -1302,7 +1302,7 @@ export default function App(){
         const meaningful=merged.filter(r=>r.status==="meaningful");
         const generic=merged.filter(r=>r.status==="generic");
         const noResponse=merged.filter(r=>r.status==="none");
-        const daysSince=CAMPAIGN_SENT_DATE?Math.floor((Date.now()-new Date(CAMPAIGN_SENT_DATE).getTime())/86400000):null;
+        const daysSince=null;
         const totalContacted=TRACKER.length>0?allReps.length:0;
         const totalResponded=meaningful.length+generic.length;
         const responseRate=totalContacted>0?((totalResponded/totalContacted)*100).toFixed(0):"0";
