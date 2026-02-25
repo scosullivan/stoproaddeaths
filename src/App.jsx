@@ -162,21 +162,57 @@ const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex
 const X={l:"#aaa",t:"#ccc",d:"#666",bg:"#111",br:"#2a2a2a",r:"#ff1a1a",o:"#ff6b35",g:"#ffd700",c:"#4ecdc4"};
 
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
-const EMAIL_BODY = `Dear [TD/MLA name],
+const DEMANDS = [
+  {id:1,short:"Single Accountable Officeholder",detail:"Support the creation of a statutory Road Safety Commissioner (or equivalent) with the authority, budget and legal mandate to deliver the 2030 target — ending the current system where responsibility is diffused across the RSA, Department of Transport, local authorities, An Garda Síochána/PSNI and TII/DfI with no single point of ownership.",ni_note:"In NI, this means a dedicated Road Safety Commissioner within the Department for Infrastructure, with cross-departmental enforcement powers."},
+  {id:2,short:"Automated Speed Cameras",detail:"Support the deployment of average-speed (point-to-point) cameras on high-risk routes within 12 months. Ireland remains one of the only developed countries without a functioning automated speed camera network. These are proven, low-cost tools that reduce fatalities.",ni_note:"NI has some average speed cameras but coverage remains limited to a handful of routes."},
+  {id:3,short:"Mandatory Black Spot Redesign",detail:"Support a funded national programme — with published timelines — to redesign the 50 highest-risk road sections identified by crash data. No more leaving known death traps unchanged for decades while local authorities lack budgets or oversight.",ni_note:"In NI, this applies to roads managed by DfI Roads and requires ring-fenced capital funding."},
+  {id:4,short:"Reverse the Enforcement Collapse",detail:"Support dedicated road policing units and reverse the 43% decline in speeding detections over the past decade. Commit to restoring enforcement to at least 2014 levels within two years.",ni_note:"In NI, this means restoring PSNI roads policing capacity, which has been cut significantly."},
+  {id:5,short:"Raise This in Parliament",detail:"Personally table a Parliamentary Question (in the Dáil) or Question for Written Answer (in the Assembly) on road safety governance within 30 days of receiving this letter. We will track and publish whether you do.",ni_note:""},
+];
 
-I am writing as your constituent. I am deeply concerned about the road safety crisis across the island of Ireland. In 2025, 247 people were killed on our roads — 190 in the Republic and 57 in Northern Ireland. This is the worst year in over a decade, and an 8% increase on 2024.
+const EMAIL_BODY_ROI = `Dear [TD name],
 
-Last weekend alone (22 Feb 2026), seven people were killed, including a 16-year-old girl walking her dog and three parents in a single crash in Co Armagh. By Tuesday, three more were dead — two teenagers in Donegal and a motorcyclist in Sligo. Ten killed in one week.
+I am writing as your constituent about the road safety crisis in Ireland. In 2025, 190 people were killed on our roads in the Republic alone — 247 across the island. This is the worst year in over a decade, an 8% increase on 2024, and a 31% increase since 2019.
 
-Ireland's government's own target of no more than 72 road deaths by 2030 is now 164% above target. While the rest of the EU reduces road deaths, Ireland's have risen 31% since 2019.
+Ireland is now one of the only EU countries where road deaths are rising. The Government's own target — no more than 72 deaths by 2030 — is 164% above trajectory. This is not a target being narrowly missed. It is a target being abandoned in practice while being maintained in rhetoric.
 
-I would like to know:
-1. What specific actions will you take to reduce road deaths in our area?
-2. Will you support mandatory lower speed limits, not optional guidelines?
-3. Will you push for protected cycling and pedestrian infrastructure?
-4. Will you raise this in the Dáil/Assembly through formal questions?
+As your constituent, I am asking you to commit to five specific actions:
 
-I look forward to your response and a specific commitment to action.
+1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a statutory Road Safety Commissioner with the legal authority, budget and mandate to deliver the 2030 target? Currently, responsibility is diffused across the RSA, Department of Transport, local authorities, An Garda Síochána and TII — with no single person accountable for outcomes.
+
+2. AUTOMATED SPEED CAMERAS: Will you support the deployment of average-speed cameras on high-risk routes within 12 months? Ireland is one of the only developed countries without a functioning network, despite overwhelming evidence that they reduce fatalities.
+
+3. BLACK SPOT REDESIGN: Will you support a funded national programme to redesign the 50 highest-risk road sections — with published timelines? Known death traps sit unchanged for years while communities bury their neighbours.
+
+4. REVERSE THE ENFORCEMENT COLLAPSE: Will you support restoring road policing to at least 2014 levels? Speeding detections have fallen 43% in a decade. Fewer people are being caught because fewer people are being checked.
+
+5. PARLIAMENTARY QUESTION: Will you personally table a Dáil question on road safety governance within 30 days? I will be checking the Oireachtas record.
+
+I am not asking for sympathy or awareness campaigns. I am asking whether you will take five concrete, trackable actions. Your response — or your silence — will be published at stoproaddeaths.ie.
+
+Yours sincerely,
+[Your name]
+[Your address]`;
+
+const EMAIL_BODY_NI = `Dear [MLA name],
+
+I am writing as your constituent about the road safety crisis across the island of Ireland. In 2025, 57 people were killed on Northern Ireland's roads and 247 across the island — the worst year in over a decade.
+
+Northern Ireland shares the same structural problem as the Republic: responsibility for road safety is diffused across the PSNI, the Department for Infrastructure, and local agencies — with no single person accountable for outcomes.
+
+As your constituent, I am asking you to commit to five specific actions:
+
+1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a dedicated Road Safety Commissioner within the Department for Infrastructure, with cross-departmental authority and a statutory mandate to deliver casualty reduction targets?
+
+2. AUTOMATED SPEED CAMERAS: Will you support expanding the average-speed camera network to cover the highest-risk routes in Northern Ireland within 12 months?
+
+3. BLACK SPOT REDESIGN: Will you support a funded programme — with published timelines — to redesign the highest-risk road sections managed by DfI Roads?
+
+4. REVERSE THE ENFORCEMENT COLLAPSE: Will you support restoring PSNI roads policing capacity, which has been significantly cut in recent years?
+
+5. ASSEMBLY QUESTION: Will you personally table a Question for Written Answer on road safety governance within 30 days? I will be checking the Assembly record.
+
+I am not asking for sympathy or awareness campaigns. I am asking whether you will take five concrete, trackable actions. Your response — or your silence — will be published at stoproaddeaths.ie.
 
 Yours sincerely,
 [Your name]
@@ -286,7 +322,7 @@ function RepPanel({name}){
           {isOpen&&reps&&(<div style={{padding:"8px 0 4px",display:"flex",flexDirection:"column",gap:4}}>
             {reps.map((rep,i)=>{
               const email=makeEmail(rep.n,isNI);
-              const mailto=`mailto:${email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`;
+              const mailto=`mailto:${email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(isNI?EMAIL_BODY_NI:EMAIL_BODY_ROI)}`;
               return(<a key={i} href={mailto} style={{
                 display:"flex",justifyContent:"space-between",alignItems:"center",
                 padding:"8px 12px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3,
@@ -330,7 +366,7 @@ function Counter(){const[c,setC]=useState(0);useEffect(()=>{let n=0;const t=setI
   </div>
 )}
 
-function ActPage(){const[cp,setCp]=useState(null);
+function ActPage(){const[cp,setCp]=useState(null);const[tpl,setTpl]=useState("roi");
   const sec={background:X.bg,border:`1px solid ${X.br}`,borderRadius:6,padding:"24px 28px",marginBottom:16};
   const lnk={color:X.c,textDecoration:"underline",textUnderlineOffset:3};
   const txt={fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7};
@@ -354,10 +390,23 @@ function ActPage(){const[cp,setCp]=useState(null);
       <div style={{...txt,marginTop:12}}>Key person: <strong style={{color:"#fff"}}>Minister for Infrastructure — Liz Kimmins MLA</strong></div>
     </div>
     <div style={sec}>
+      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:4,height:28,background:X.g,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:28,color:"#fff"}}>FIVE DEMANDS</div></div>
+      <div style={txt}>We're not asking politicians to "care about road safety." We're asking them to say <strong style={{color:"#fff"}}>yes or no</strong> to five structural changes that evidence shows will save lives:</div>
+      {DEMANDS.map(d=><div key={d.id} style={{padding:"12px 16px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,marginBottom:6}}>
+        <div style={{fontFamily:F.h,fontSize:16,color:X.r,marginBottom:4}}>{d.id}. {d.short.toUpperCase()}</div>
+        <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5}}>{d.detail}</div>
+        {d.ni_note&&<div style={{fontFamily:F.m,fontSize:11,color:X.l,marginTop:4,fontStyle:"italic"}}>NI: {d.ni_note}</div>}
+      </div>)}
+    </div>
+    <div style={sec}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:4,height:28,background:X.g,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:28,color:"#fff"}}>EMAIL TEMPLATE</div></div>
-      <div style={txt}>This template is pre-filled when you click a TD/MLA name on the map. You can also copy it:</div>
-      <div style={{background:"#0a0a0a",border:"1px solid #333",borderRadius:4,padding:"16px 20px",marginTop:12,fontFamily:F.b,fontSize:13,color:"#ddd",lineHeight:1.7,whiteSpace:"pre-wrap",maxHeight:200,overflowY:"auto"}}>{EMAIL_BODY}</div>
-      <button onClick={()=>copy(EMAIL_BODY,"tpl")} style={{marginTop:8,background:X.c,color:"#000",border:"none",padding:"8px 16px",borderRadius:4,cursor:"pointer",fontFamily:F.h,fontSize:14}}>{cp==="tpl"?"COPIED ✓":"COPY TEMPLATE"}</button>
+      <div style={txt}>This template is pre-filled when you click a TD/MLA name on the map. The right version (ROI or NI) is used automatically. You can also copy it:</div>
+      <div style={{display:"flex",gap:8,marginBottom:8}}>
+        <button onClick={()=>setTpl("roi")} style={{background:tpl==="roi"?X.c:"#222",color:tpl==="roi"?"#000":"#999",border:"none",padding:"6px 14px",borderRadius:3,cursor:"pointer",fontFamily:F.h,fontSize:12}}>REPUBLIC</button>
+        <button onClick={()=>setTpl("ni")} style={{background:tpl==="ni"?X.o:"#222",color:tpl==="ni"?"#000":"#999",border:"none",padding:"6px 14px",borderRadius:3,cursor:"pointer",fontFamily:F.h,fontSize:12}}>NORTHERN IRELAND</button>
+      </div>
+      <div style={{background:"#0a0a0a",border:"1px solid #333",borderRadius:4,padding:"16px 20px",marginTop:4,fontFamily:F.b,fontSize:13,color:"#ddd",lineHeight:1.7,whiteSpace:"pre-wrap",maxHeight:260,overflowY:"auto"}}>{tpl==="ni"?EMAIL_BODY_NI:EMAIL_BODY_ROI}</div>
+      <button onClick={()=>copy(tpl==="ni"?EMAIL_BODY_NI:EMAIL_BODY_ROI,"tpl")} style={{marginTop:8,background:X.c,color:"#000",border:"none",padding:"8px 16px",borderRadius:4,cursor:"pointer",fontFamily:F.h,fontSize:14}}>{cp==="tpl"?"COPIED ✓":"COPY TEMPLATE"}</button>
     </div>
     <div style={sec}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:4,height:28,background:X.c,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:28,color:"#fff"}}>OTHER WAYS TO ACT</div></div>
@@ -613,7 +662,7 @@ export default function App(){
             <div style={{textAlign:"center",padding:"40px 20px"}}>
               <div style={{fontFamily:F.h,fontSize:44,color:"#fff",marginBottom:8}}>TD & MLA ACCOUNTABILITY TRACKER</div>
               <div style={{fontFamily:F.b,fontSize:15,color:X.t,lineHeight:1.6,maxWidth:560,margin:"0 auto",marginBottom:24}}>
-                We will write to all 174 TDs and 90 MLAs asking four questions about road safety. Every response — or silence — will be published here.
+                We will write to all 174 TDs and 90 MLAs with five structural demands on road safety. Every response — or silence — will be published here.
               </div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,maxWidth:500,margin:"0 auto",marginBottom:24}}>
                 <Stat label="TDs" value="174" sub="Republic" accent={X.r}/>
@@ -621,14 +670,11 @@ export default function App(){
                 <Stat label="TOTAL" value="264" sub="To be contacted" accent={X.c}/>
               </div>
               <div style={{background:"#0a0a0a",border:`1px solid ${X.br}`,borderRadius:6,padding:"20px 24px",maxWidth:560,margin:"0 auto",textAlign:"left"}}>
-                <div style={{fontFamily:F.h,fontSize:22,color:X.g,marginBottom:8}}>WHAT WE'LL ASK</div>
+                <div style={{fontFamily:F.h,fontSize:22,color:X.g,marginBottom:8}}>FIVE DEMANDS</div>
                 <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.7}}>
-                  1. What specific actions will you take to reduce road deaths?<br/>
-                  2. Will you support mandatory lower speed limits?<br/>
-                  3. Will you push for protected cycling and pedestrian infrastructure?<br/>
-                  4. Will you raise this in the Dáil/Assembly through formal questions?
+                  {DEMANDS.map(d=><div key={d.id} style={{marginBottom:6}}><span style={{color:X.r,fontFamily:F.h}}>{d.id}.</span> {d.short}</div>)}
                 </div>
-                <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginTop:12}}>14 DAYS TO RESPOND. THEN WE PUBLISH.</div>
+                <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginTop:12}}>YES OR NO. 14 DAYS TO RESPOND. THEN WE PUBLISH.</div>
               </div>
               {ACTION_COUNT>0&&<div style={{fontFamily:F.b,fontSize:14,color:X.c,marginTop:20}}>{ACTION_COUNT}+ people have already emailed their TDs through this site.</div>}
               <button onClick={()=>setTab("map")} style={{marginTop:16,background:X.r,color:"#fff",border:"none",padding:"12px 24px",borderRadius:4,fontFamily:F.h,fontSize:16,cursor:"pointer"}}>EMAIL YOUR TD NOW →</button>
