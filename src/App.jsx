@@ -140,6 +140,22 @@ const INCIDENTS = [
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
 const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247}];
 
+// ===== CAMPAIGN TRACKER =====
+// UPDATE THIS: date you sent emails to all TDs/MLAs
+const CAMPAIGN_SENT_DATE = "2026-03-01";
+// UPDATE THIS: bump as people report emailing their TDs
+const ACTION_COUNT = 0;
+// UPDATE THIS: add responses as they come in
+// status: "meaningful" | "generic" | "none"
+// summary: one-line description of response (or null)
+// responded: date string or null
+const TRACKER = [
+  // Example entries — replace/add as responses come in:
+  // {n:"Micheál Martin",p:"FF",con:"Cork South-Central",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Acknowledged concern, referred to RSA strategy."},
+  // {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-04",summary:"Committed to raising PQs on speed limits and Vision Zero."},
+  // {n:"Simon Harris",p:"FG",con:"Wicklow",j:"ROI",status:"none",responded:null,summary:null},
+];
+
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
 const X={l:"#aaa",t:"#ccc",d:"#666",bg:"#111",br:"#2a2a2a",r:"#ff1a1a",o:"#ff6b35",g:"#ffd700",c:"#4ecdc4"};
 
@@ -354,15 +370,17 @@ export default function App(){
   const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEKEND"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEKEND"},{id:"tracker",l:"TD TRACKER"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
       .map-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;min-height:520px}
       .map-sidebar{display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:600px}
+      .tracker-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:16px}
       @media(max-width:800px){
         .map-grid{grid-template-columns:1fr;min-height:auto}
         .map-sidebar{max-height:none}
+        .tracker-stats{grid-template-columns:1fr 1fr}
       }
     `}</style>
     <div style={{borderBottom:"1px solid #282828",padding:"12px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
@@ -377,22 +395,22 @@ export default function App(){
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <span style={{fontSize:22}}>✓</span>
           <div><div style={{fontFamily:F.h,fontSize:18,color:X.c}}>YOU'VE TAKEN ACTION</div>
-          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>Now tell others — public pressure works</div></div>
+          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>{ACTION_COUNT>0?`Join ${ACTION_COUNT}+ people who've emailed their TDs`:"Now tell others — public pressure works"}</div></div>
         </div>
         <a href="https://twitter.com/intent/tweet?text=I%20just%20emailed%20my%20TD%20about%20Ireland%27s%20road%20safety%20crisis.%20247%20killed%20in%202025.%20Have%20you%3F%20%E2%86%92%20stoproaddeaths.vercel.app%20%23NotAStatistic" target="_blank" rel="noopener" style={{background:X.c,color:"#000",padding:"8px 16px",borderRadius:4,fontFamily:F.h,fontSize:14,textDecoration:"none",whiteSpace:"nowrap"}}>SHARE ON X →</a>
       </>):(<>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <span style={{fontSize:22}}>✉</span>
           <div><div style={{fontFamily:F.h,fontSize:18,color:"#fff"}}>HAVE YOU EMAILED YOUR TD OR MLA?</div>
-          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>Click a county on the map below → pick your constituency → click a name → email opens</div></div>
+          <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>{ACTION_COUNT>0?`${ACTION_COUNT}+ people already have. `:""}Click a county below → pick your constituency → click a name</div></div>
         </div>
         <button onClick={()=>setPledged(true)} style={{background:X.r,color:"#fff",border:"none",padding:"8px 16px",borderRadius:4,fontFamily:F.h,fontSize:14,cursor:"pointer",whiteSpace:"nowrap"}}>I'VE EMAILED THEM ✓</button>
       </>)}
     </div>
     <div style={{display:"flex",justifyContent:"center",gap:4,padding:"18px 12px 0",flexWrap:"wrap"}}>
       {tabs.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{
-        background:tab===t.id?(t.id==="act"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"?X.c:X.r):X.br}`,
-        color:tab===t.id?(t.id==="act"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
+        background:tab===t.id?(t.id==="act"||t.id==="tracker"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"?X.c:X.r):X.br}`,
+        color:tab===t.id?(t.id==="act"||t.id==="tracker"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
         fontFamily:F.m,fontSize:11,letterSpacing:"0.12em",fontWeight:tab===t.id?600:400}}>{t.l}</button>))}
     </div>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"20px"}}>
@@ -527,6 +545,92 @@ export default function App(){
           <span style={{fontFamily:F.b,fontSize:13,color:X.t,marginLeft:10}}>dead in 8 weeks. At this rate, 2026 will exceed 2025.</span>
         </div>
       </div>)}
+      {tab==="tracker"&&(()=>{
+        // Build full list from TDS + MLAS, merge with TRACKER responses
+        const allReps=[];
+        Object.entries(TDS).forEach(([con,reps])=>reps.forEach(r=>allReps.push({...r,con,j:"ROI",type:"TD"})));
+        Object.entries(MLAS).forEach(([con,reps])=>reps.forEach(r=>allReps.push({...r,con,j:"NI",type:"MLA"})));
+        // Merge tracker data
+        const tracked=new Map(TRACKER.map(t=>[t.n,t]));
+        const merged=allReps.map(r=>{const t=tracked.get(r.n);return{...r,status:t?t.status:"none",responded:t?t.responded:null,summary:t?t.summary:null}});
+        const meaningful=merged.filter(r=>r.status==="meaningful");
+        const generic=merged.filter(r=>r.status==="generic");
+        const noResponse=merged.filter(r=>r.status==="none");
+        const daysSince=CAMPAIGN_SENT_DATE?Math.floor((Date.now()-new Date(CAMPAIGN_SENT_DATE).getTime())/86400000):null;
+        const totalContacted=TRACKER.length>0?allReps.length:0;
+        const totalResponded=meaningful.length+generic.length;
+        const responseRate=totalContacted>0?((totalResponded/totalContacted)*100).toFixed(0):"0";
+        const repCard=(r,i)=>(<div key={`${r.n}-${r.con}-${i}`} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 12px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3,marginBottom:4}}>
+          <div>
+            <div style={{fontFamily:F.b,fontSize:13,color:"#fff"}}>{r.n}</div>
+            <div style={{fontFamily:F.m,fontSize:10,color:X.l}}>{r.p} · {r.con} · {r.type}</div>
+            {r.summary&&<div style={{fontFamily:F.b,fontSize:11,color:X.t,marginTop:2,fontStyle:"italic"}}>"{r.summary}"</div>}
+          </div>
+          <div style={{textAlign:"right"}}>
+            {r.responded&&<div style={{fontFamily:F.m,fontSize:9,color:"#888"}}>{r.responded}</div>}
+          </div>
+        </div>);
+        return(<div style={{maxWidth:800,margin:"0 auto"}}>
+          {/* Hero stats */}
+          {TRACKER.length>0?(<>
+            <div className="tracker-stats">
+              <Stat label="CONTACTED" value={String(totalContacted)} sub={`TDs + MLAs`} accent={X.c}/>
+              <Stat label="RESPONDED" value={String(totalResponded)} sub={`${responseRate}% rate`} accent={meaningful.length>0?X.c:"#888"}/>
+              <Stat label="MEANINGFUL" value={String(meaningful.length)} sub="Real commitments" accent={X.g}/>
+              <Stat label="SILENT" value={String(noResponse.length)} sub={daysSince?`${daysSince} days`:""} accent={X.r}/>
+            </div>
+            {/* Meaningful responses */}
+            {meaningful.length>0&&<div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"14px 18px",marginBottom:12,borderLeft:`3px solid ${X.c}`}}>
+              <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.c,marginBottom:10}}>MEANINGFUL RESPONSES — {meaningful.length}</div>
+              {meaningful.map((r,i)=>repCard(r,i))}
+            </div>}
+            {/* Generic responses */}
+            {generic.length>0&&<div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"14px 18px",marginBottom:12,borderLeft:`3px solid ${X.g}`}}>
+              <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.g,marginBottom:10}}>GENERIC / VAGUE — {generic.length}</div>
+              {generic.map((r,i)=>repCard(r,i))}
+            </div>}
+            {/* No response */}
+            <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"14px 18px",marginBottom:12,borderLeft:`3px solid ${X.r}`}}>
+              <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.r,marginBottom:10}}>NO RESPONSE — {noResponse.length} {daysSince?`(${daysSince} DAYS AND COUNTING)`:""}</div>
+              <div style={{fontFamily:F.b,fontSize:12,color:X.t,marginBottom:10}}>These TDs and MLAs have not responded to questions about road safety.</div>
+              <div style={{maxHeight:400,overflowY:"auto"}}>
+                {noResponse.map((r,i)=>(<div key={`nr-${i}`} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 12px",borderBottom:`1px solid ${X.br}`}}>
+                  <div>
+                    <span style={{fontFamily:F.b,fontSize:12,color:"#ddd"}}>{r.n}</span>
+                    <span style={{fontFamily:F.m,fontSize:10,color:X.l,marginLeft:8}}>{r.p} · {r.con}</span>
+                  </div>
+                  <span style={{fontFamily:F.h,fontSize:14,color:X.r}}>NO REPLY</span>
+                </div>))}
+              </div>
+            </div>
+          </>):(<>
+            {/* Pre-launch state */}
+            <div style={{textAlign:"center",padding:"40px 20px"}}>
+              <div style={{fontFamily:F.h,fontSize:44,color:"#fff",marginBottom:8}}>TD & MLA ACCOUNTABILITY TRACKER</div>
+              <div style={{fontFamily:F.b,fontSize:15,color:X.t,lineHeight:1.6,maxWidth:560,margin:"0 auto",marginBottom:24}}>
+                We will write to all 174 TDs and 90 MLAs asking four questions about road safety. Every response — or silence — will be published here.
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,maxWidth:500,margin:"0 auto",marginBottom:24}}>
+                <Stat label="TDs" value="174" sub="Republic" accent={X.r}/>
+                <Stat label="MLAs" value="90" sub="Northern Ireland" accent={X.o}/>
+                <Stat label="TOTAL" value="264" sub="To be contacted" accent={X.c}/>
+              </div>
+              <div style={{background:"#0a0a0a",border:`1px solid ${X.br}`,borderRadius:6,padding:"20px 24px",maxWidth:560,margin:"0 auto",textAlign:"left"}}>
+                <div style={{fontFamily:F.h,fontSize:22,color:X.g,marginBottom:8}}>WHAT WE'LL ASK</div>
+                <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.7}}>
+                  1. What specific actions will you take to reduce road deaths?<br/>
+                  2. Will you support mandatory lower speed limits?<br/>
+                  3. Will you push for protected cycling and pedestrian infrastructure?<br/>
+                  4. Will you raise this in the Dáil/Assembly through formal questions?
+                </div>
+                <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginTop:12}}>14 DAYS TO RESPOND. THEN WE PUBLISH.</div>
+              </div>
+              {ACTION_COUNT>0&&<div style={{fontFamily:F.b,fontSize:14,color:X.c,marginTop:20}}>{ACTION_COUNT}+ people have already emailed their TDs through this site.</div>}
+              <button onClick={()=>setTab("map")} style={{marginTop:16,background:X.r,color:"#fff",border:"none",padding:"12px 24px",borderRadius:4,fontFamily:F.h,fontSize:16,cursor:"pointer"}}>EMAIL YOUR TD NOW →</button>
+            </div>
+          </>)}
+        </div>);
+      })()}
       {tab==="act"&&<ActPage/>}
     </div>
     <div style={{background:X.r,padding:"26px 20px",textAlign:"center",marginTop:28}}>
