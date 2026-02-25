@@ -355,12 +355,6 @@ function CMap({sel,onSel,filt}){
       <text x={x} y={y+r+12} textAnchor="middle" fill={s?"#fff":"#999"} fontSize={8} fontFamily={F.m} fontWeight="500" style={{pointerEvents:"none",textTransform:"uppercase"}}>{name}</text>
     </g>)})}
     {INCIDENTS.map((inc,i)=>{const[x,y]=proj(inc.lat,inc.lng);if(x<0||x>500||y<0||y>540)return null;return(<g key={`i${i}`}><circle cx={x} cy={y} r={4} fill="#fff" opacity={0.9}><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/></circle><circle cx={x} cy={y} r={2} fill="#fff"/></g>)})}
-    {BLACKSPOTS.map((bs,i)=>{const[x,y]=proj(bs.lat,bs.lng);if(x<0||x>500||y<0||y>540)return null;return(<g key={`bs${i}`} style={{cursor:"pointer"}} onClick={()=>onSel(bs.county)}>
-      <polygon points={`${x},${y-7} ${x+6},${y+4} ${x-6},${y+4}`} fill={X.g} opacity={0.9} stroke="#000" strokeWidth="0.5">
-        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
-      </polygon>
-      <text x={x} y={y+1} textAnchor="middle" dominantBaseline="middle" fill="#000" fontSize="6" fontFamily={F.m} fontWeight="700" style={{pointerEvents:"none"}}>!</text>
-    </g>)})}
   </svg>);
 }
 
@@ -1173,7 +1167,7 @@ export default function App(){
         </div>
         <div className="map-grid">
           <div style={{background:"#0d0d0d",border:"1px solid #222",borderRadius:4,padding:"12px"}}>
-            <div style={{fontFamily:F.m,fontSize:10,color:"#999",marginBottom:6}}>CLICK COUNTY → CONSTITUENCY → TD/MLA NAME → EMAIL OPENS · ▲ = REPORTED BLACKSPOTS</div>
+            <div style={{fontFamily:F.m,fontSize:10,color:"#999",marginBottom:6}}>CLICK COUNTY → CONSTITUENCY → TD/MLA NAME → EMAIL OPENS</div>
             <CMap sel={sel} onSel={setSel} filt={filt}/>
           </div>
           <div className="map-sidebar">
