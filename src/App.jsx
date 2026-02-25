@@ -295,7 +295,7 @@ I am asking you to commit to five specific actions:
 
 5. PARLIAMENTARY QUESTION: Will you personally table a Dáil question on road safety governance within 30 days? I will be checking the Oireachtas record.
 
-I am not asking for sympathy or awareness campaigns. I am asking whether you will take five concrete, trackable actions. Your response — or your silence — will be published at stoproaddeaths.ie.
+These are five concrete actions that could save lives. I would welcome a response on each — even if the answer is no, knowing where you stand matters. I am tracking all responses at stoproaddeaths.ie.
 
 Yours sincerely,
 [Your name]
@@ -319,7 +319,7 @@ I am asking you to commit to five specific actions:
 
 5. ASSEMBLY QUESTION: Will you personally table a Question for Written Answer on road safety governance within 30 days? I will be checking the Assembly record.
 
-I am not asking for sympathy or awareness campaigns. I am asking whether you will take five concrete, trackable actions. Your response — or your silence — will be published at stoproaddeaths.ie.
+These are five concrete actions that could save lives. I would welcome a response on each — even if the answer is no, knowing where you stand matters. I am tracking all responses at stoproaddeaths.ie.
 
 Yours sincerely,
 [Your name]
