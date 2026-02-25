@@ -241,7 +241,7 @@ const BLACKSPOT_EMAIL_SUBJECT = "Dangerous Road Location in Your Constituency �
 function blackspotEmailBody(rep, isNI, road, desc, lat, lng, county) {
   return `Dear ${rep.n},
 
-I am writing as your constituent to report a dangerous road location in your constituency that needs urgent engineering intervention.
+I am writing to you about a dangerous road location in your constituency that needs urgent engineering intervention.
 
 LOCATION: ${road || "See coordinates below"}
 COUNTY: ${county}
@@ -279,11 +279,11 @@ const DEMANDS = [
 
 const EMAIL_BODY_ROI = `Dear [TD name],
 
-I am writing as your constituent about the road safety crisis in Ireland. In 2025, 190 people were killed on our roads in the Republic alone — 247 across the island. This is the worst year in over a decade, an 8% increase on 2024, and a 31% increase since 2019.
+I am writing to you about the road safety crisis in Ireland. In 2025, 190 people were killed on our roads in the Republic alone — 247 across the island. This is the worst year in over a decade, an 8% increase on 2024, and a 31% increase since 2019.
 
 Ireland is now one of the only EU countries where road deaths are rising. The Government's own target — no more than 72 deaths by 2030 — is 164% above trajectory. This is not a target being narrowly missed. It is a target being abandoned in practice while being maintained in rhetoric.
 
-As your constituent, I am asking you to commit to five specific actions:
+I am asking you to commit to five specific actions:
 
 1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a statutory Road Safety Commissioner with the legal authority, budget and mandate to deliver the 2030 target? Currently, responsibility is diffused across the RSA, Department of Transport, local authorities, An Garda Síochána and TII — with no single person accountable for outcomes.
 
@@ -299,15 +299,15 @@ I am not asking for sympathy or awareness campaigns. I am asking whether you wil
 
 Yours sincerely,
 [Your name]
-[Your address]`;
+[Your address — include if this TD represents your constituency]`;
 
 const EMAIL_BODY_NI = `Dear [MLA name],
 
-I am writing as your constituent about the road safety crisis across the island of Ireland. In 2025, 57 people were killed on Northern Ireland's roads and 247 across the island — the worst year in over a decade.
+I am writing to you about the road safety crisis across the island of Ireland. In 2025, 57 people were killed on Northern Ireland's roads and 247 across the island — the worst year in over a decade.
 
 Northern Ireland shares the same structural problem as the Republic: responsibility for road safety is diffused across the PSNI, the Department for Infrastructure, and local agencies — with no single person accountable for outcomes.
 
-As your constituent, I am asking you to commit to five specific actions:
+I am asking you to commit to five specific actions:
 
 1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a dedicated Road Safety Commissioner within the Department for Infrastructure, with cross-departmental authority and a statutory mandate to deliver casualty reduction targets?
 
@@ -323,7 +323,7 @@ I am not asking for sympathy or awareness campaigns. I am asking whether you wil
 
 Yours sincerely,
 [Your name]
-[Your address]`;
+[Your address — include if this MLA represents your constituency]`;
 
 function makeEmail(name, isNI) {
   const clean = name.replace(/['']/g, "'").replace(/\s+/g, " ").trim();
