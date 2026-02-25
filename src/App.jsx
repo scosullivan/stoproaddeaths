@@ -152,10 +152,9 @@ const ACTION_COUNT = 0;
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // Example entries — replace/add as responses come in:
-  // {n:"Micheál Martin",p:"FF",con:"Cork South-Central",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Acknowledged concern, referred to RSA strategy."},
-  // {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-04",summary:"Committed to raising PQs on speed limits and road safety targets."},
-  // {n:"Simon Harris",p:"FG",con:"Wicklow",j:"ROI",status:"none",responded:null,summary:null},
+  {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"Strong on enforcement collapse (400 fewer Gardaí, Crowe report, published SF policing plan). Did not address Commissioner, black spot redesign, or commit to tabling a PQ."},
+  {n:"Seán Canney",p:"Ind",con:"Galway East",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Minister for Road Safety. Listed actions already taken (speed limits, active travel, tech investment, RSA reform). Did not address Commissioner, black spot redesign, or Garda numbers. No specifics on any of the five demands."},
+  {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Acknowledged concern, linked to Labour manifesto on cycling and active travel. Did not engage with any of the five demands."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
