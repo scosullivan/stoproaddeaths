@@ -154,7 +154,7 @@ const ACTION_COUNT = 0;
 const TRACKER = [
   // Example entries — replace/add as responses come in:
   // {n:"Micheál Martin",p:"FF",con:"Cork South-Central",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Acknowledged concern, referred to RSA strategy."},
-  // {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-04",summary:"Committed to raising PQs on speed limits and Vision Zero."},
+  // {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-04",summary:"Committed to raising PQs on speed limits and road safety targets."},
   // {n:"Simon Harris",p:"FG",con:"Wicklow",j:"ROI",status:"none",responded:null,summary:null},
 ];
 
@@ -168,7 +168,7 @@ I am writing as your constituent. I am deeply concerned about the road safety cr
 
 Last weekend alone (22 Feb 2026), seven people were killed, including a 16-year-old girl walking her dog and three parents in a single crash in Co Armagh. By Tuesday, three more were dead — two teenagers in Donegal and a motorcyclist in Sligo. Ten killed in one week.
 
-Ireland's Vision Zero target of 72 deaths by 2030 is now 164% above target. While the rest of the EU reduces road deaths, Ireland's have risen 31% since 2019.
+Ireland's government's own target of no more than 72 road deaths by 2030 is now 164% above target. While the rest of the EU reduces road deaths, Ireland's have risen 31% since 2019.
 
 I would like to know:
 1. What specific actions will you take to reduce road deaths in our area?
@@ -200,6 +200,8 @@ function CMap({sel,onSel,filt}){
   return(<svg viewBox="0 0 500 540" style={{width:"100%",height:"100%"}}>
     <defs><filter id="gl"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <radialGradient id="dp" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#ff1a1a" stopOpacity="0.8"/><stop offset="100%" stopColor="#ff1a1a" stopOpacity="0"/></radialGradient></defs>
+    {/* Ireland outline */}
+    <image href="/ireland-outline.png" x="10" y="5" width="470" height="530" opacity="0.5" style={{pointerEvents:"none"}}/>
     {filt==="all"&&<><line x1="60" y1="165" x2="440" y2="165" stroke="#555" strokeWidth="0.5" strokeDasharray="6 4" opacity="0.5"/><text x="452" y="148" fill="#999" fontSize="9" fontFamily={F.m}>NI</text><text x="452" y="182" fill="#999" fontSize="9" fontFamily={F.m}>ROI</text></>}
     {items.map(([name,data])=>{const[x,y]=proj(data.lat,data.lng);const r=Math.max(13,Math.sqrt(data.d)*8.5);const s=sel===name;const c=deathColor(data.d,mx);const ni=data.j==="NI";
     return(<g key={name} onClick={()=>onSel(name)} style={{cursor:"pointer"}}>
@@ -466,27 +468,28 @@ export default function App(){
             const totalW=YR.length*(barW+gap)-gap;
             const startX=padL+(chartW-padL-totalW)/2;
             const yScale=(v)=>padT+(chartH-padT-padB)*(1-v/mx);
-            // EU trajectory: -3% from 2019 baseline of 196
-            const eu=[196,190,184,179,174,169,164];
-            // Vision Zero 2030 target for ROI = 72, scaled all-island ~120
+            // Government 2030 target for ROI = 72, scaled all-island ~120
             const vz=120;
+            // EU average: road deaths fell ~3%/year. Applied to Ireland's 2019 baseline of 196:
+            const eu=[196,190,184,179,174,169,164];
             return(<svg viewBox={`0 0 ${chartW} ${chartH+10}`} style={{width:"100%"}}>
-              {/* Vision Zero target line */}
-              <line x1={padL-5} y1={yScale(vz)} x2={chartW-10} y2={yScale(vz)} stroke={X.c} strokeWidth="1" strokeDasharray="6 3" opacity="0.7"/>
-              <text x={padL-8} y={yScale(vz)-4} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">TARGET</text>
+              {/* Government 2030 target line (flat) */}
+              <line x1={padL-5} y1={yScale(vz)} x2={chartW-10} y2={yScale(vz)} stroke={X.c} strokeWidth="1" strokeDasharray="6 3" opacity="0.5"/>
+              <text x={padL-8} y={yScale(vz)-4} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">2030</text>
               <text x={padL-8} y={yScale(vz)+8} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">~120</text>
-              {/* EU trajectory line */}
+              {/* EU average decline line + dots */}
               {eu.map((v,i)=>{
                 if(i===0)return null;
                 const x1=startX+((i-1)*(barW+gap))+barW/2;
                 const x2=startX+(i*(barW+gap))+barW/2;
-                return <line key={`eu${i}`} x1={x1} y1={yScale(eu[i-1])} x2={x2} y2={yScale(v)} stroke={X.g} strokeWidth="1.5" strokeDasharray="4 3"/>;
+                return <line key={`eu${i}`} x1={x1} y1={yScale(eu[i-1])} x2={x2} y2={yScale(v)} stroke={X.g} strokeWidth="2" strokeDasharray="6 4"/>;
               })}
               {eu.map((v,i)=>{
                 const cx=startX+(i*(barW+gap))+barW/2;
-                return <circle key={`eud${i}`} cx={cx} cy={yScale(v)} r={2.5} fill={X.g}/>;
+                return <circle key={`eud${i}`} cx={cx} cy={yScale(v)} r="3" fill={X.g}/>;
               })}
-              <text x={startX+6*(barW+gap)+barW/2+6} y={yScale(eu[6])} fill={X.g} fontSize="8" fontFamily={F.m} dominantBaseline="middle">{eu[6]}</text>
+              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+1} fill={X.g} fontSize="9" fontFamily={F.m} dominantBaseline="middle">←164</text>
+              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+11} fill={X.g} fontSize="7" fontFamily={F.m} opacity="0.7">EU AVERAGE</text>
               {/* Bars */}
               {YR.map((y,i)=>{
                 const x=startX+i*(barW+gap);
@@ -506,12 +509,12 @@ export default function App(){
           <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:4,flexWrap:"wrap"}}>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.r,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>REPUBLIC</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.o,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>NI</span></div>
-            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.g}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.g}}>IF IRELAND MATCHED EU (−3%)</span></div>
-            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>VISION ZERO TARGET</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.g}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.g}}>EU AVERAGE</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>GOVT 2030 TARGET</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow dashed line shows where Ireland would be if we'd matched the EU average decline of 3% since 2019: <strong style={{color:X.g}}>164 deaths</strong>, not 247. The teal line is the all-island equivalent of Vision Zero's 72 target for the Republic. We are moving in the wrong direction.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="ROI TARGET" value="72" sub="Vision Zero 2030" accent={X.c}/><Stat label="ACTUAL" value="190" sub="164% above"/><Stat label="VS EU" value="+31%" sub="Worst trajectory" accent={X.g}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/></div>
       </div>)}
       {tab==="who"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
