@@ -637,7 +637,7 @@ function BlackspotPage({ onTabChange }) {
     const urgencyColor = urgency === "CRITICAL" ? X.r : urgency === "HIGH" ? X.o : X.g;
 
     return (
-      <div style={{
+      <div id={`bs-card-${bs.id}`} style={{
         background: "#0a0a0a", border: `1px solid ${expanded ? urgencyColor : "#222"}`,
         borderLeft: `3px solid ${urgencyColor}`, borderRadius: 4, marginBottom: 8,
         transition: "border-color 0.2s"
@@ -782,7 +782,15 @@ function BlackspotPage({ onTabChange }) {
                 const urgency = (bs.reports || 1) >= 8 ? X.r : (bs.reports || 1) >= 4 ? X.o : X.g;
                 const r = Math.max(6, Math.sqrt(bs.reports || 1) * 3.5);
                 return (
-                  <g key={`bsm${i}`} style={{ cursor: "pointer" }} onClick={() => setExpandedBs(bs.id === expandedBs ? null : bs.id)}>
+                  <g key={`bsm${i}`} style={{ cursor: "pointer" }} onClick={() => {
+                    setExpandedBs(bs.id === expandedBs ? null : bs.id);
+                    setTimeout(() => {
+                      const el = document.getElementById(`bs-card-${bs.id}`);
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 100);
+                  }}>
+                    {/* Invisible larger click target */}
+                    <circle cx={x} cy={y} r={18} fill="transparent" />
                     <circle cx={x} cy={y} r={r + 6} fill={urgency} opacity={0.15}>
                       <animate attributeName="r" values={`${r + 4};${r + 10};${r + 4}`} dur="3s" repeatCount="indefinite" />
                     </circle>
@@ -826,7 +834,14 @@ function BlackspotPage({ onTabChange }) {
 
         {/* Blackspot list */}
         {sorted.map(bs => (
-          <BsCard key={bs.id} bs={bs} expanded={expandedBs === bs.id} onToggle={() => setExpandedBs(expandedBs === bs.id ? null : bs.id)} />
+          <BsCard key={bs.id} bs={bs} expanded={expandedBs === bs.id} onToggle={() => {
+            const newId = expandedBs === bs.id ? null : bs.id;
+            setExpandedBs(newId);
+            if (newId) setTimeout(() => {
+              const el = document.getElementById(`bs-card-${bs.id}`);
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }, 100);
+          }} />
         ))}
 
         <div style={{ fontFamily: F.m, fontSize: 10, color: "#555", textAlign: "center", marginTop: 12, lineHeight: 1.6 }}>
