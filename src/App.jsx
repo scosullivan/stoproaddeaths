@@ -639,7 +639,7 @@ export default function App(){
       {tab==="act"&&<ActPage/>}
     </div>
     <div style={{background:X.r,padding:"26px 20px",textAlign:"center",marginTop:28}}>
-      <div style={{fontFamily:F.h,fontSize:30,color:"#fff"}}>EVERY DOT IS A PERSON. DEMAND YOUR TD AND MLA ACT NOW.</div>
+      <div style={{fontFamily:F.h,fontSize:30,color:"#fff"}}>EVERY CIRCLE IS A COMMUNITY IN MOURNING. DEMAND YOUR TD AND MLA ACT NOW.</div>
       <div style={{fontFamily:F.b,fontSize:14,color:"#ffffffdd",marginTop:8,maxWidth:580,margin:"8px auto 0",lineHeight:1.5}}>Mandatory lower speed limits. Protected infrastructure. Enforce existing laws. All-island coordination. Meet the targets or resign.</div>
       <div style={{fontFamily:F.m,fontSize:11,color:"#ffffffaa",marginTop:12,display:"flex",justifyContent:"center",gap:8,alignItems:"center",flexWrap:"wrap"}}>
         <span>#NotAStatistic</span>
