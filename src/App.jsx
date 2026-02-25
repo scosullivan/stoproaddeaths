@@ -152,9 +152,9 @@ const ACTION_COUNT = 0;
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"Strong on enforcement collapse (400 fewer Gardaí, Crowe report, published SF policing plan). Did not address Commissioner, black spot redesign, or commit to tabling a PQ."},
-  {n:"Seán Canney",p:"Ind",con:"Galway East",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Minister for Road Safety. Listed actions already taken (speed limits, active travel, tech investment, RSA reform). Did not address Commissioner, black spot redesign, or Garda numbers. No specifics on any of the five demands."},
-  {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Acknowledged concern, linked to Labour manifesto on cycling and active travel. Did not engage with any of the five demands."},
+  {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"Responded to initial email (before five demands). Strong on enforcement collapse — cited 400 fewer Gardaí, Crowe report, published SF policing plan, met local Superintendent. Follow-up with five demands to be sent."},
+  {n:"Seán Canney",p:"Ind",con:"Galway East",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Responded to initial email (before five demands). Minister for Road Safety. Listed actions taken: speed limit reductions, tech investment, RSA reform. General overview, no specific commitments. Follow-up with five demands to be sent."},
+  {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Responded to initial email (before five demands). Acknowledged concern, linked to Labour manifesto on cycling and active travel. No specific commitments. Follow-up with five demands to be sent."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
