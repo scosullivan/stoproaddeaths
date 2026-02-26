@@ -160,6 +160,8 @@ const TRACKER = [
   {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State (Agriculture & Environment). Staffer acknowledgment — will pass to Timmy. Asked for address (constituency check)."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Named specific dangerous roads (N68, N85). Getting Minister to visit a blackspot. QPL question next week on speed-triggered lights. Raising cat's eyes in Dáil today. Conditional yes on speed cameras. Raised Garda numbers with Justice Minister."},
   {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Staffer acknowledgment from constituency office. Will bring to Deputy Daly's attention. Asked where in Kerry you're based."},
+  {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Cited specific dangerous routes (M9, M7, M50) with collision data. Multiple PQs, QPL and topical debates submitted. Labour motion on traffic policing and driver education. Will relay asks to Labour transport spokesperson."},
+  {n:"Frank Feighan",p:"FG",con:"Sligo–Leitrim",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State. Referred to programme for government. Will forward to Minister Canney for reply."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
