@@ -158,6 +158,8 @@ const TRACKER = [
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Engaged but asked to prioritise Clare constituents. Referred to local TD."},
   {n:"Michael Healy-Rae",p:"Ind",con:"Kerry",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State (Agriculture). Acknowledged crisis, cited road resurfacing investment. No response to any of the five demands."},
   {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State (Agriculture & Environment). Staffer acknowledgment — will pass to Timmy. Asked for address (constituency check)."},
+  {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Named specific dangerous roads (N68, N85). Getting Minister to visit a blackspot. QPL question next week on speed-triggered lights. Raising cat's eyes in Dáil today. Conditional yes on speed cameras. Raised Garda numbers with Justice Minister."},
+  {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Staffer acknowledgment from constituency office. Will bring to Deputy Daly's attention. Asked where in Kerry you're based."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
@@ -282,49 +284,31 @@ const DEMANDS = [
 
 const EMAIL_BODY_ROI = `Dear [TD name],
 
-I am writing to you about the road safety crisis in Ireland. In 2025, 190 people were killed on our roads in the Republic alone — 247 across the island. This is the worst year in over a decade, an 8% increase on 2024, and a 31% increase since 2019.
+247 people were killed on Irish roads in 2025 — the worst year in over a decade, and 31% above 2019. I am asking you to state your position on five specific actions:
 
-Ireland is now one of the only EU countries where road deaths are rising. The Government's own target — no more than 72 deaths by 2030 — is 164% above trajectory. This is not a target being narrowly missed. It is a target being abandoned in practice while being maintained in rhetoric.
+1. Will you support creating a statutory Road Safety Commissioner with the authority and budget to deliver the 2030 target?
+2. Will you support deploying average-speed cameras on high-risk routes within 12 months?
+3. Will you support a funded programme to redesign the 50 deadliest road sections, with published timelines?
+4. Will you support restoring road policing to at least 2014 levels?
+5. Will you table a Dáil question on road safety governance within 30 days?
 
-I am asking you to commit to five specific actions:
+Yes, no, or no reply — all responses will be recorded at stoproaddeaths.ie.
 
-1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a statutory Road Safety Commissioner with the legal authority, budget and mandate to deliver the 2030 target? Currently, responsibility is diffused across the RSA, Department of Transport, local authorities, An Garda Síochána and TII — with no single person accountable for outcomes.
-
-2. AUTOMATED SPEED CAMERAS: Will you support the deployment of average-speed cameras on high-risk routes within 12 months? Ireland is one of the only developed countries without a functioning network, despite overwhelming evidence that they reduce fatalities.
-
-3. BLACK SPOT REDESIGN: Will you support a funded national programme to redesign the 50 highest-risk road sections — with published timelines? Known death traps sit unchanged for years while communities bury their neighbours.
-
-4. REVERSE THE ENFORCEMENT COLLAPSE: Will you support restoring road policing to at least 2014 levels? Speeding detections have fallen 43% in a decade. Fewer people are being caught because fewer people are being checked.
-
-5. PARLIAMENTARY QUESTION: Will you personally table a Dáil question on road safety governance within 30 days? I will be checking the Oireachtas record.
-
-These are five concrete actions that could save lives. I would welcome a response on each — even if the answer is no, knowing where you stand matters. I am tracking all responses at stoproaddeaths.ie.
-
-Yours sincerely,
 [Your name]
 [Your address — include if this TD represents your constituency]`;
 
 const EMAIL_BODY_NI = `Dear [MLA name],
 
-I am writing to you about the road safety crisis across the island of Ireland. In 2025, 57 people were killed on Northern Ireland's roads and 247 across the island — the worst year in over a decade.
+247 people were killed on roads across the island of Ireland in 2025 — 57 in Northern Ireland. I am asking you to state your position on five specific actions:
 
-Northern Ireland shares the same structural problem as the Republic: responsibility for road safety is diffused across the PSNI, the Department for Infrastructure, and local agencies — with no single person accountable for outcomes.
+1. Will you support creating a Road Safety Commissioner within the Department for Infrastructure with cross-departmental authority?
+2. Will you support expanding average-speed cameras to cover high-risk routes within 12 months?
+3. Will you support a funded programme to redesign the highest-risk road sections managed by DfI Roads?
+4. Will you support restoring PSNI roads policing capacity?
+5. Will you table a Question for Written Answer on road safety governance within 30 days?
 
-I am asking you to commit to five specific actions:
+Yes, no, or no reply — all responses will be recorded at stoproaddeaths.ie.
 
-1. ACCOUNTABLE OFFICEHOLDER: Will you support the creation of a dedicated Road Safety Commissioner within the Department for Infrastructure, with cross-departmental authority and a statutory mandate to deliver casualty reduction targets?
-
-2. AUTOMATED SPEED CAMERAS: Will you support expanding the average-speed camera network to cover the highest-risk routes in Northern Ireland within 12 months?
-
-3. BLACK SPOT REDESIGN: Will you support a funded programme — with published timelines — to redesign the highest-risk road sections managed by DfI Roads?
-
-4. REVERSE THE ENFORCEMENT COLLAPSE: Will you support restoring PSNI roads policing capacity, which has been significantly cut in recent years?
-
-5. ASSEMBLY QUESTION: Will you personally table a Question for Written Answer on road safety governance within 30 days? I will be checking the Assembly record.
-
-These are five concrete actions that could save lives. I would welcome a response on each — even if the answer is no, knowing where you stand matters. I am tracking all responses at stoproaddeaths.ie.
-
-Yours sincerely,
 [Your name]
 [Your address — include if this MLA represents your constituency]`;
 
