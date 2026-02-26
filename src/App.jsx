@@ -156,6 +156,8 @@ const TRACKER = [
   {n:"Seán Canney",p:"Ind",con:"Galway East",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Minister for Road Safety. Listed actions taken: speed limit reductions, tech investment, RSA reform. General overview, no specific commitments."},
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Acknowledged concern, linked to Labour manifesto on cycling and active travel. No specific commitments."},
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-02-25",summary:"Engaged but asked to prioritise Clare constituents. Referred to local TD."},
+  {n:"Michael Healy-Rae",p:"Ind",con:"Kerry",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State (Agriculture). Acknowledged crisis, cited road resurfacing investment. No response to any of the five demands."},
+  {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State (Agriculture & Environment). Staffer acknowledgment — will pass to Timmy. Asked for address (constituency check)."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
