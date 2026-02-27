@@ -162,6 +162,8 @@ const TRACKER = [
   {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Staffer acknowledgment from constituency office. Will bring to Deputy Daly's attention. Asked where in Kerry you're based."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Cited specific dangerous routes (M9, M7, M50) with collision data. Multiple PQs, QPL and topical debates submitted. Labour motion on traffic policing and driver education. Will relay asks to Labour transport spokesperson."},
   {n:"Frank Feighan",p:"FG",con:"Sligo–Leitrim",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State. Referred to programme for government. Will forward to Minister Canney for reply."},
+  {n:"Mary Butler",p:"FF",con:"Waterford",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Government Chief Whip & Minister of State (Mental Health). Staffer acknowledgment. Asked for address (constituency check)."},
+  {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled Parliamentary Question to Minister. Committed to following up with response. Awaiting his position on other four demands."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
