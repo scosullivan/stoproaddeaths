@@ -167,6 +167,8 @@ const TRACKER = [
   {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled Parliamentary Question to Minister. Committed to following up with response. Awaiting his position on other four demands."},
   {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. SD Transport spokesperson. Tabled PQ on Vision Zero targets 26 Feb. Raised N81 upgrade and enforcement collapse in Dáil statements 5 Feb. Press release on 400 fewer Gardaí in roads policing. Said SD colleagues will also respond."},
   {n:"Holly Cairns",p:"SD",con:"Cork South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs today to Ministers for Transport and Justice. Local councillors raising road/pedestrian safety with Cork County Council. Referenced Whitmore's Dáil statements and SD press releases."},
+  {n:"Barry Ward",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled series of PQs to Minister for Transport covering all five demands. Will forward Minister's replies."},
+  {n:"Pádraig Rice",p:"SD",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs on red-light cameras and cycle safety. Engaged Cork City Council on dangerous Albert Road junction after fatal crash. Pushing for traffic camera rollout in Cork. Extensive evidence of local and parliamentary action."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
