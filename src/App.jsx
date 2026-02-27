@@ -169,6 +169,8 @@ const TRACKER = [
   {n:"Holly Cairns",p:"SD",con:"Cork South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs today to Ministers for Transport and Justice. Local councillors raising road/pedestrian safety with Cork County Council. Referenced Whitmore's Dáil statements and SD press releases."},
   {n:"Barry Ward",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled series of PQs to Minister for Transport covering all five demands. Will forward Minister's replies."},
   {n:"Pádraig Rice",p:"SD",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs on red-light cameras and cycle safety. Engaged Cork City Council on dangerous Albert Road junction after fatal crash. Pushing for traffic camera rollout in Cork. Extensive evidence of local and parliamentary action."},
+  {n:"Liam Quaide",p:"SD",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands via PA, confirming SD party-wide support. Regularly raises road safety in Cork East area including specific local campaigns."},
+  {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Dáil statements on Garda numbers, enforcement, road design (5 Feb). Tabled PQ on how TII classifies dangerous roads — response reveals local authorities must self-fund fixes after TII identifies risks."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
