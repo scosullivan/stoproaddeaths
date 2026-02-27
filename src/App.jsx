@@ -140,8 +140,8 @@ const INCIDENTS = [
   {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Two young men (late teens) killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
   {date:"23 Feb",loc:"Garvaghy, Omagh Road (A5), Co Tyrone",desc:"Man (36) killed in two-vehicle collision on the A5. The 58th death on this road since 2006. Three others hospitalised.",type:"driver",lat:54.46,lng:-7.08},
 ];
-const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
-const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247}];
+const MO=[{m:"Jan",r:13,n:5,d:18},{m:"Feb",r:11,n:3,d:14},{m:"Mar",r:16,n:4,d:20},{m:"Apr",r:14,n:4,d:18},{m:"May",r:17,n:4,d:21},{m:"Jun",r:11,n:3,d:14},{m:"Jul",r:15,n:4,d:19},{m:"Aug",r:16,n:5,d:21},{m:"Sep",r:13,n:4,d:17},{m:"Oct",r:14,n:5,d:19},{m:"Nov",r:21,n:9,d:30},{m:"Dec",r:24,n:7,d:31},{m:"Jan '26",r:18,n:4,d:22,is26:true}];
+const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026",r:39,n:15,t:54,proj:true}];
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
@@ -165,6 +165,7 @@ const TRACKER = [
   {n:"Frank Feighan",p:"FG",con:"Sligo–Leitrim",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Minister of State. Referred to programme for government. Will forward to Minister Canney for reply."},
   {n:"Mary Butler",p:"FF",con:"Waterford",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Government Chief Whip & Minister of State (Mental Health). Staffer acknowledgment. Asked for address (constituency check)."},
   {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled Parliamentary Question to Minister. Committed to following up with response. Awaiting his position on other four demands."},
+  {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. SD Transport spokesperson. Tabled PQ on Vision Zero targets 26 Feb. Raised N81 upgrade and enforcement collapse in Dáil statements 5 Feb. Press release on 400 fewer Gardaí in roads policing. Said SD colleagues will also respond."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
@@ -766,7 +767,7 @@ function BlackspotPage({ onTabChange }) {
           </div>
           <div style={{ maxWidth: 400, margin: "0 auto" }}>
             <svg viewBox="0 0 500 540" style={{ width: "100%", height: "auto" }}>
-              <path d="M404.8,44.2 L419.8,51.9 L429.6,67.1 L434,92.4 L453.5,117.8 L466.7,136.8 L457.9,155.9 L457.9,174.9 L426.9,193.9 L422.5,206.6 L418.1,219.3 L419.8,235.8 L419.8,257.3 L413.7,276.3 L409.2,282.7 L422.5,308 L419.8,333.4 L409.2,352.4 L404.8,371.5 L402.2,390.5 L398.6,409.5 L387.1,431.1 L369.4,441.2 L338.5,447.6 L316.3,460.2 L285.4,472.9 L258.8,485.6 L232.3,492 L214.6,498.3 L196.9,500.8 L179.2,511 L152.7,517.3 L117.3,523.7 L104,517.3 L90.8,498.3 L68.7,485.6 L51,479.3 L37.7,460.2 L33.3,441.2 L51,428.5 L68.7,434.9 L81.9,422.2 L68.7,409.5 L73.1,390.5 L90.8,384.1 L73.1,377.8 L68.7,365.1 L81.9,346.1 L90.8,327.1 L95.2,314.4 L77.5,308 L59.8,295.4 L55.4,289 L51,276.3 L55.4,263.7 L46.5,257.3 L55.4,248.4 L64.2,238.3 L55.4,232 L59.8,219.3 L51,206.6 L59.8,193.9 L68.7,181.2 L77.5,168.5 L104,162.2 L135,162.2 L161.5,168.5 L192.5,162.2 L188.1,155.9 L201.3,149.5 L205.8,143.2 L201.3,136.8 L210.2,130.5 L223.5,124.1 L205.8,111.5 L201.3,98.8 L214.6,79.8 L232.3,67.1 L236.7,54.4 L254.4,41.7 L281,25.2 L298.7,25.2 L316.3,35.4 L334,41.7 L356.2,48 L373.8,41.7 L404.8,44.2Z" fill="none" stroke="#444" strokeWidth="1" opacity="0.6"/>
+              <path d="M404.8,44.2 L419.8,51.9 L429.6,67.1 L434,92.4 L453.5,117.8 L466.7,136.8 L457.9,155.9 L457.9,174.9 L426.9,193.9 L422.5,206.6 L418.1,219.3 L419.8,235.8 L419.8,257.3 L413.7,276.3 L409.2,282.7 L422.5,308 L419.8,333.4 L409.2,352.4 L404.8,371.5 L402.2,390.5 L398.6,409.5 L387.1,431.1 L369.4,441.2 L338.5,447.6 L316.3,460.2 L285.4,472.9 L258.8,485.6 L232.3,492 L214.6,498.3 L196.9,500.8 L179.2,511 L152.7,517.3 L117.3,523.7 L104,517.3 L90.8,498.3 L68.7,485.6 L51,479.3 L37.7,460.2 L33.3,441.2 L51,428.5 L68.7,434.9 L81.9,422.2 L68.7,409.5 L73.1,390.5 L90.8,384.1 L73.1,377.8 L68.7,365.1 L81.9,346.1 L90.8,327.1 L95.2,314.4 L77.5,308 L59.8,295.4 L55.4,289 L51,276.3 L55.4,263.7 L46.5,257.3 L55.4,248.4 L64.2,238.3 L55.4,232 L59.8,219.3 L51,206.6 L59.8,193.9 L68.7,181.2 L77.5,168.5 L104,162.2 L135,162.2 L161.5,168.5 L192.5,162.2 L188.1,155.9 L201.3,149.5 L205.8,143.2 L201.3,136.8 L210.2,130.5 L223.5,124.1 L205.8,111.5 L201.3,98.8 L214.6,79.8 L232.3,67.1 L236.7,54.4 L254.4,41.7 L281,25.2 L298.7,25.2 L316.3,35.4 L334,41.7 L356.2,48 L373.8,41.7 L404.8,44.2Z" fill="none" stroke="#888" strokeWidth="1.5" opacity="0.8"/>
               {BLACKSPOTS.map((bs, i) => {
                 const x = ((bs.lng + 10.5) / 5.2) * 460 + 20;
                 const y = ((55.5 - bs.lat) / 4.1) * 520 + 10;
@@ -1189,27 +1190,38 @@ export default function App(){
         </div></>)}
       {tab==="when"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
-          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>DEATHS BY MONTH · ROI · 2025</div>
-          <div style={{display:"flex",alignItems:"flex-end",gap:4,height:120}}>{MO.map((m,i)=>{const h=(m.d/24)*100;const t=m.d/24;return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
-            <span style={{fontFamily:F.m,fontSize:10,color:X.t}}>{m.d}</span>
-            <div style={{width:"100%",height:h,background:`rgb(${Math.round(80+t*175)},${Math.round(26-t*10)},${Math.round(26-t*10)})`,borderRadius:2,minHeight:4}}/>
-            <span style={{fontFamily:F.m,fontSize:9,color:"#999"}}>{m.m}</span></div>)})}</div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>November and December were the deadliest — 21 and 24 killed. Over half of fatal collisions happened on weekends. 54% on roads with speed limits of 80km/h+.</div>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS BY MONTH · 2025 + JAN 2026</div>
+          <div style={{display:"flex",alignItems:"flex-end",gap:3,height:140}}>{MO.map((m,i)=>{const mx=31;const hR=(m.r/mx)*110;const hN=(m.n/mx)*110;return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
+            <span style={{fontFamily:F.m,fontSize:9,color:X.t}}>{m.d}</span>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",gap:1}}>
+              <div style={{width:"100%",height:Math.max(2,hN),background:X.o,borderRadius:"2px 2px 0 0",opacity:0.9}}/>
+              <div style={{width:"100%",height:Math.max(2,hR),background:
+                `rgb(${Math.round(80+(m.r/24)*175)},${Math.round(26-(m.r/24)*10)},${Math.round(26-(m.r/24)*10)})`,borderRadius:"0 0 2px 2px"}}/>
+            </div>
+            <span style={{fontFamily:F.m,fontSize:8,color:"#999"}}>{m.m}</span></div>)})}</div>
+          <div style={{display:"flex",gap:12,justifyContent:"center",marginTop:8}}>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:6,background:X.r,borderRadius:1}}/><span style={{fontFamily:F.m,fontSize:9,color:"#bbb"}}>ROI</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:6,background:X.o,borderRadius:1}}/><span style={{fontFamily:F.m,fontSize:9,color:"#bbb"}}>NI</span></div>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>November and December 2025 were the deadliest months all-island — 30 and 31 killed. <strong style={{color:"#fff"}}>January 2026: 22 killed across the island (18 ROI + 4 NI) — up from 18 in January 2025.</strong> Over half of 2025 fatal collisions happened on weekends. 54% on roads with speed limits of 80km/h+.</div>
+          <div style={{fontFamily:F.m,fontSize:9,color:"#666",marginTop:8}}>ROI monthly: RSA provisional (185 public roads). NI monthly: estimated from PSNI total (57) — official monthly breakdown pending spring 2026. 5 additional ROI non-public-road deaths bring all-island total to 247.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="DEADLIEST" value="DEC" sub="24 killed"/><Stat label="WEEKENDS" value="55%" sub="Fri–Sun" accent={X.g}/><Stat label="HIGH SPEED" value="54%" sub="80km/h+" accent={X.o}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="JAN '26 vs JAN '25" value="+22%" sub="22 vs 18 all-island" accent={X.r}/><Stat label="DEADLIEST" value="DEC" sub="31 killed all-island"/><Stat label="WEEKENDS" value="55%" sub="Fri–Sun" accent={X.g}/></div>
       </div>)}
       {tab==="trend"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
-          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS · 2019–2025</div>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS · 2019–2026</div>
           {(()=>{
-            const mx=270,chartH=160,chartW=560,barW=50,gap=20,padL=40,padB=25,padT=20;
+            const mx=370,chartH=180,chartW=600,barW=45,gap=16,padL=40,padB=25,padT=20;
             const totalW=YR.length*(barW+gap)-gap;
             const startX=padL+(chartW-padL-totalW)/2;
             const yScale=(v)=>padT+(chartH-padT-padB)*(1-v/mx);
             // Government 2030 target for ROI = 72, scaled all-island ~120
             const vz=120;
             // EU average: road deaths fell ~3%/year. Applied to Ireland's 2019 baseline of 196:
-            const eu=[196,190,184,179,174,169,164];
+            const eu=[196,190,184,179,174,169,164,159];
+            // 2026 projection: 54 deaths in 56 days = 352 annualised
+            const proj2026=352;
             return(<svg viewBox={`0 0 ${chartW} ${chartH+10}`} style={{width:"100%"}}>
               {/* Government 2030 target line (flat) */}
               <line x1={padL-5} y1={yScale(vz)} x2={chartW-10} y2={yScale(vz)} stroke={X.c} strokeWidth="1" strokeDasharray="6 3" opacity="0.5"/>
@@ -1226,20 +1238,36 @@ export default function App(){
                 const cx=startX+(i*(barW+gap))+barW/2;
                 return <circle key={`eud${i}`} cx={cx} cy={yScale(v)} r="3" fill={X.g}/>;
               })}
-              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+1} fill={X.g} fontSize="9" fontFamily={F.m} dominantBaseline="middle">←164</text>
-              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+11} fill={X.g} fontSize="7" fontFamily={F.m} opacity="0.7">EU AVERAGE</text>
+              <text x={startX+7*(barW+gap)+barW/2+8} y={yScale(eu[7])+1} fill={X.g} fontSize="9" fontFamily={F.m} dominantBaseline="middle">←159</text>
+              <text x={startX+7*(barW+gap)+barW/2+8} y={yScale(eu[7])+11} fill={X.g} fontSize="7" fontFamily={F.m} opacity="0.7">EU AVERAGE</text>
               {/* Bars */}
               {YR.map((y,i)=>{
                 const x=startX+i*(barW+gap);
                 const hR=(y.r/mx)*(chartH-padT-padB);
                 const hN=(y.n/mx)*(chartH-padT-padB);
-                const last=i===6;
+                const isLast=y.y==="2025";
+                const isProj=y.proj;
                 const baseY=chartH-padB;
+                if(isProj){
+                  // 2026: solid bar for YTD, dashed outline for projected pace
+                  const hProj=(proj2026/mx)*(chartH-padT-padB);
+                  return(<g key={i}>
+                    {/* Projected pace outline */}
+                    <rect x={x} y={baseY-hProj} width={barW} height={hProj} fill="none" stroke={X.r} strokeWidth="1.5" strokeDasharray="4 3" rx="1" opacity="0.6"/>
+                    <text x={x+barW/2} y={baseY-hProj-6} textAnchor="middle" fill={X.r} fontSize="9" fontFamily={F.m} fontWeight="600">~{proj2026}</text>
+                    <text x={x+barW/2} y={baseY-hProj-16} textAnchor="middle" fill={X.r} fontSize="7" fontFamily={F.m} opacity="0.7">PACE</text>
+                    {/* Actual YTD bar */}
+                    <rect x={x} y={baseY-hR} width={barW} height={hR} fill={X.r} rx="1" opacity="0.9"/>
+                    <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={X.o} rx="1" opacity="0.9"/>
+                    <text x={x+barW/2} y={baseY-hR/2} textAnchor="middle" dominantBaseline="middle" fill="#fff" fontSize="10" fontFamily={F.m} fontWeight="600">{y.t}</text>
+                    <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={X.r} fontSize="9" fontFamily={F.m} fontWeight="600">{y.y}*</text>
+                  </g>);
+                }
                 return(<g key={i}>
-                  <rect x={x} y={baseY-hR} width={barW} height={hR} fill={last?X.r:"#cc2222"} rx="1"/>
-                  <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={last?X.o:"#cc6622"} rx="1"/>
-                  <text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={last?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={last?"600":"400"}>{y.t}</text>
-                  <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={last?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
+                  <rect x={x} y={baseY-hR} width={barW} height={hR} fill={isLast?X.r:"#cc2222"} rx="1"/>
+                  <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={isLast?X.o:"#cc6622"} rx="1"/>
+                  <text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={isLast?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={isLast?"600":"400"}>{y.t}</text>
+                  <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={isLast?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
                 </g>);
               })}
             </svg>);
@@ -1247,12 +1275,13 @@ export default function App(){
           <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:4,flexWrap:"wrap"}}>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.r,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>REPUBLIC</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.o,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>NI</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:2,border:`1px dashed ${X.r}`}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>2026 PROJECTED PACE</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.g}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.g}}>EU AVERAGE</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>GOVT 2030 TARGET</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that gap was <strong style={{color:X.r}}>83 extra people killed</strong>. <strong style={{color:"#fff"}}>2026 is tracking worse.</strong> 54 people have been killed all-island in 8 weeks — 39 in the Republic, 15 in NI. If this pace continues, 2026 will see ~352 deaths, the worst year since 2006. The dashed outline shows where the year is heading. <span style={{fontSize:12,color:"#999"}}>*2026 data: Jan–25 Feb, Garda/PSNI provisional.</span></div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="2026 PACE" value="~352" sub="Projected all-island" accent={X.r}/><Stat label="2026 YTD" value="54" sub="39 ROI + 15 NI"/><Stat label="VS GOVT TARGET" value="3×" sub="Target ~120" accent={X.c}/></div>
       </div>)}
       {tab==="who"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
