@@ -171,6 +171,13 @@ const TRACKER = [
   {n:"Pádraig Rice",p:"SD",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs on red-light cameras and cycle safety. Engaged Cork City Council on dangerous Albert Road junction after fatal crash. Pushing for traffic camera rollout in Cork. Extensive evidence of local and parliamentary action."},
   {n:"Liam Quaide",p:"SD",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands via PA, confirming SD party-wide support. Regularly raises road safety in Cork East area including specific local campaigns."},
   {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Dáil statements on Garda numbers, enforcement, road design (5 Feb). Tabled PQ on how TII classifies dangerous roads — response reveals local authorities must self-fund fixes after TII identifies risks."},
+  {n:"Cian O'Callaghan",p:"SD",con:"Dublin Bay North",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Eoin Hayes",p:"SD",con:"Dublin Bay South",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Gary Gannon",p:"SD",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Rory Hearne",p:"SD",con:"Dublin North-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Sinéad Gibney",p:"SD",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Jen Cummins",p:"SD",con:"Dublin South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
+  {n:"Aidan Farrelly",p:"SD",con:"Kildare North",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
