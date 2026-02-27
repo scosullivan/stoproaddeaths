@@ -166,6 +166,7 @@ const TRACKER = [
   {n:"Mary Butler",p:"FF",con:"Waterford",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Government Chief Whip & Minister of State (Mental Health). Staffer acknowledgment. Asked for address (constituency check)."},
   {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled Parliamentary Question to Minister. Committed to following up with response. Awaiting his position on other four demands."},
   {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. SD Transport spokesperson. Tabled PQ on Vision Zero targets 26 Feb. Raised N81 upgrade and enforcement collapse in Dáil statements 5 Feb. Press release on 400 fewer Gardaí in roads policing. Said SD colleagues will also respond."},
+  {n:"Holly Cairns",p:"SD",con:"Cork South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs today to Ministers for Transport and Justice. Local councillors raising road/pedestrian safety with Cork County Council. Referenced Whitmore's Dáil statements and SD press releases."},
 ];
 
 // ===== BLACKSPOT REPORTS =====
