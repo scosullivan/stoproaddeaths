@@ -1419,7 +1419,7 @@ export default function App(){
           Ireland doesn't need more awareness campaigns. It needs structural change with clear ownership. These are five concrete, trackable actions we are asking every TD and MLA to commit to — yes or no.
         </div>
         <div style={{fontFamily:F.m,fontSize:11,color:X.l,textAlign:"center",marginBottom:28}}>
-          Based on <a href="https://www.irishtimes.com/opinion/2025/12/03/pr-campaigns-are-not-enough-to-stop-people-dying-on-our-roads-here-is-what-we-need-to-do/" target="_blank" rel="noopener" style={{color:X.c}}>analysis published in The Irish Times, 3 Dec 2025</a>
+          Based on <a href="https://www.irishtimes.com/opinion/2025/12/03/sinead-osullivan-pr-safety-campaigns-ireland-road-deaths-what-we-must-do/" target="_blank" rel="noopener" style={{color:X.c}}>analysis published in The Irish Times, 3 Dec 2025</a>
         </div>
         {DEMANDS.map(d=><div key={d.id} style={{background:"#0a0a0a",border:"1px solid #222",borderRadius:6,padding:"20px 24px",marginBottom:12}}>
           <div style={{display:"flex",alignItems:"baseline",gap:10,marginBottom:8}}>
