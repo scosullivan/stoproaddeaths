@@ -171,6 +171,7 @@ const TRACKER = [
   {n:"Pádraig Rice",p:"SD",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Tabled PQs on red-light cameras and cycle safety. Engaged Cork City Council on dangerous Albert Road junction after fatal crash. Pushing for traffic camera rollout in Cork. Extensive evidence of local and parliamentary action."},
   {n:"Liam Quaide",p:"SD",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands via PA, confirming SD party-wide support. Regularly raises road safety in Cork East area including specific local campaigns."},
   {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands. Dáil statements on Garda numbers, enforcement, road design (5 Feb). Tabled PQ on how TII classifies dangerous roads — response reveals local authorities must self-fund fixes after TII identifies risks."},
+  {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"YES to all 5 demands. Offered to table PQ with campaign-suggested wording. Third Labour TD to back all five."},
   {n:"Cian O'Callaghan",p:"SD",con:"Dublin Bay North",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
   {n:"Eoin Hayes",p:"SD",con:"Dublin Bay South",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
   {n:"Gary Gannon",p:"SD",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"YES to all 5 demands — confirmed by SD Policy Director as party-wide position."},
@@ -1183,7 +1184,7 @@ export default function App(){
           <div className="map-sidebar">
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
               <Stat label="ALL ISLAND" value="247" sub="2025 total"/><Stat label="REPUBLIC" value="190" sub="Garda total"/>
-              <Stat label="NORTH" value="57" sub="PSNI total" accent={X.o}/><Stat label="VULNERABLE" value="88+" sub="Peds, cyclists, bikes" accent={X.g}/>
+              <Stat label="NORTH" value="57" sub="PSNI total" accent={X.o}/><Stat label="SERIOUSLY INJURED" value="~2,500" sub="RSA ~10:1 ratio" accent={X.g}/>
             </div>
             {sel?(<>
               <RepPanel name={sel}/>
@@ -1307,8 +1308,9 @@ export default function App(){
               <div style={{height:5,background:"#1a1a1a",borderRadius:2,overflow:"hidden"}}><div style={{height:"100%",width:`${(d.v/76)*100}%`,background:d.c,borderRadius:2}}/></div>
             </div>))}
           <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:16}}>Nearly half were vulnerable road users. Cyclist deaths highest since 2017. Motorcyclist deaths highest since 2007. In NI, 16 of 57 were pedestrians — 9 over 65.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.g,lineHeight:1.7,marginTop:10,padding:"10px 14px",background:"#1a1200",border:"1px solid #3a3000",borderRadius:4}}>Deaths are only part of the picture. The RSA estimates <strong style={{color:"#fff"}}>~10 serious injuries for every fatality</strong> — roughly 2,500 people across the island in 2025 with life-changing injuries. Hospital data suggests the true figure is 1.75× higher than police records. In NI, 939 were seriously injured in 2024 alone — up 25% from baseline.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="AGED 16–25" value="38" sub="21% of ROI deaths" accent={X.g}/><Stat label="MALE" value="~75%" sub="All island"/><Stat label="NI PEDS" value="16" sub="9 aged 65+" accent={X.o}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="SERIOUSLY INJURED" value="~2,500" sub="~10 per fatality (RSA)" accent={X.g}/><Stat label="AGED 16–25" value="38" sub="21% of ROI deaths"/><Stat label="MALE" value="~75%" sub="All island"/><Stat label="NI PEDS" value="16" sub="9 aged 65+" accent={X.o}/></div>
       </div>)}
       {tab==="latest"&&(<div style={{maxWidth:600,margin:"0 auto"}}>
         <div style={{background:"#ff1a1a10",border:"1px solid #ff1a1a30",borderRadius:4,padding:"20px 24px",marginBottom:16,textAlign:"center"}}>
@@ -1456,7 +1458,7 @@ export default function App(){
       </div>
     </div>
     <div style={{padding:"16px 20px",borderTop:"1px solid #282828",textAlign:"center"}}>
-      <div style={{fontFamily:F.m,fontSize:10,color:"#888",lineHeight:1.8}}>DATA: AN GARDA SÍOCHÁNA (190 TOTAL) · RSA PROVISIONAL REVIEW 2025 (185 PUBLIC ROADS) · PSNI · EC/ETSC<br/>SITE USES GARDA TOTAL (190) WHICH INCLUDES CAR PARKS AND NON-PUBLIC ROADS. RSA OFFICIAL FIGURE IS 185.<br/>TD/MLA DATA FROM OIREACHTAS.IE AND NIASSEMBLY.GOV.UK · EMAIL ADDRESSES AUTO-GENERATED — VERIFY BEFORE SENDING<br/>2026 INCIDENTS FROM MEDIA REPORTS. THIS IS A CAMPAIGN TOOL, NOT AN OFFICIAL DATA SOURCE.</div>
+      <div style={{fontFamily:F.m,fontSize:10,color:"#888",lineHeight:1.8}}>DATA: AN GARDA SÍOCHÁNA (190 TOTAL) · RSA PROVISIONAL REVIEW 2025 (185 PUBLIC ROADS) · PSNI · EC/ETSC<br/>SITE USES GARDA TOTAL (190) WHICH INCLUDES CAR PARKS AND NON-PUBLIC ROADS. RSA OFFICIAL FIGURE IS 185.<br/>SERIOUS INJURY ESTIMATE BASED ON RSA RATIO (~10 PER FATALITY, 2018–2022). HOSPITAL DATA (HIPE) SUGGESTS TRUE FIGURE IS 1.75× HIGHER THAN GARDA/PSNI RECORDS.<br/>TD/MLA DATA FROM OIREACHTAS.IE AND NIASSEMBLY.GOV.UK · EMAIL ADDRESSES AUTO-GENERATED — VERIFY BEFORE SENDING<br/>2026 INCIDENTS FROM MEDIA REPORTS. THIS IS A CAMPAIGN TOOL, NOT AN OFFICIAL DATA SOURCE.</div>
       <div style={{fontFamily:F.b,fontSize:12,color:X.t,marginTop:10}}>An independent campaign by concerned citizens. Media enquiries welcome.</div>
       <a href="mailto:campaign@stoproaddeaths.ie" style={{fontFamily:F.m,fontSize:12,color:X.c,textDecoration:"none",marginTop:4,display:"inline-block"}}>campaign@stoproaddeaths.ie</a>
     </div>
