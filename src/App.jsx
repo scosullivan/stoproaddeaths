@@ -146,7 +146,7 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 19;
+const ACTION_COUNT = 20;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
@@ -164,7 +164,7 @@ const TRACKER = [
   {n:"Gary Gannon",p:"SD",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Rory Hearne",p:"SD",con:"Dublin North-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Sinéad Gibney",p:"SD",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
-  {n:"Jen Cummins",p:"SD",con:"Dublin South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
+  {n:"Jen Cummins",p:"SD",con:"Dublin South-Central",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Tabling PQs. Avid cyclist. Spoke in Dáil road safety debate 5 Feb. Active on Dublin cycling safety."},
   {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQ on TII road classification — revealed local authorities must self-fund safety fixes."},
   {n:"Barry Ward",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled series of PQs covering all five demands."},
   {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQ. Committed to follow up."},
@@ -172,6 +172,7 @@ const TRACKER = [
   {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"SD Transport spokesperson. PQ on Vision Zero targets. Raised N81 and enforcement collapse."},
   {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign-suggested wording."},
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs on road safety."},
+  {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
   // GENERIC — 1
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Responded to earlier template. Acknowledged issue, linked to Labour manifesto. No specific commitments to five demands. Follow-up sent."},
 ];
