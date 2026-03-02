@@ -173,8 +173,12 @@ const TRACKER = [
   {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign-suggested wording."},
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs on road safety."},
   {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
-  // GENERIC — 1
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Responded to earlier template. Acknowledged issue, linked to Labour manifesto. No specific commitments to five demands. Follow-up sent."},
+  {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA acknowledged. Contents noted, to be brought to TD's attention."},
+  {n:"Alan Kelly",p:"Lab",con:"Tipperary North",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA acknowledged. Confirmed Labour are supportive. No personal commitment on PQs."},
+  {n:"Darragh O'Brien",p:"FF",con:"Dublin Fingal East",j:"ROI",status:"generic",responded:"2026-03-02",summary:"Minister for Transport. Constituency office referred to ministerial office, which referred to Minister of State Canney. Ref: TTAS-MO-01247-2026."},
+  {n:"Carol Nolan",p:"Ind",con:"Offaly",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA asked detailed policy questions on Commissioner role and speed cameras. Indicated TD will engage constructively with some proposals."},
+  {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"generic",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions. Awaiting confirmation on Assembly record."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
