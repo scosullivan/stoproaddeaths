@@ -146,13 +146,13 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 21;
+const ACTION_COUNT = 22;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 23 TDs across 6 parties
+  // MEANINGFUL — 24 TDs across 6 parties
   {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour backing confirmed."},
@@ -173,6 +173,7 @@ const TRACKER = [
   {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign-suggested wording."},
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs on road safety."},
   {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
+  {n:"Grace Boland",p:"FG",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"Committed to tabling series of PQs. Called briefing material extremely helpful."},
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Responded to earlier template. Acknowledged issue, linked to Labour manifesto. No specific commitments to five demands. Follow-up sent."},
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee member. Lost mother-in-law to road crash Nov 2024. Offered to table PQs. FF Spokesperson on Aviation & Logistics."},
   {n:"Michael Murphy",p:"FG",con:"Tipperary South",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee Chair. Confirmed submission will be circulated to all members. Oral evidence request on agenda."},
@@ -184,6 +185,7 @@ const TRACKER = [
   {n:"Hildegarde Naughton",p:"FG",con:"Galway West",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Cabinet Minister. Former MoS at Transport 2020–2025. Redirected to Minister for Transport. Road deaths rose 32% during her tenure."},
   {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Office acknowledged. Routed to Pa Daly TD (SF transport spokesperson). Awaiting Daly's response."},
   {n:"Jennifer Carroll MacNeill",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Minister for Health. Office sent Programme for Government copy-paste to constituent. No personal position on five demands."},
+  {n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Regional Independent Group (govt-supporting). Will raise five actions with Minister. Pushed for personal position and PQ."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
