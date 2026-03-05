@@ -152,7 +152,7 @@ const ACTION_COUNT = 22;
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 24 TDs across 6 parties
+  // MEANINGFUL — 25 TDs across 6 parties
   {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour backing confirmed."},
@@ -174,6 +174,7 @@ const TRACKER = [
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs on road safety."},
   {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
   {n:"Grace Boland",p:"FG",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"Committed to tabling series of PQs. Called briefing material extremely helpful."},
+  {n:"Shay Brennan",p:"FF",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"FF Finance spokesperson. Broadly supports five demands. Committed to tabling PQ."},
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Responded to earlier template. Acknowledged issue, linked to Labour manifesto. No specific commitments to five demands. Follow-up sent."},
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee member. Lost mother-in-law to road crash Nov 2024. Offered to table PQs. FF Spokesperson on Aviation & Logistics."},
   {n:"Michael Murphy",p:"FG",con:"Tipperary South",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee Chair. Confirmed submission will be circulated to all members. Oral evidence request on agenda."},
