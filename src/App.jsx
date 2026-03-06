@@ -146,7 +146,7 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 98;
+const ACTION_COUNT = 99;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
@@ -246,6 +246,7 @@ const TRACKER = [
   {n:"Grace Boland",p:"FG",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"Committed to tabling series of PQs. Called briefing material extremely helpful."},
   {n:"Shay Brennan",p:"FF",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"FF Finance spokesperson. Broadly supports five demands. Committed to tabling PQ."},
   {n:"Pat the Cope Gallagher",p:"FF",con:"Donegal",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Tabled two PQs: Road Safety Commissioner and who oversees Road Safety Strategy implementation."},
+  {n:"Shane Moynihan",p:"FF",con:"Dublin Mid-West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"FF Transport Spokesperson. Addressed all five demands. Tabled PQ on road safety governance coordination. Supports black spot redesign, enforcement. Hedged on Commissioner."},
   {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour Party leader. Formally signed up Labour as party-wide position backing all five demands."},
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee member. Lost mother-in-law to road crash Nov 2024. Offered to table PQs. FF Spokesperson on Aviation & Logistics."},
   {n:"Michael Murphy",p:"FG",con:"Tipperary South",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee Chair. Confirmed submission will be circulated to all members. Oral evidence request on agenda."},
@@ -263,6 +264,65 @@ const TRACKER = [
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
 const X={l:"#aaa",t:"#ccc",d:"#666",bg:"#111",br:"#2a2a2a",r:"#ff1a1a",o:"#ff6b35",g:"#ffd700",c:"#4ecdc4"};
+
+// ===== PARLIAMENTARY QUESTIONS TRACKER =====
+const PQS = [
+  {td:"Jennifer Whitmore",p:"SD",con:"Wicklow",date:"2026-02-26",type:"Priority Oral",
+   q:"To ask the Minister for Transport if he intends to set a road deaths reduction target for Phase 2 of Vision Zero; and if he will make a statement on the matter.",
+   status:"answered",answered:"2026-02-26",minister:"Seán Canney",
+   response:"The Government remains committed to Vision Zero and the target of no more than 72 deaths by 2030. Deaths in 2024 had to be no higher than 122; there were 171. 'I do not believe it would be helpful to set a specific 2027 target when we already have a clear objective for 2030.' NVDF Bill targeted for enactment by summer 2026.",
+   assessment:"Declined to set interim targets despite being 164% off trajectory. Confirmed 171 deaths in 2024 against a target of 122. NVDF Bill delayed again — previously promised by end of 2025."},
+  {td:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",date:"2026-03-03",type:"Written",
+   q:"To ask the Minister for Transport to outline what actions he is taking to reduce fatalities on our roads; the specific actions he is taking; and if he will make a statement on the matter.",
+   status:"repeat",answered:"2026-03-03",minister:"Ceann Comhairle",
+   response:"Ruled a repeat of Question No. 93 of 26 February 2026 (Whitmore). Referred to that reply.",
+   assessment:"Ruled repeat — confirms the Oireachtas recognises these PQs as part of a coordinated line of questioning."},
+  {td:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",date:"2026-03-01",type:"Written",
+   q:"To ask the Minister for Transport regarding TII road classification and whether local authorities must self-fund safety fixes on non-national roads.",
+   status:"answered",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting written answer."},
+  {td:"Barry Ward",p:"FG",con:"Dún Laoghaire",date:"2026-03-02",type:"Written",
+   q:"Series of PQs covering all five demands — Commissioner, speed cameras, enforcement, black spots, governance accountability.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer. Covers all five demands in a single series."},
+  {td:"Pat Buckley",p:"SF",con:"Cork East",date:"2026-03-03",type:"Written",
+   q:"Series of PQs on road safety governance and enforcement.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer."},
+  {td:"Cathal Crowe",p:"FF",con:"Clare",date:"2026-03-06",type:"Written",
+   q:"To ask the Minister for Transport, following the decision in December 2025 to abandon the planned restructuring of the Road Safety Authority, to state which body or individual is now responsible for delivering the Government's target of halving road deaths by 2030; whether the Government has examined the Road Safety Commissioner model or equivalent statutory accountability mechanisms used in Sweden, Norway, and Finland; and if not, the reasons for same.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer. The accountability question — forces Minister to name who holds the target."},
+  {td:"George Lawlor",p:"Lab",con:"Wexford",date:"2026-03-04",type:"Written",
+   q:"PQ with campaign-provided wording on road safety governance.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer."},
+  {td:"Grace Boland",p:"FG",con:"Dublin Fingal West",date:"2026-03-06",type:"Written",
+   q:"Series of PQs on road safety.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer."},
+  {td:"Shay Brennan",p:"FF",con:"Dublin Rathdown",date:"2026-03-06",type:"Written",
+   q:"PQ on road safety expenditure and cost-effectiveness of speed camera deployment.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer. FF Finance spokesperson — targets the economics of enforcement."},
+  {td:"Pat the Cope Gallagher",p:"FF",con:"Donegal",date:"2026-03-06",type:"Written",
+   q:"(1) To ask the Minister for Transport if he would support the establishment of a position of Road Safety Commissioner to oversee the implementation of our Road Safety Strategy, in particular, the aim of achieving a 50% reduction in road deaths in Ireland by 2030. (2) To ask the Minister for Transport what body is responsible for overseeing the implementation of the Road Safety Strategy.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer. Two PQs directly targeting the accountability gap."},
+  {td:"Shane Moynihan",p:"FF",con:"Dublin Mid-West",date:"2026-03-06",type:"Written",
+   q:"To ask the Minister for Transport for an update on any reforms being considered to the coordination structures for road safety governance to further strengthen implementation of the Road Safety Strategy 2021–2030; and if he will make a statement on the matter.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
+   response:null,
+   assessment:"Awaiting answer. FF Transport Spokesperson — asks about governance coordination reforms."},
+];
 
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
 const DEMANDS = [
@@ -514,10 +574,10 @@ function ActPage(){const[cp,setCp]=useState(null);const[tpl,setTpl]=useState("ro
 }
 
 export default function App(){
-  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);
+  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);const[lookupCounty,setLookupCounty]=useState(null);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
@@ -556,8 +616,8 @@ export default function App(){
     </div>
     <div style={{display:"flex",justifyContent:"center",gap:4,padding:"18px 12px 0",flexWrap:"wrap"}}>
       {tabs.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{
-        background:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?X.c:X.r):X.br}`,
-        color:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
+        background:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"?X.c:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"?X.c:X.r):X.br}`,
+        color:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
         fontFamily:F.m,fontSize:11,letterSpacing:"0.12em",fontWeight:tab===t.id?600:400}}>{t.l}</button>))}
     </div>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"20px"}}>
@@ -742,6 +802,66 @@ export default function App(){
               <Stat label="MEANINGFUL" value={String(meaningful.length)} sub="Real commitments" accent={X.g}/>
               <Stat label="SILENT" value={String(noResponse.length)} sub={daysSince?`${daysSince} days`:""} accent={X.r}/>
             </div>
+            {/* CHECK YOUR TDs */}
+            {(()=>{
+              const counties=Object.keys(C2C).sort();
+              const getStatusColor=(s)=>s==="meaningful"?X.c:s==="generic"?X.g:X.r;
+              const getStatusLabel=(s)=>s==="meaningful"?"COMMITTED":s==="generic"?"ACKNOWLEDGED":"NO RESPONSE";
+              const getStatusIcon=(s)=>s==="meaningful"?"✓":s==="generic"?"~":"✗";
+              return(<div style={{background:"#111",border:`1px solid ${X.c}`,borderRadius:6,padding:"18px 22px",marginBottom:16}}>
+                <div style={{fontFamily:F.h,fontSize:22,color:X.c,marginBottom:4}}>CHECK YOUR TDs</div>
+                <div style={{fontFamily:F.b,fontSize:13,color:X.t,marginBottom:12}}>Select your county to see which representatives have committed to road safety reform — and which haven't.</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:4,marginBottom:lookupCounty?14:0}}>
+                  {counties.map(c=>{
+                    const isNI=COUNTIES[c]?.j==="NI";
+                    return(<button key={c} onClick={()=>setLookupCounty(lookupCounty===c?null:c)} style={{
+                      background:lookupCounty===c?X.c:"#1a1a1a",color:lookupCounty===c?"#000":isNI?X.o:"#ccc",
+                      border:`1px solid ${lookupCounty===c?X.c:"#333"}`,borderRadius:3,padding:"4px 10px",cursor:"pointer",
+                      fontFamily:F.m,fontSize:10,fontWeight:lookupCounty===c?600:400
+                    }}>{c}</button>);
+                  })}
+                </div>
+                {lookupCounty&&(()=>{
+                  const cons=C2C[lookupCounty]||[];
+                  const isNI=COUNTIES[lookupCounty]?.j==="NI";
+                  const deaths=COUNTIES[lookupCounty]?.d||0;
+                  return(<div>
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:10,marginTop:4}}>
+                      <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>{lookupCounty.toUpperCase()}</div>
+                      <div style={{fontFamily:F.m,fontSize:11,color:X.r}}>{deaths} DEATHS IN 2025</div>
+                    </div>
+                    {cons.map(con=>{
+                      const reps=isNI?MLAS[con]:TDS[con];
+                      if(!reps)return null;
+                      return(<div key={con} style={{marginBottom:10}}>
+                        <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:4,letterSpacing:"0.1em"}}>{con.toUpperCase()}</div>
+                        {reps.map((rep,i)=>{
+                          const t=tracked.get(rep.n);
+                          const status=t?t.status:"none";
+                          const sc=getStatusColor(status);
+                          const sl=getStatusLabel(status);
+                          const email=makeEmail(rep.n,isNI);
+                          const mailto=`mailto:${email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(isNI?EMAIL_BODY_NI:EMAIL_BODY_ROI)}`;
+                          return(<div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 12px",background:status==="none"?"rgba(255,26,26,0.04)":"#0a0a0a",border:`1px solid ${status==="none"?"rgba(255,26,26,0.15)":"#222"}`,borderLeft:`3px solid ${sc}`,borderRadius:3,marginBottom:3}}>
+                            <div style={{display:"flex",alignItems:"center",gap:10}}>
+                              <span style={{fontFamily:F.h,fontSize:16,color:sc,width:16,textAlign:"center"}}>{getStatusIcon(status)}</span>
+                              <div>
+                                <div style={{fontFamily:F.b,fontSize:13,color:"#fff",fontWeight:500}}>{rep.n}</div>
+                                <div style={{fontFamily:F.m,fontSize:10,color:X.l}}>{rep.p} · {isNI?"MLA":"TD"}</div>
+                              </div>
+                            </div>
+                            <div style={{display:"flex",alignItems:"center",gap:10}}>
+                              <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:sc+"18",color:sc,border:`1px solid ${sc}33`}}>{sl}</span>
+                              {status==="none"&&<a href={mailto} style={{fontFamily:F.h,fontSize:12,color:X.c,textDecoration:"none",whiteSpace:"nowrap"}}>EMAIL →</a>}
+                            </div>
+                          </div>);
+                        })}
+                      </div>);
+                    })}
+                  </div>);
+                })()}
+              </div>);
+            })()}
             {/* Party breakdown */}
             {meaningful.length>0&&(()=>{
               const parties={};meaningful.forEach(r=>{parties[r.p]=(parties[r.p]||0)+1});
@@ -802,6 +922,84 @@ export default function App(){
           </>)}
         </div>);
       })()}
+      {tab==="pqs"&&(<div style={{maxWidth:800,margin:"0 auto"}}>
+        <div style={{textAlign:"center",marginBottom:24}}>
+          <div style={{fontFamily:F.h,fontSize:44,color:"#fff"}}>PARLIAMENTARY QUESTIONS TRACKER</div>
+          <div style={{fontFamily:F.b,fontSize:15,color:X.t,lineHeight:1.6,maxWidth:600,margin:"8px auto 0"}}>
+            Every PQ tabled. Every answer published. Every evasion documented. This is what accountability looks like on the Dáil record.
+          </div>
+        </div>
+        {/* Stats */}
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8,marginBottom:20}}>
+          <Stat label="PQs TABLED" value={String(PQS.length)} sub="From campaign" accent={X.c}/>
+          <Stat label="ANSWERED" value={String(PQS.filter(p=>p.status==="answered").length)} sub="Responses received" accent={X.g}/>
+          <Stat label="AWAITING" value={String(PQS.filter(p=>p.status==="tabled").length)} sub="On the record" accent={X.o}/>
+          <Stat label="PARTIES" value={String(new Set(PQS.map(p=>p.p)).size)} sub="Cross-party" accent={X.c}/>
+        </div>
+        {/* Explainer */}
+        <div style={{background:"#0d1a0d",border:`1px solid ${X.c}`,borderRadius:6,padding:"18px 22px",marginBottom:20}}>
+          <div style={{fontFamily:F.h,fontSize:18,color:X.c,marginBottom:8}}>WHY PQs MATTER</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>
+            Parliamentary Questions create permanent facts on the Dáil record. The Minister must answer. Evasions are documented. Commitments can be tracked. When the Minister told Deputy Whitmore he would not set interim targets despite being 164% off the 2030 target — that is now a matter of public record. When the NVDF Bill deadline slips again — we will have the Minister's own words to hold him to. This is how democratic accountability works: not through press releases, but through the record.
+          </div>
+        </div>
+        {/* Answered PQs */}
+        {PQS.filter(p=>p.status==="answered"||p.status==="repeat").length>0&&<div style={{marginBottom:20}}>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.g,marginBottom:10}}>ANSWERED — MINISTER'S RESPONSES</div>
+          {PQS.filter(p=>p.status==="answered"||p.status==="repeat").map((pq,i)=>(
+            <div key={`a${i}`} style={{background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${pq.status==="repeat"?"#888":X.g}`,borderRadius:4,padding:"16px 20px",marginBottom:10}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+                <div>
+                  <span style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600}}>{pq.td}</span>
+                  <span style={{fontFamily:F.m,fontSize:10,color:X.l,marginLeft:8}}>{pq.p} · {pq.con}</span>
+                </div>
+                <div style={{display:"flex",alignItems:"center",gap:8}}>
+                  <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>{pq.date}</span>
+                  <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:pq.status==="repeat"?"#333":X.g+"22",color:pq.status==="repeat"?"#999":X.g,border:`1px solid ${pq.status==="repeat"?"#555":X.g+"44"}`}}>{pq.status==="repeat"?"REPEAT":"ANSWERED"}</span>
+                </div>
+              </div>
+              <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:10,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
+                <div style={{fontFamily:F.m,fontSize:9,color:X.c,marginBottom:4}}>QUESTION</div>
+                {pq.q}
+              </div>
+              {pq.response&&<div style={{fontFamily:F.b,fontSize:13,color:"#bbb",lineHeight:1.5,marginBottom:8,padding:"10px 14px",background:"#0d0d0d",border:"1px solid #222",borderRadius:3}}>
+                <div style={{fontFamily:F.m,fontSize:9,color:X.o,marginBottom:4}}>MINISTER'S RESPONSE — {pq.minister}</div>
+                {pq.response}
+              </div>}
+              {pq.assessment&&<div style={{fontFamily:F.b,fontSize:12,color:X.r,lineHeight:1.4,padding:"8px 14px",background:"rgba(255,26,26,0.05)",border:"1px solid rgba(255,26,26,0.15)",borderRadius:3}}>
+                <span style={{fontFamily:F.m,fontSize:9,color:X.r,marginRight:6}}>ASSESSMENT:</span>{pq.assessment}
+              </div>}
+            </div>
+          ))}
+        </div>}
+        {/* Tabled - awaiting answer */}
+        {PQS.filter(p=>p.status==="tabled").length>0&&<div style={{marginBottom:20}}>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.o,marginBottom:10}}>TABLED — AWAITING MINISTER'S ANSWER</div>
+          {PQS.filter(p=>p.status==="tabled").map((pq,i)=>(
+            <div key={`t${i}`} style={{background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${X.o}`,borderRadius:4,padding:"14px 18px",marginBottom:8}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:6}}>
+                <div>
+                  <span style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600}}>{pq.td}</span>
+                  <span style={{fontFamily:F.m,fontSize:10,color:X.l,marginLeft:8}}>{pq.p} · {pq.con}</span>
+                </div>
+                <div style={{display:"flex",alignItems:"center",gap:8}}>
+                  <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>{pq.date}</span>
+                  <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:X.o+"22",color:X.o,border:`1px solid ${X.o}44`}}>AWAITING</span>
+                </div>
+              </div>
+              <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
+                <div style={{fontFamily:F.m,fontSize:9,color:X.c,marginBottom:4}}>QUESTION</div>
+                {pq.q}
+              </div>
+              {pq.assessment&&<div style={{fontFamily:F.b,fontSize:11,color:"#999",marginTop:6,fontStyle:"italic"}}>{pq.assessment}</div>}
+            </div>
+          ))}
+        </div>}
+        <div style={{textAlign:"center",margin:"20px 0"}}>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,marginBottom:8}}>Know a TD who tabled a road safety PQ? Send us the answer.</div>
+          <a href="mailto:campaign@stoproaddeaths.ie?subject=PQ%20Answer" style={{fontFamily:F.m,fontSize:12,color:X.c,textDecoration:"none"}}>campaign@stoproaddeaths.ie</a>
+        </div>
+      </div>)}
       {tab==="demands"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{fontFamily:F.h,fontSize:44,color:"#fff",textAlign:"center",margin:"30px 0 8px"}}>FIVE DEMANDS</div>
         <div style={{fontFamily:F.b,fontSize:15,color:X.t,textAlign:"center",lineHeight:1.6,maxWidth:560,margin:"0 auto 8px"}}>
