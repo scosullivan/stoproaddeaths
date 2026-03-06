@@ -146,16 +146,16 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 63;
+const ACTION_COUNT = 98;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 63 TDs/MLAs across 6 parties (includes SF party-wide 38 + SD party-wide 11 + 2 SDLP MLAs)
+  // MEANINGFUL — 98 TDs/MLAs (SF 65 + SD 11 + Lab 10 + FG 5 + FF 5 + SDLP 2). Three party-wide positions: SF, SD, Lab.
   {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands. SF has since adopted party-wide position."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
-  {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour backing confirmed."},
+  {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour has since adopted party-wide position."},
   {n:"Liam Quaide",p:"SD",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Pádraig Rice",p:"SD",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQs on red-light cameras. Engaged Cork City Council on Albert Road junction."},
   {n:"Holly Cairns",p:"SD",con:"Cork South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQs to both Transport and Justice Ministers."},
@@ -165,12 +165,18 @@ const TRACKER = [
   {n:"Rory Hearne",p:"SD",con:"Dublin North-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Sinéad Gibney",p:"SD",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Jen Cummins",p:"SD",con:"Dublin South-Central",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Tabling PQs. Avid cyclist. Spoke in Dáil road safety debate 5 Feb. Active on Dublin cycling safety."},
-  {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQ on TII road classification — revealed local authorities must self-fund safety fixes."},
+  {n:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Labour Transport spokesperson. Tabled PQ on TII road classification. Labour party-wide position confirmed."},
   {n:"Barry Ward",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled series of PQs covering all five demands."},
   {n:"Michael Cahill",p:"FF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Tabled PQ. Committed to follow up."},
   {n:"Aidan Farrelly",p:"SD",con:"Kildare North",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"SD Transport spokesperson. PQ on Vision Zero targets. Raised N81 and enforcement collapse."},
-  {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign-suggested wording."},
+  {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign wording. Labour party-wide position confirmed."},
+  // LABOUR PARTY-WIDE POSITION — confirmed by Bacik 2026-03-06
+  {n:"Conor Sheehan",p:"Lab",con:"Limerick City",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
+  {n:"Duncan Smith",p:"Lab",con:"Dublin Fingal East",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party whip. Party-wide position. All five demands adopted as party policy."},
+  {n:"Eoghan Kenny",p:"Lab",con:"Cork North-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
+  {n:"Marie Sherlock",p:"Lab",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
+  {n:"Robert O'Donoghue",p:"Lab",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs. SF has since adopted party-wide position."},
   // SF PARTY-WIDE POSITION — adopted 2026-03-06
   {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF Transport spokesperson. Drove party-wide adoption of all five demands."},
@@ -208,14 +214,43 @@ const TRACKER = [
   {n:"Johnny Mythen",p:"SF",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"John Brady",p:"SF",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Fionntan Ó Súillebháin",p:"SF",con:"Wicklow–Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  // SF NI — PARTY-WIDE POSITION CONFIRMED 2026-03-06
+  {n:"Gerry Kelly",p:"SF",con:"Belfast North",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted. Road safety added to NSMC Transport sectoral."},
+  {n:"Carál Ní Chuilín",p:"SF",con:"Belfast North",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Deirdre Hargey",p:"SF",con:"Belfast South",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Órlaithí Flynn",p:"SF",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Pat Sheehan",p:"SF",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Danny Baker",p:"SF",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Aisling Reilly",p:"SF",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Declan Kearney",p:"SF",con:"South Antrim",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Philip McGuigan",p:"SF",con:"North Antrim",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Sinéad Ennis",p:"SF",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Cathy Mason",p:"SF",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Conor Murphy",p:"SF",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Liz Kimmins",p:"SF",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Infrastructure Minister. SF party-wide position (all-island). All five demands adopted. Road safety added to NSMC Transport sectoral."},
+  {n:"Cathal Boylan",p:"SF",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"John O'Dowd",p:"SF",con:"Upper Bann",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Jemma Dolan",p:"SF",con:"Fermanagh & South Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Colm Gildernew",p:"SF",con:"Fermanagh & South Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Áine Murphy",p:"SF",con:"Fermanagh & South Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Maolíosa McHugh",p:"SF",con:"West Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Nicola Brogan",p:"SF",con:"West Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Declan McAleer",p:"SF",con:"West Tyrone",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Michelle O'Neill",p:"SF",con:"Mid Ulster",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"First Minister. SF party-wide position (all-island). All five demands adopted."},
+  {n:"Emma Sheerin",p:"SF",con:"Mid Ulster",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Linda Dillon",p:"SF",con:"Mid Ulster",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Pádraig Delargy",p:"SF",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Ciara Ferguson",p:"SF",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
+  {n:"Caoimhe Archibald",p:"SF",con:"East Londonderry",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position (all-island). All five demands adopted."},
   {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
   {n:"Grace Boland",p:"FG",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"Committed to tabling series of PQs. Called briefing material extremely helpful."},
   {n:"Shay Brennan",p:"FF",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"FF Finance spokesperson. Broadly supports five demands. Committed to tabling PQ."},
-  {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-02-26",summary:"Responded to earlier template. Acknowledged issue, linked to Labour manifesto. No specific commitments to five demands. Follow-up sent."},
+  {n:"Pat the Cope Gallagher",p:"FF",con:"Donegal",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Tabled two PQs: Road Safety Commissioner and who oversees Road Safety Strategy implementation."},
+  {n:"Ivana Bacik",p:"Lab",con:"Dublin Bay South",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour Party leader. Formally signed up Labour as party-wide position backing all five demands."},
   {n:"Cathal Crowe",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee member. Lost mother-in-law to road crash Nov 2024. Offered to table PQs. FF Spokesperson on Aviation & Logistics."},
   {n:"Michael Murphy",p:"FG",con:"Tipperary South",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Transport Committee Chair. Confirmed submission will be circulated to all members. Oral evidence request on agenda."},
   {n:"Brendan Smith",p:"FF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-03",summary:"Substantive policy engagement. Supports enforcement, raised concerns on Commissioner model. Forwarded to Minister. Ref: TTAS-MO-01256-2026."},
-  {n:"Alan Kelly",p:"Lab",con:"Tipperary North",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA acknowledged. Confirmed Labour are supportive. No personal commitment on PQs."},
+  {n:"Alan Kelly",p:"Lab",con:"Tipperary North",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
   {n:"Darragh O'Brien",p:"FF",con:"Dublin Fingal East",j:"ROI",status:"generic",responded:"2026-03-02",summary:"Minister for Transport. Constituency office referred to ministerial office, which referred to Minister of State Canney. Ref: TTAS-MO-01247-2026."},
   {n:"Carol Nolan",p:"Ind",con:"Offaly",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA asked detailed policy questions on Commissioner role and speed cameras. Indicated TD will engage constructively with some proposals."},
   {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions on road safety governance."},
