@@ -140,20 +140,20 @@ const INCIDENTS = [
   {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Two young men (late teens) killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
 ];
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
-const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247}];
+const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:40,n:14,t:54,proj:true,pace:352}];
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 22;
+const ACTION_COUNT = 61;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 25 TDs across 6 parties
-  {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands."},
+  // MEANINGFUL — 61 TDs across 7 parties (includes SF party-wide 38 + SD party-wide 11)
+  {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands. SF has since adopted party-wide position."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour backing confirmed."},
   {n:"Liam Quaide",p:"SD",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
@@ -171,7 +171,43 @@ const TRACKER = [
   {n:"Aidan Farrelly",p:"SD",con:"Kildare North",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"Committed to all five demands as part of SD party-wide position."},
   {n:"Jennifer Whitmore",p:"SD",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-02-27",summary:"SD Transport spokesperson. PQ on Vision Zero targets. Raised N81 and enforcement collapse."},
   {n:"George Lawlor",p:"Lab",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-01",summary:"Offered to table PQ with campaign-suggested wording."},
-  {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs on road safety."},
+  {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Committed to all five demands. Offered to submit PQs. SF has since adopted party-wide position."},
+  // SF PARTY-WIDE POSITION — adopted 2026-03-06
+  {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF Transport spokesperson. Drove party-wide adoption of all five demands."},
+  {n:"Kathleen Funchion",p:"SF",con:"Carlow–Kilkenny",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Matt Carthy",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Cathy Bennett",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Donna McGettigan",p:"SF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Thomas Gould",p:"SF",con:"Cork North-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Donnchadh Ó Laoghaire",p:"SF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Pearse Doherty",p:"SF",con:"Donegal",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Pádraig Mac Lochlainn",p:"SF",con:"Donegal",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Denise Mitchell",p:"SF",con:"Dublin Bay North",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Ann Graves",p:"SF",con:"Dublin Fingal East",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Louise O'Reilly",p:"SF",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Eoin Ó Broin",p:"SF",con:"Dublin Mid-West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Mark Ward",p:"SF",con:"Dublin Mid-West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Dessie Ellis",p:"SF",con:"Dublin North-West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Aengus Ó Snodaigh",p:"SF",con:"Dublin South-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Seán Crowe",p:"SF",con:"Dublin South-West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Paul Donnelly",p:"SF",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Louis O'Hara",p:"SF",con:"Galway East",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Mairéad Farrell",p:"SF",con:"Galway West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Réada Cronin",p:"SF",con:"Kildare North",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Shónagh Ní Raghallaigh",p:"SF",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Maurice Quinlivan",p:"SF",con:"Limerick City",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Sorca Clarke",p:"SF",con:"Longford–Westmeath",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Imelda Munster",p:"SF",con:"Louth",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Ruairí Ó Murchú",p:"SF",con:"Louth",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Rose Conway-Walsh",p:"SF",con:"Mayo",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Darren O'Rourke",p:"SF",con:"Meath East",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Johnny Guirke",p:"SF",con:"Meath West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Martin Kenny",p:"SF",con:"Sligo–Leitrim",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"David Cullinane",p:"SF",con:"Waterford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Conor D. McGuinness",p:"SF",con:"Waterford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Johnny Mythen",p:"SF",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"John Brady",p:"SF",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Fionntan Ó Súillebháin",p:"SF",con:"Wicklow–Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Emer Currie",p:"FG",con:"Dublin West",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Transport Committee member. Asked how to advance briefing through committee process. Engaged on PQs."},
   {n:"Grace Boland",p:"FG",con:"Dublin Fingal West",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"Committed to tabling series of PQs. Called briefing material extremely helpful."},
   {n:"Shay Brennan",p:"FF",con:"Dublin Rathdown",j:"ROI",status:"meaningful",responded:"2026-03-05",summary:"FF Finance spokesperson. Broadly supports five demands. Committed to tabling PQ."},
@@ -184,9 +220,10 @@ const TRACKER = [
   {n:"Carol Nolan",p:"Ind",con:"Offaly",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA asked detailed policy questions on Commissioner role and speed cameras. Indicated TD will engage constructively with some proposals."},
   {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"generic",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions. Awaiting confirmation on Assembly record."},
   {n:"Hildegarde Naughton",p:"FG",con:"Galway West",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Cabinet Minister. Former MoS at Transport 2020–2025. Redirected to Minister for Transport. Road deaths rose 32% during her tenure."},
-  {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Office acknowledged. Routed to Pa Daly TD (SF transport spokesperson). Awaiting Daly's response."},
+  {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF leader. Office routed to Pa Daly (transport spokesperson). SF has adopted all five demands as party policy."},
   {n:"Jennifer Carroll MacNeill",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Minister for Health. Office sent Programme for Government copy-paste to constituent. No personal position on five demands."},
   {n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Regional Independent Group (govt-supporting). Will raise five actions with Minister. Pushed for personal position and PQ."},
+  {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"generic",responded:"2026-03-06",summary:"Focused on road conditions/DfI funding rather than safety governance. SDLP brought council motion blocked by DUP and SF."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
@@ -533,17 +570,18 @@ export default function App(){
       </div>)}
       {tab==="trend"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
-          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS · 2019–2025</div>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.l,marginBottom:8}}>ALL-ISLAND DEATHS · 2019–2026</div>
           {(()=>{
-            const mx=270,chartH=160,chartW=560,barW=50,gap=20,padL=40,padB=25,padT=20;
+            const mx=380,chartH=200,chartW=620,barW=48,gap=16,padL=40,padB=25,padT=20;
             const totalW=YR.length*(barW+gap)-gap;
             const startX=padL+(chartW-padL-totalW)/2;
             const yScale=(v)=>padT+(chartH-padT-padB)*(1-v/mx);
             // Government 2030 target for ROI = 72, scaled all-island ~120
             const vz=120;
             // EU average: road deaths fell ~3%/year. Applied to Ireland's 2019 baseline of 196:
-            const eu=[196,190,184,179,174,169,164];
+            const eu=[196,190,184,179,174,169,164,159];
             return(<svg viewBox={`0 0 ${chartW} ${chartH+10}`} style={{width:"100%"}}>
+              <defs><pattern id="proj-r" patternUnits="userSpaceOnUse" width="4" height="4"><line x1="0" y1="4" x2="4" y2="0" stroke="#ff1a1a" strokeWidth="1" opacity="0.6"/></pattern><pattern id="proj-o" patternUnits="userSpaceOnUse" width="4" height="4"><line x1="0" y1="4" x2="4" y2="0" stroke="#ff6b35" strokeWidth="1" opacity="0.6"/></pattern></defs>
               {/* Government 2030 target line (flat) */}
               <line x1={padL-5} y1={yScale(vz)} x2={chartW-10} y2={yScale(vz)} stroke={X.c} strokeWidth="1" strokeDasharray="6 3" opacity="0.5"/>
               <text x={padL-8} y={yScale(vz)-4} fill={X.c} fontSize="8" fontFamily={F.m} textAnchor="end">2030</text>
@@ -559,21 +597,34 @@ export default function App(){
                 const cx=startX+(i*(barW+gap))+barW/2;
                 return <circle key={`eud${i}`} cx={cx} cy={yScale(v)} r="3" fill={X.g}/>;
               })}
-              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+1} fill={X.g} fontSize="9" fontFamily={F.m} dominantBaseline="middle">←164</text>
-              <text x={startX+6*(barW+gap)+barW/2+8} y={yScale(eu[6])+11} fill={X.g} fontSize="7" fontFamily={F.m} opacity="0.7">EU AVERAGE</text>
+              <text x={startX+7*(barW+gap)+barW/2+8} y={yScale(eu[7])+1} fill={X.g} fontSize="9" fontFamily={F.m} dominantBaseline="middle">←159</text>
+              <text x={startX+7*(barW+gap)+barW/2+8} y={yScale(eu[7])+11} fill={X.g} fontSize="7" fontFamily={F.m} opacity="0.7">EU AVERAGE</text>
               {/* Bars */}
               {YR.map((y,i)=>{
                 const x=startX+i*(barW+gap);
                 const hR=(y.r/mx)*(chartH-padT-padB);
                 const hN=(y.n/mx)*(chartH-padT-padB);
-                const last=i===6;
+                const is2025=i===6;
+                const isProj=y.proj;
                 const baseY=chartH-padB;
                 return(<g key={i}>
-                  <rect x={x} y={baseY-hR} width={barW} height={hR} fill={last?X.r:"#cc2222"} rx="1"/>
-                  <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={last?X.o:"#cc6622"} rx="1"/>
-                  <text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={last?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={last?"600":"400"}>{y.t}</text>
-                  <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={last?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
+                  {isProj?(<>
+                    {/* Dashed outline showing annualised pace */}
+                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <rect x={x} y={baseY-paceH} width={barW} height={paceH} fill="none" stroke={X.r} strokeWidth="2" strokeDasharray="6 3" rx="1" opacity="0.7"/>})()}
+                    {/* Pace label above */}
+                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <><text x={x+barW/2} y={baseY-paceH-16} textAnchor="middle" fill={X.c} fontSize="8" fontFamily={F.m} opacity="0.9">PACE</text><text x={x+barW/2} y={baseY-paceH-5} textAnchor="middle" fill={X.c} fontSize="11" fontFamily={F.m} fontWeight="600">~{y.pace}</text></>})()}
+                    {/* Solid bars showing actual YTD */}
+                    <rect x={x} y={baseY-hR} width={barW} height={hR} fill={X.r} rx="1"/>
+                    <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={X.o} rx="1"/>
+                    <text x={x+barW/2} y={baseY-hR+hR/2+4} textAnchor="middle" fill="#fff" fontSize="11" fontFamily={F.h} fontWeight="600">{y.t}</text>
+                  </>):(<>
+                    <rect x={x} y={baseY-hR} width={barW} height={hR} fill={is2025?X.r:"#cc2222"} rx="1"/>
+                    <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={is2025?X.o:"#cc6622"} rx="1"/>
+                  </>)}
+                  {!isProj&&<text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={is2025?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={is2025?"600":"400"}>{y.t}</text>}
+                  <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={isProj?"#888":is2025?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
                 </g>);
+              })}
               })}
             </svg>);
           })()}
@@ -582,10 +633,11 @@ export default function App(){
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:X.o,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>NI</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.g}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.g}}>EU AVERAGE</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>GOVT 2030 TARGET</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,border:`1px dashed ${X.r}`,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>2026 PROJECTED</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it. The hatched 2026 bar shows 54 people killed in the first 8 weeks — annualised, that's a pace of <strong style={{color:X.r}}>~352 deaths</strong>, which would be the worst year since the early 2000s.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/><Stat label="2026 PACE" value="~352" sub="54 killed in 8 weeks" accent={X.o}/></div>
       </div>)}
       {tab==="who"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
