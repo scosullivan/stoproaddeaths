@@ -601,7 +601,7 @@ function ActPage(){const[cp,setCp]=useState(null);const[tpl,setTpl]=useState("ro
 }
 
 export default function App(){
-  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);const[lookupCounty,setLookupCounty]=useState(null);
+  const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);const[lookupCounty,setLookupCounty]=useState(null);const[expandedPQ,setExpandedPQ]=useState(null);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
   const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
@@ -949,84 +949,185 @@ export default function App(){
           </>)}
         </div>);
       })()}
-      {tab==="pqs"&&(<div style={{maxWidth:800,margin:"0 auto"}}>
+      {tab==="pqs"&&(()=>{
+        const answered=PQS.filter(p=>p.status==="answered"||p.status==="repeat");
+        const tabled=PQS.filter(p=>p.status==="tabled");
+        return(<div style={{maxWidth:800,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:24}}>
           <div style={{fontFamily:F.h,fontSize:44,color:"#fff"}}>PARLIAMENTARY QUESTIONS TRACKER</div>
           <div style={{fontFamily:F.b,fontSize:15,color:X.t,lineHeight:1.6,maxWidth:600,margin:"8px auto 0"}}>
-            Every PQ tabled. Every answer published. Every evasion documented. This is what accountability looks like on the Dáil record.
+            We asked TDs to table questions. They did. Here's what the Minister revealed — and what he refused to answer.
           </div>
         </div>
         {/* Stats */}
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8,marginBottom:20}}>
           <Stat label="PQs TABLED" value={String(PQS.length)} sub="From campaign" accent={X.c}/>
-          <Stat label="ANSWERED" value={String(PQS.filter(p=>p.status==="answered").length)} sub="Responses received" accent={X.g}/>
-          <Stat label="AWAITING" value={String(PQS.filter(p=>p.status==="tabled").length)} sub="On the record" accent={X.o}/>
+          <Stat label="ANSWERED" value={String(answered.length)} sub="Responses received" accent={X.g}/>
+          <Stat label="AWAITING" value={String(tabled.length)} sub="On the record" accent={X.o}/>
           <Stat label="PARTIES" value={String(new Set(PQS.map(p=>p.p)).size)} sub="Cross-party" accent={X.c}/>
         </div>
-        {/* Explainer */}
-        <div style={{background:"#0d1a0d",border:`1px solid ${X.c}`,borderRadius:6,padding:"18px 22px",marginBottom:20}}>
-          <div style={{fontFamily:F.h,fontSize:18,color:X.c,marginBottom:8}}>WHY PQs MATTER</div>
-          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>
-            Parliamentary Questions create permanent facts on the Dáil record. The Minister must answer. Evasions are documented. Commitments can be tracked. When the Minister told Deputy Whitmore he would not set interim targets despite being 164% off the 2030 target — that is now a matter of public record. When the NVDF Bill deadline slips again — we will have the Minister's own words to hold him to. This is how democratic accountability works: not through press releases, but through the record.
+        {/* === PATTERN CARDS === */}
+        <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.r,marginBottom:10}}>WHAT THE MINISTER'S ANSWERS REVEAL</div>
+        {/* Pattern 1: Reform abandoned */}
+        <div style={{background:"#1a0a0a",border:"1px solid rgba(255,26,26,0.3)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.r}}>RSA REFORM ABANDONED — NOTHING REPLACED IT</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Ward Q67-68 · 4 Mar</span>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.6,marginBottom:10}}>
+            Barry Ward asked why the Minister abandoned the Cabinet-approved plan to split the RSA. Canney's answer, now on the Dáil record:
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:"#fff",lineHeight:1.5,padding:"12px 16px",background:"rgba(255,26,26,0.08)",border:"1px solid rgba(255,26,26,0.2)",borderRadius:4,borderLeft:`3px solid ${X.r}`,marginBottom:8}}>
+            "I have decided not to pursue this recommendation as I believe that reform can be delivered more efficiently and effectively within the existing RSA organisational structure."
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            His "reforms" so far: fee increases, a communications steering group, new board members. No Commissioner. No lead agency. <strong style={{color:X.r}}>No one accountable for the 2030 target.</strong>
           </div>
         </div>
-        {/* Answered PQs */}
-        {PQS.filter(p=>p.status==="answered"||p.status==="repeat").length>0&&<div style={{marginBottom:20}}>
-          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.g,marginBottom:10}}>ANSWERED — MINISTER'S RESPONSES</div>
-          {PQS.filter(p=>p.status==="answered"||p.status==="repeat").map((pq,i)=>(
-            <div key={`a${i}`} style={{background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${pq.status==="repeat"?"#888":X.g}`,borderRadius:4,padding:"16px 20px",marginBottom:10}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
-                <div>
-                  <span style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600}}>{pq.td}</span>
-                  <span style={{fontFamily:F.m,fontSize:10,color:X.l,marginLeft:8}}>{pq.p} · {pq.con}</span>
-                </div>
-                <div style={{display:"flex",alignItems:"center",gap:8}}>
-                  <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>{pq.date}</span>
-                  <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:pq.status==="repeat"?"#333":X.g+"22",color:pq.status==="repeat"?"#999":X.g,border:`1px solid ${pq.status==="repeat"?"#555":X.g+"44"}`}}>{pq.status==="repeat"?"REPEAT":"ANSWERED"}</span>
-                </div>
+        {/* Pattern 2: Data referred to RSA */}
+        <div style={{background:"#1a0f0a",border:"1px solid rgba(255,107,53,0.3)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.o}}>"ASK THE RSA" — MINISTER WON'T ANSWER HIS OWN BRIEF</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Cairns · Currie · 3–5 Mar</span>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:10}}>
+            <div style={{padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4}}>
+              <div style={{fontFamily:F.b,fontSize:12,color:"#fff"}}>Holly Cairns (SD)</div>
+              <div style={{fontFamily:F.b,fontSize:12,color:X.t,marginTop:2}}>Asked: How many died on Cork's roads?</div>
+              <div style={{fontFamily:F.h,fontSize:14,color:X.o,marginTop:4}}>→ "REFERRED TO THE RSA"</div>
+            </div>
+            <div style={{padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4}}>
+              <div style={{fontFamily:F.b,fontSize:12,color:"#fff"}}>Emer Currie (FG)</div>
+              <div style={{fontFamily:F.b,fontSize:12,color:X.t,marginTop:2}}>Asked: How many learner drivers in fatal crashes?</div>
+              <div style={{fontFamily:F.h,fontSize:14,color:X.o,marginTop:4}}>→ "REFERRED TO THE RSA"</div>
+            </div>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            The Minister for Road Safety was asked basic factual questions about road deaths. He did not answer. He sent them to the body he refused to reform.
+          </div>
+        </div>
+        {/* Pattern 3: NVDF Bill sliding deadlines */}
+        <div style={{background:"#0a1a1a",border:"1px solid rgba(78,205,196,0.3)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.c}}>NVDF BILL — THREE DEADLINES AND COUNTING</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Buckley · Whitmore · Currie</span>
+          </div>
+          <div style={{display:"flex",gap:0,marginBottom:12,position:"relative"}}>
+            {[{date:"MAY 2025",promise:"'Enacted by year-end'",who:"Canney to JOC",missed:true},
+              {date:"FEB 2026",promise:"'Summer 2026'",who:"Canney to Whitmore",missed:true},
+              {date:"MAR 2026",promise:"'Coming weeks'",who:"Canney to Buckley",missed:false},
+            ].map((d,i)=>(<div key={i} style={{flex:1,textAlign:"center",position:"relative"}}>
+              {i>0&&<div style={{position:"absolute",left:0,top:12,width:"50%",height:2,background:d.missed?X.r:"#444"}}/>}
+              {i<2&&<div style={{position:"absolute",right:0,top:12,width:"50%",height:2,background:X.r}}/>}
+              <div style={{width:24,height:24,borderRadius:"50%",background:d.missed?X.r:"#444",border:`2px solid ${d.missed?X.r:X.c}`,margin:"0 auto",position:"relative",zIndex:1,display:"flex",alignItems:"center",justifyContent:"center"}}>
+                {d.missed&&<span style={{color:"#fff",fontSize:12,fontFamily:F.h}}>✗</span>}
               </div>
-              <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:10,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
+              <div style={{fontFamily:F.m,fontSize:9,color:d.missed?X.r:X.c,marginTop:6}}>{d.date}</div>
+              <div style={{fontFamily:F.b,fontSize:11,color:"#fff",marginTop:2}}>{d.promise}</div>
+              <div style={{fontFamily:F.m,fontSize:9,color:"#666",marginTop:1}}>{d.who}</div>
+            </div>))}
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            Local authority road engineers have been unable to see where crashes are happening on their roads since November 2023. The Data Protection Commission said in April 2024 that GDPR should not prevent sharing this data. The Bill to fix it has missed every deadline.
+          </div>
+        </div>
+        {/* Pattern 4: The data that came out */}
+        <div style={{background:"#0a0d1a",border:"1px solid rgba(255,215,0,0.3)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.g}}>FATAL CRASHES ON LOCAL ROADS — UP 50%</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Buckley Q309 · 5 Mar</span>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,marginBottom:10}}>Pat Buckley extracted collision data the Minister was forced to provide. Fatal crashes on the roads with no safety oversight:</div>
+          <div style={{display:"flex",alignItems:"flex-end",gap:3,height:80,marginBottom:8}}>
+            {[{y:"2019",v:30},{y:"2020",v:33},{y:"2021",v:27},{y:"2022",v:41},{y:"2023",v:40},{y:"2024",v:38},{y:"2025",v:45}].map((d,i)=>{
+              const h=(d.v/45)*70;const last=i===6;
+              return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:2}}>
+                <span style={{fontFamily:F.m,fontSize:10,color:last?X.r:"#bbb"}}>{d.v}</span>
+                <div style={{width:"100%",height:h,background:last?X.r:"#cc2222",borderRadius:2,minHeight:4}}/>
+                <span style={{fontFamily:F.m,fontSize:8,color:last?X.r:"#888"}}>{d.y}</span>
+              </div>);
+            })}
+          </div>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:8}}>FATAL COLLISIONS · LOCAL ROADS · SOURCE: MINISTER'S PQ REPLY</div>
+          <div style={{display:"flex",alignItems:"flex-end",gap:3,height:80,marginBottom:8}}>
+            {[{y:"2019",v:50},{y:"2020",v:41},{y:"2021",v:46},{y:"2022",v:46},{y:"2023",v:65},{y:"2024",v:56},{y:"2025",v:63}].map((d,i)=>{
+              const h=(d.v/65)*70;const last=i===6;
+              return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:2}}>
+                <span style={{fontFamily:F.m,fontSize:10,color:last?X.o:"#bbb"}}>{d.v}</span>
+                <div style={{width:"100%",height:h,background:last?X.o:"#cc6622",borderRadius:2,minHeight:4}}/>
+                <span style={{fontFamily:F.m,fontSize:8,color:last?X.o:"#888"}}>{d.y}</span>
+              </div>);
+            })}
+          </div>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:8}}>FATAL COLLISIONS · REGIONAL ROADS · SOURCE: MINISTER'S PQ REPLY</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            These are the 94% of Ireland's roads with <strong style={{color:"#fff"}}>no national safety inspection</strong>, no mandatory crash investigation, and — until the NVDF Bill passes — <strong style={{color:"#fff"}}>no access to collision data</strong>.
+          </div>
+        </div>
+        {/* Pattern 5: No interim targets */}
+        <div style={{background:"#1a0a0a",border:"1px solid rgba(255,26,26,0.2)",borderRadius:6,padding:"18px 22px",marginBottom:20}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.r}}>164% OFF TARGET — BUT NO INTERIM MILESTONES</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Whitmore Q93 · 26 Feb</span>
+          </div>
+          <div style={{display:"flex",gap:12,marginBottom:10}}>
+            <div style={{flex:1,textAlign:"center",padding:"12px",background:"rgba(255,26,26,0.08)",border:"1px solid rgba(255,26,26,0.2)",borderRadius:4}}>
+              <div style={{fontFamily:F.h,fontSize:32,color:X.r}}>171</div>
+              <div style={{fontFamily:F.m,fontSize:9,color:X.t}}>ACTUAL DEATHS 2024</div>
+            </div>
+            <div style={{flex:1,textAlign:"center",padding:"12px",background:"rgba(78,205,196,0.08)",border:"1px solid rgba(78,205,196,0.2)",borderRadius:4}}>
+              <div style={{fontFamily:F.h,fontSize:32,color:X.c}}>122</div>
+              <div style={{fontFamily:F.m,fontSize:9,color:X.t}}>TARGET FOR 2024</div>
+            </div>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:"#fff",lineHeight:1.5,padding:"10px 14px",background:"rgba(255,26,26,0.05)",border:"1px solid rgba(255,26,26,0.15)",borderRadius:4,borderLeft:`3px solid ${X.r}`}}>
+            "I do not believe it would be helpful to set a specific 2027 target when we already have a clear objective for 2030."
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5,marginTop:8}}>
+            The 2030 target requires 72 deaths. Actual deaths in 2024 were 171. The Minister will not set waypoints to measure progress. A target without milestones is a wish.
+          </div>
+        </div>
+        {/* === FULL PQ LIST (expandable) === */}
+        <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.g,marginBottom:10}}>ALL {PQS.length} PARLIAMENTARY QUESTIONS — CLICK TO EXPAND</div>
+        {PQS.map((pq,i)=>{
+          const isOpen=expandedPQ===i;
+          const sc=pq.status==="answered"?X.g:pq.status==="repeat"?"#888":X.o;
+          const sl=pq.status==="answered"?"ANSWERED":pq.status==="repeat"?"REPEAT":"AWAITING";
+          return(<div key={`pq${i}`} style={{marginBottom:4}}>
+            <div onClick={()=>setExpandedPQ(isOpen?null:i)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 14px",background:isOpen?"#1a1a1a":"#0d0d0d",border:`1px solid ${isOpen?"#444":"#222"}`,borderLeft:`3px solid ${sc}`,borderRadius:isOpen?"4px 4px 0 0":4,cursor:"pointer"}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,flex:1}}>
+                <span style={{fontFamily:F.b,fontSize:13,color:"#fff",fontWeight:500}}>{pq.td}</span>
+                <span style={{fontFamily:F.m,fontSize:10,color:X.l}}>{pq.p}</span>
+                {pq.status==="answered"&&pq.assessment&&<span style={{fontFamily:F.b,fontSize:11,color:"#888",flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{pq.assessment.split('.')[0]}</span>}
+              </div>
+              <div style={{display:"flex",alignItems:"center",gap:8}}>
+                <span style={{fontFamily:F.m,fontSize:9,color:"#666"}}>{pq.date}</span>
+                <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:sc+"18",color:sc,border:`1px solid ${sc}33`}}>{sl}</span>
+                <span style={{color:"#666",fontSize:12}}>{isOpen?"▾":"▸"}</span>
+              </div>
+            </div>
+            {isOpen&&<div style={{padding:"14px",background:"#0d0d0d",border:"1px solid #444",borderTop:"none",borderRadius:"0 0 4px 4px"}}>
+              <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:8,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
                 <div style={{fontFamily:F.m,fontSize:9,color:X.c,marginBottom:4}}>QUESTION</div>
                 {pq.q}
               </div>
-              {pq.response&&<div style={{fontFamily:F.b,fontSize:13,color:"#bbb",lineHeight:1.5,marginBottom:8,padding:"10px 14px",background:"#0d0d0d",border:"1px solid #222",borderRadius:3}}>
+              {pq.response&&<div style={{fontFamily:F.b,fontSize:13,color:"#bbb",lineHeight:1.5,marginBottom:8,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
                 <div style={{fontFamily:F.m,fontSize:9,color:X.o,marginBottom:4}}>MINISTER'S RESPONSE — {pq.minister}</div>
                 {pq.response}
               </div>}
               {pq.assessment&&<div style={{fontFamily:F.b,fontSize:12,color:X.r,lineHeight:1.4,padding:"8px 14px",background:"rgba(255,26,26,0.05)",border:"1px solid rgba(255,26,26,0.15)",borderRadius:3}}>
                 <span style={{fontFamily:F.m,fontSize:9,color:X.r,marginRight:6}}>ASSESSMENT:</span>{pq.assessment}
               </div>}
-            </div>
-          ))}
-        </div>}
-        {/* Tabled - awaiting answer */}
-        {PQS.filter(p=>p.status==="tabled").length>0&&<div style={{marginBottom:20}}>
-          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.o,marginBottom:10}}>TABLED — AWAITING MINISTER'S ANSWER</div>
-          {PQS.filter(p=>p.status==="tabled").map((pq,i)=>(
-            <div key={`t${i}`} style={{background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${X.o}`,borderRadius:4,padding:"14px 18px",marginBottom:8}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:6}}>
-                <div>
-                  <span style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600}}>{pq.td}</span>
-                  <span style={{fontFamily:F.m,fontSize:10,color:X.l,marginLeft:8}}>{pq.p} · {pq.con}</span>
-                </div>
-                <div style={{display:"flex",alignItems:"center",gap:8}}>
-                  <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>{pq.date}</span>
-                  <span style={{fontFamily:F.m,fontSize:9,padding:"2px 8px",borderRadius:3,background:X.o+"22",color:X.o,border:`1px solid ${X.o}44`}}>AWAITING</span>
-                </div>
-              </div>
-              <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
-                <div style={{fontFamily:F.m,fontSize:9,color:X.c,marginBottom:4}}>QUESTION</div>
-                {pq.q}
-              </div>
-              {pq.assessment&&<div style={{fontFamily:F.b,fontSize:11,color:"#999",marginTop:6,fontStyle:"italic"}}>{pq.assessment}</div>}
-            </div>
-          ))}
-        </div>}
+            </div>}
+          </div>);
+        })}
+        {/* CTA */}
         <div style={{textAlign:"center",margin:"20px 0"}}>
           <div style={{fontFamily:F.b,fontSize:13,color:X.t,marginBottom:8}}>Know a TD who tabled a road safety PQ? Send us the answer.</div>
           <a href="mailto:campaign@stoproaddeaths.ie?subject=PQ%20Answer" style={{fontFamily:F.m,fontSize:12,color:X.c,textDecoration:"none"}}>campaign@stoproaddeaths.ie</a>
         </div>
-      </div>)}
+      </div>);
+      })()}
       {tab==="demands"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{fontFamily:F.h,fontSize:44,color:"#fff",textAlign:"center",margin:"30px 0 8px"}}>FIVE DEMANDS</div>
         <div style={{fontFamily:F.b,fontSize:15,color:X.t,textAlign:"center",lineHeight:1.6,maxWidth:560,margin:"0 auto 8px"}}>
