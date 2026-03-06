@@ -146,13 +146,13 @@ const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:13
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 61;
+const ACTION_COUNT = 63;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 61 TDs across 7 parties (includes SF party-wide 38 + SD party-wide 11)
+  // MEANINGFUL — 63 TDs/MLAs across 6 parties (includes SF party-wide 38 + SD party-wide 11 + 2 SDLP MLAs)
   {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands. SF has since adopted party-wide position."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour backing confirmed."},
@@ -218,12 +218,12 @@ const TRACKER = [
   {n:"Alan Kelly",p:"Lab",con:"Tipperary North",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA acknowledged. Confirmed Labour are supportive. No personal commitment on PQs."},
   {n:"Darragh O'Brien",p:"FF",con:"Dublin Fingal East",j:"ROI",status:"generic",responded:"2026-03-02",summary:"Minister for Transport. Constituency office referred to ministerial office, which referred to Minister of State Canney. Ref: TTAS-MO-01247-2026."},
   {n:"Carol Nolan",p:"Ind",con:"Offaly",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA asked detailed policy questions on Commissioner role and speed cameras. Indicated TD will engage constructively with some proposals."},
-  {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"generic",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions. Awaiting confirmation on Assembly record."},
+  {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions on road safety governance."},
   {n:"Hildegarde Naughton",p:"FG",con:"Galway West",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Cabinet Minister. Former MoS at Transport 2020–2025. Redirected to Minister for Transport. Road deaths rose 32% during her tenure."},
   {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF leader. Office routed to Pa Daly (transport spokesperson). SF has adopted all five demands as party policy."},
   {n:"Jennifer Carroll MacNeill",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Minister for Health. Office sent Programme for Government copy-paste to constituent. No personal position on five demands."},
   {n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Regional Independent Group (govt-supporting). Will raise five actions with Minister. Pushed for personal position and PQ."},
-  {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"generic",responded:"2026-03-06",summary:"Focused on road conditions/DfI funding rather than safety governance. SDLP brought council motion blocked by DUP and SF."},
+  {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Tabled Assembly Questions to Infrastructure Minister. SDLP council motion on roads emergency blocked by DUP and SF."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
