@@ -131,6 +131,7 @@ const C2C = {
 };
 
 const INCIDENTS = [
+  {date:"8 Mar",loc:"Dunmurry, Belfast",desc:"James Kilpatrick (55), motorcyclist, killed in single-vehicle collision on Queensway at 7:30am. From Dunmurry/Finaghy area.",type:"motorcyclist",lat:54.55,lng:-5.98},
   {date:"8 Mar",loc:"Tyrrelstown, Dublin",desc:"Man (30s), passenger, killed in single-vehicle collision on Powerstown Road. Two others injured. 30th ROI death of 2026.",type:"driver",lat:53.41,lng:-6.38},
   {date:"1 Mar",loc:"Ballina, Co Mayo",desc:"Fatal single-vehicle collision shortly after 4:15am.",type:"driver",lat:53.76,lng:-9.15},
   {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Daniel Cullen (18) and Caoimhín Porter-McLoone (18), both from Derry, killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
@@ -145,7 +146,7 @@ const INCIDENTS = [
   {date:"4 Jan",loc:"Bushmills, Co Antrim",desc:"Man (80s) killed in single-vehicle crash on Carnbore Road. First NI death of 2026.",type:"driver",lat:55.20,lng:-6.52},
 ];
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
-const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:30,n:15,t:45,proj:true,pace:234}];
+const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:30,n:16,t:46,proj:true,pace:234}];
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
@@ -783,12 +784,12 @@ export default function App(){
       </div>)}
       {tab==="latest"&&(<div style={{maxWidth:600,margin:"0 auto"}}>
         <div style={{background:"#ff1a1a10",border:"1px solid #ff1a1a30",borderRadius:4,padding:"20px 24px",marginBottom:16,textAlign:"center"}}>
-          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>45+</div>
+          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>46+</div>
           <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · 10 WEEKS</div>
           <div style={{display:"flex",justifyContent:"center",gap:28,marginTop:14}}>
             <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.r}}>30</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>REPUBLIC</div></div>
             <div style={{width:1,background:"#444"}}/>
-            <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.o}}>15</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>NORTHERN IRELAND</div></div>
+            <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.o}}>16</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>NORTHERN IRELAND</div></div>
           </div>
           <div style={{fontFamily:F.b,fontSize:14,color:X.t,marginTop:12}}>At this pace, 2026 will exceed 2025. The government's 2030 target requires 72 deaths. We are annualising above 150 in the Republic alone.</div>
         </div>
