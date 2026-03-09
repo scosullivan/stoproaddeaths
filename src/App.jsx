@@ -131,16 +131,21 @@ const C2C = {
 };
 
 const INCIDENTS = [
-  {date:"22 Feb",loc:"Navan, Co Meath",desc:"16-year-old girl killed in hit-and-run while walking her dog. Driver arrested.",type:"pedestrian",lat:53.65,lng:-6.68},
-  {date:"22 Feb",loc:"Armagh Road, Moy",desc:"Three killed — Conor Quinn (31), father of four; Laura Hoy (23), mother of one; John Guy (48), father of six.",type:"driver",lat:54.40,lng:-6.70},
-  {date:"22 Feb",loc:"Co Donegal",desc:"Fatal collision — details emerging.",type:"driver",lat:54.65,lng:-8.11},
-  {date:"22 Feb",loc:"South-East",desc:"Fatal collision — details emerging.",type:"driver",lat:52.35,lng:-7.05},
-  {date:"22 Feb",loc:"Cork/Waterford",desc:"Fatal collision — details emerging.",type:"driver",lat:52.15,lng:-7.85},
+  {date:"8 Mar",loc:"Tyrrelstown, Dublin",desc:"Man (30s), passenger, killed in single-vehicle collision on Powerstown Road. Two others injured. 30th ROI death of 2026.",type:"driver",lat:53.41,lng:-6.38},
+  {date:"1 Mar",loc:"Ballina, Co Mayo",desc:"Fatal single-vehicle collision shortly after 4:15am.",type:"driver",lat:53.76,lng:-9.15},
+  {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Daniel Cullen (18) and Caoimhín Porter-McLoone (18), both from Derry, killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
   {date:"24 Feb",loc:"Rusheen, Riverstown, Co Sligo",desc:"Motorcyclist in his 50s killed in collision with lorry on L1303.",type:"motorcyclist",lat:54.05,lng:-8.43},
-  {date:"24 Feb",loc:"St Johnston, Co Donegal",desc:"Two young men (late teens) killed when car collided with lorry on R236. Third passenger critically injured, transferred to Belfast.",type:"driver",lat:54.93,lng:-7.45},
+  {date:"22 Feb",loc:"Navan, Co Meath",desc:"Mia Lily Keogh O'Keeffe (16) killed in hit-and-run while walking her dog on Slane Road. Driver arrested.",type:"pedestrian",lat:53.65,lng:-6.68},
+  {date:"22 Feb",loc:"Tramore Road, Co Waterford",desc:"Brian and Grace Frisby, couple in their 40s, parents of two young sons, killed in two-car collision at Robin Hill.",type:"driver",lat:52.23,lng:-7.12},
+  {date:"22 Feb",loc:"Armagh Road, Moy",desc:"Three killed — Conor Quinn (31), father of four; Laura Hoy (23), mother of one; John Guy (48), father of six.",type:"driver",lat:54.40,lng:-6.70},
+  {date:"22 Feb",loc:"Eyrecourt, Co Galway",desc:"Woman in her 80s killed in single-vehicle crash.",type:"driver",lat:53.20,lng:-8.22},
+  {date:"11 Feb",loc:"Newtownards, Co Down",desc:"Man (50s), pedestrian, struck by car on Kempe Stones Road. Pronounced dead at scene.",type:"pedestrian",lat:54.59,lng:-5.69},
+  {date:"4 Jan",loc:"N4, Edgeworthstown, Co Longford",desc:"Francis 'Franco' Kelly (30s), first ROI road death of 2026. Two-car and van collision.",type:"driver",lat:53.70,lng:-7.60},
+  {date:"4 Jan",loc:"Knockdooragh, Headford, Co Kerry",desc:"Man (30s) killed when car struck a tree on L3013 at 11:20pm.",type:"driver",lat:51.99,lng:-9.34},
+  {date:"4 Jan",loc:"Bushmills, Co Antrim",desc:"Man (80s) killed in single-vehicle crash on Carnbore Road. First NI death of 2026.",type:"driver",lat:55.20,lng:-6.52},
 ];
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
-const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:40,n:14,t:54,proj:true,pace:352}];
+const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:30,n:15,t:45,proj:true,pace:234}];
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
@@ -604,7 +609,7 @@ export default function App(){
   const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);const[lookupCounty,setLookupCounty]=useState(null);const[expandedPQ,setExpandedPQ]=useState(null);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"THIS WEEK"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"2026"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
@@ -778,21 +783,32 @@ export default function App(){
       </div>)}
       {tab==="latest"&&(<div style={{maxWidth:600,margin:"0 auto"}}>
         <div style={{background:"#ff1a1a10",border:"1px solid #ff1a1a30",borderRadius:4,padding:"20px 24px",marginBottom:16,textAlign:"center"}}>
-          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>10</div>
-          <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · ONE WEEK</div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,marginTop:8}}>22–25 Feb 2026. Seven killed last weekend. Three more by Tuesday.<br/>Two teenagers. Three parents. A motorcyclist. At least 11 children left without a parent.</div>
+          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>45+</div>
+          <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · 10 WEEKS</div>
+          <div style={{display:"flex",justifyContent:"center",gap:28,marginTop:14}}>
+            <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.r}}>30</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>REPUBLIC</div></div>
+            <div style={{width:1,background:"#444"}}/>
+            <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.o}}>15</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>NORTHERN IRELAND</div></div>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,marginTop:12}}>At this pace, 2026 will exceed 2025. The government's 2030 target requires 72 deaths. We are annualising above 150 in the Republic alone.</div>
         </div>
-        {INCIDENTS.map((inc,i)=>(<div key={i} style={{padding:"14px 16px",background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${inc.type==="pedestrian"?X.o:X.r}`,borderRadius:3,marginBottom:8}}>
+        {/* Deadliest weekend banner */}
+        <div style={{background:"#1a0a0a",border:"1px solid rgba(255,26,26,0.3)",borderRadius:4,padding:"16px 20px",marginBottom:16}}>
+          <div style={{fontFamily:F.h,fontSize:18,color:X.r,marginBottom:4}}>DEADLIEST WEEKEND — 22–25 FEB 2026</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>Eleven killed in four days across the island. Mia Lily Keogh O'Keeffe (16), hit-and-run, Navan. Brian and Grace Frisby (40s), parents of two, Waterford. Conor Quinn (31), Laura Hoy (23), John Guy (48) — three parents in a single crash, Armagh. Daniel Cullen (18) and Caoimhín Porter-McLoone (18), St Johnston, Donegal. A motorcyclist in Sligo. A woman in Galway. At least 11 children left without a parent.</div>
+        </div>
+        {/* Incidents */}
+        {INCIDENTS.map((inc,i)=>(<div key={i} style={{padding:"14px 16px",background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${inc.type==="pedestrian"?X.o:inc.type==="motorcyclist"?X.g:X.r}`,borderRadius:3,marginBottom:8}}>
           <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
             <span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>{inc.date} 2026</span>
-            <span style={{fontFamily:F.m,fontSize:10,color:inc.type==="pedestrian"?X.o:"#aaa",textTransform:"uppercase"}}>{inc.type}</span></div>
+            <span style={{fontFamily:F.m,fontSize:10,color:inc.type==="pedestrian"?X.o:inc.type==="motorcyclist"?X.g:"#aaa",textTransform:"uppercase"}}>{inc.type}</span></div>
           <div style={{fontFamily:F.b,fontSize:14,color:"#eee"}}>{inc.loc}</div>
           <div style={{fontFamily:F.b,fontSize:13,color:"#bbb",marginTop:4}}>{inc.desc}</div>
         </div>))}
+        <div style={{fontFamily:F.m,fontSize:10,color:"#666",textAlign:"center",margin:"8px 0"}}>Selected incidents from media reports. This is not a complete list. Full data from An Garda Síochána and PSNI.</div>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"16px 20px",marginTop:8}}>
-          <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:4}}>2026 YEAR TO DATE · REPUBLIC</div>
-          <span style={{fontFamily:F.h,fontSize:34,color:X.r}}>25+</span>
-          <span style={{fontFamily:F.b,fontSize:13,color:X.t,marginLeft:10}}>dead in 8 weeks. At this rate, 2026 will exceed 2025.</span>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:4}}>CONTEXT</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>In 2018, Ireland ranked second safest in Europe for road deaths. By 2024, we had dropped to seventh — with the worst percentage increase of any EU country. Road deaths rose 31% while the EU average fell 12%. Norway has 16 deaths per million. Ireland has 32–34. The difference is not drivers. It is institutional choices.</div>
         </div>
       </div>)}
       {tab==="tracker"&&(()=>{
