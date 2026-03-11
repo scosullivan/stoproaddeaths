@@ -158,7 +158,7 @@ const ACTION_COUNT = 99;
 // summary: one-line description of response (or null)
 // responded: date string or null
 const TRACKER = [
-  // MEANINGFUL — 98 TDs/MLAs (SF 65 + SD 11 + Lab 10 + FG 5 + FF 5 + SDLP 2). Three party-wide positions: SF, SD, Lab.
+  // MEANINGFUL — 100 TDs/MLAs (SF 65 + SD 11 + Lab 10 + FF 7 + FG 5 + SDLP 2). Three party-wide positions: SF, SD, Lab.
   {n:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",j:"ROI",status:"meaningful",responded:"2026-02-25",summary:"First TD to respond. Committed to all five demands. SF has since adopted party-wide position."},
   {n:"Joe Cooney",p:"FG",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands."},
   {n:"Mark Wall",p:"Lab",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-02-26",summary:"Committed to all five demands. Labour has since adopted party-wide position."},
@@ -266,6 +266,7 @@ const TRACKER = [
   {n:"Jennifer Carroll MacNeill",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Minister for Health. Office sent Programme for Government copy-paste to constituent. No personal position on five demands."},
   {n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",j:"ROI",status:"generic",responded:"2026-03-05",summary:"Regional Independent Group (govt-supporting). Will raise five actions with Minister. Pushed for personal position and PQ."},
   {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Tabled Assembly Questions to Infrastructure Minister. SDLP council motion on roads emergency blocked by DUP and SF."},
+  {n:"Séamus McGrath",p:"FF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-11",summary:"Supports all five demands. Committed to tabling PQs."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
