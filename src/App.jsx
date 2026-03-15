@@ -131,6 +131,7 @@ const C2C = {
 };
 
 const INCIDENTS = [
+  {date:"15 Mar",loc:"N4, Ballinafid, Co Westmeath",desc:"Man (20s), driver, killed in single-vehicle collision at 12:50am. Pronounced dead at scene.",type:"driver",lat:53.58,lng:-7.42},
   {date:"12 Mar",loc:"N51, Boyerstown, Navan, Co Meath",desc:"Woman (40s), passenger, killed in two-car collision at 7:45am. Teenage girl airlifted to Temple Street with serious injuries. Two other women seriously injured.",type:"passenger",lat:53.68,lng:-6.72},
   {date:"12 Mar",loc:"M3, Dunshaughlin, Co Meath",desc:"Man (40s), van driver, killed in collision with truck at 2am. Pronounced dead at scene.",type:"driver",lat:53.51,lng:-6.54},
   {date:"8 Mar",loc:"Dunmurry, Belfast",desc:"James Kilpatrick (55), motorcyclist, killed in single-vehicle collision on Queensway at 7:30am. From Dunmurry/Finaghy area.",type:"motorcyclist",lat:54.55,lng:-5.98},
@@ -148,7 +149,7 @@ const INCIDENTS = [
   {date:"4 Jan",loc:"Bushmills, Co Antrim",desc:"Man (80s) killed in single-vehicle crash on Carnbore Road. First NI death of 2026.",type:"driver",lat:55.20,lng:-6.52},
 ];
 const MO=[{m:"Jan",d:13},{m:"Feb",d:11},{m:"Mar",d:16},{m:"Apr",d:14},{m:"May",d:17},{m:"Jun",d:11},{m:"Jul",d:15},{m:"Aug",d:16},{m:"Sep",d:13},{m:"Oct",d:14},{m:"Nov",d:21},{m:"Dec",d:24}];
-const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:32,n:16,t:48,proj:true,pace:250}];
+const YR=[{y:"2019",r:141,n:55,t:196},{y:"2020",r:149,n:50,t:199},{y:"2021",r:137,n:50,t:187},{y:"2022",r:155,n:62,t:217},{y:"2023",r:184,n:71,t:255},{y:"2024",r:175,n:69,t:244},{y:"2025",r:190,n:57,t:247},{y:"2026*",r:33,n:16,t:49,proj:true,pace:245}];
 
 // ===== CAMPAIGN TRACKER =====
 // UPDATE THIS: date you sent emails to all TDs/MLAs
@@ -218,7 +219,7 @@ const TRACKER = [
   {n:"Johnny Guirke",p:"SF",con:"Meath West",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Martin Kenny",p:"SF",con:"Sligo–Leitrim",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"David Cullinane",p:"SF",con:"Waterford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
-  {n:"Conor D. McGuinness",p:"SF",con:"Waterford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Conor D. McGuinness",p:"SF",con:"Waterford",j:"ROI",status:"meaningful",responded:"2026-03-12",summary:"Personal response confirming support for all five demands. Raised road deaths in Dáil. Working with local road safety groups and pushing N25 funding. SF party-wide position."},
   {n:"Johnny Mythen",p:"SF",con:"Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"John Brady",p:"SF",con:"Wicklow",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Fionntan Ó Súillebháin",p:"SF",con:"Wicklow–Wexford",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
@@ -767,9 +768,9 @@ export default function App(){
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>GOVT 2030 TARGET</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,border:`1px dashed ${X.r}`,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>2026 PROJECTED</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it. The hatched 2026 bar shows 48 people killed in 10 weeks — annualised, that's a pace of <strong style={{color:X.r}}>~250 deaths</strong>, which would be the worst year since 2012.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it. The hatched 2026 bar shows 49 people killed in 11 weeks — annualised, that's a pace of <strong style={{color:X.r}}>~245 deaths</strong>, which would be the worst year since 2012.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/><Stat label="2026 PACE" value="~250" sub="48 killed in 10 weeks" accent={X.o}/></div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/><Stat label="2026 PACE" value="~245" sub="49 killed in 11 weeks" accent={X.o}/></div>
       </div>)}
       {tab==="who"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
@@ -788,7 +789,7 @@ export default function App(){
       </div>)}
       {tab==="latest"&&(<div style={{maxWidth:600,margin:"0 auto"}}>
         <div style={{background:"#ff1a1a10",border:"1px solid #ff1a1a30",borderRadius:4,padding:"20px 24px",marginBottom:16,textAlign:"center"}}>
-          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>48+</div>
+          <div style={{fontFamily:F.h,fontSize:56,color:X.r}}>49+</div>
           <div style={{fontFamily:F.h,fontSize:20,color:"#fff"}}>KILLED ACROSS THE ISLAND · 2026</div>
           <div style={{display:"flex",justifyContent:"center",gap:28,marginTop:14}}>
             <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.r}}>30</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>REPUBLIC</div></div>
@@ -800,7 +801,7 @@ export default function App(){
         {/* Deadliest weekend banner */}
         <div style={{background:"#1a0a0a",border:"1px solid rgba(255,26,26,0.3)",borderRadius:4,padding:"16px 20px",marginBottom:16}}>
           <div style={{fontFamily:F.h,fontSize:18,color:X.r,marginBottom:4}}>DEADLIEST WEEKEND — 22–25 FEB 2026</div>
-          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>Two killed in Co Meath on 12 March — a woman (40s) in a two-car collision on the N51, a man (40s) in a truck-van collision on the M3. A teenage girl airlifted to Temple Street. Earlier: Mia Lily Keogh O'Keeffe (16), hit-and-run, Navan. Brian and Grace Frisby (40s), parents of two, Waterford. Conor Quinn (31), Laura Hoy (23), John Guy (48) — three parents in a single crash, Armagh. Daniel Cullen (18) and Caoimhín Porter-McLoone (18), St Johnston, Donegal.</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>Man (20s) killed on the N4 in Westmeath, 15 March. Two killed in Co Meath on 12 March — a woman (40s) in a two-car collision on the N51, a man (40s) in a truck-van collision on the M3. A teenage girl airlifted to Temple Street. Earlier: Mia Lily Keogh O'Keeffe (16), hit-and-run, Navan. Brian and Grace Frisby (40s), parents of two, Waterford. Three parents killed in a single crash, Armagh. Daniel Cullen (18) and Caoimhín Porter-McLoone (18), St Johnston, Donegal.</div>
         </div>
         {/* Incidents */}
         {INCIDENTS.map((inc,i)=>(<div key={i} style={{padding:"14px 16px",background:X.bg,border:`1px solid ${X.br}`,borderLeft:`3px solid ${inc.type==="pedestrian"?X.o:inc.type==="motorcyclist"?X.g:X.r}`,borderRadius:3,marginBottom:8}}>
