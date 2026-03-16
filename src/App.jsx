@@ -622,7 +622,7 @@ Yours sincerely,
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8,flexWrap:"wrap",gap:8}}>
         <div>
           <div style={{fontFamily:F.h,fontSize:22,color:X.o}}>HIGH COLLISION LOCATIONS — NATIONAL ROADS</div>
-          <div style={{fontFamily:F.m,fontSize:10,color:X.l}}>TII Network Safety Ranking 2022–2024 · CC BY 4.0 · {COLLISIONS.length} sites above average collision rate</div>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.l}}>TII Network Safety Ranking 2022–2024 · CC BY 4.0 · {COLLISIONS.length} road sections with above-average collision rates</div>
         </div>
         {rCounty&&<button onClick={()=>{setRCounty(null);setSelSite(null)}} style={{background:"#222",border:"1px solid #444",color:"#ccc",padding:"4px 12px",borderRadius:3,cursor:"pointer",fontFamily:F.m,fontSize:10}}>← ALL IRELAND</button>}
       </div>
@@ -651,16 +651,23 @@ Yours sincerely,
               </g>;
             })}
           </svg>
-          {!rCounty&&<div style={{position:"absolute",bottom:8,left:8,fontFamily:F.m,fontSize:9,color:"#666"}}>CLICK A DOT TO SEE THE ROAD · RED = HIGHEST RISK</div>}
+          {!rCounty&&<div style={{position:"absolute",bottom:8,left:8,fontFamily:F.m,fontSize:9,color:"#666"}}>CLICK A DOT TO SEE DETAILS</div>}
         </div>
         <div style={{display:"flex",flexDirection:"column",gap:8,overflowY:"auto",maxHeight:460}}>
-          {/* Stats */}
+          {/* Legend */}
           <div style={{background:"#0d0d0d",border:"1px solid #222",borderRadius:4,padding:"10px 12px"}}>
-            <div style={{fontFamily:F.m,fontSize:9,color:X.l}}>SHOWING{rCounty?` · ${rCounty.toUpperCase()}`:""}</div>
-            <div style={{display:"flex",gap:12,marginTop:4}}>
-              <div><div style={{fontFamily:F.h,fontSize:24,color:X.r}}>{l1Sites.length}</div><div style={{fontFamily:F.m,fontSize:8,color:"#888"}}>HIGHEST RISK</div></div>
-              <div><div style={{fontFamily:F.h,fontSize:24,color:X.o}}>{l2Sites.length}</div><div style={{fontFamily:F.m,fontSize:8,color:"#888"}}>HIGH RISK</div></div>
+            <div style={{fontFamily:F.m,fontSize:9,color:X.l,marginBottom:6}}>MAP KEY{rCounty?` · ${rCounty.toUpperCase()}`:""}</div>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+              <div style={{width:12,height:12,borderRadius:"50%",background:X.r,flexShrink:0}}/>
+              <div><div style={{fontFamily:F.b,fontSize:12,color:"#eee"}}>{l1Sites.length} sections — collision rate 2× above average</div>
+              <div style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Injury collisions per km well above normal for this road type</div></div>
             </div>
+            <div style={{display:"flex",alignItems:"center",gap:8}}>
+              <div style={{width:12,height:12,borderRadius:"50%",background:X.o,flexShrink:0}}/>
+              <div><div style={{fontFamily:F.b,fontSize:12,color:"#eee"}}>{l2Sites.length} sections — collision rate above average</div>
+              <div style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Higher than expected for similar roads (speed, type, traffic)</div></div>
+            </div>
+            <div style={{fontFamily:F.m,fontSize:9,color:"#666",marginTop:8,lineHeight:1.4}}>Each dot = ~1km of national road. The collision rate compares injury collisions on that section against the average for its road type (motorway, dual carriageway, rural 2-lane, or urban). A section with 5 collisions on a quiet rural road is far more dangerous than 5 on a busy motorway.</div>
           </div>
           {/* Warning about coverage */}
           <div style={{background:"#1a0808",border:"1px solid #331111",borderRadius:4,padding:"8px 10px"}}>
@@ -669,11 +676,10 @@ Yours sincerely,
           </div>
           {/* Selected site detail */}
           {selSite&&<div style={{background:"#1a1208",border:`1px solid ${X.o}`,borderRadius:4,padding:"10px 12px"}}>
-            <div style={{fontFamily:F.h,fontSize:18,color:X.o}}>{selSite[2]}</div>
-            <div style={{fontFamily:F.b,fontSize:12,color:X.t}}>Co. {selSite[3]}</div>
-            <div style={{fontFamily:F.m,fontSize:10,color:"#999",marginTop:4}}>{selSite[4]} injury collision{selSite[4]!==1?"s":""} (2022–2024)</div>
-            <div style={{fontFamily:F.m,fontSize:10,color:selSite[5]===1?X.r:X.o}}>Risk Level {selSite[5]} — {selSite[5]===1?"Highest risk":"High risk"}</div>
-            <div style={{fontFamily:F.m,fontSize:10,color:"#888",marginTop:2}}>Lat: {selSite[0]}, Lng: {selSite[1]}</div>
+            <div style={{fontFamily:F.h,fontSize:18,color:X.o}}>{selSite[2]} · Co. {selSite[3]}</div>
+            <div style={{fontFamily:F.b,fontSize:12,color:X.t,marginTop:4}}><strong style={{color:"#fff",fontSize:16}}>{selSite[4]}</strong> injury collision{selSite[4]!==1?"s":""} on this ~1km section (2022–2024)</div>
+            <div style={{fontFamily:F.b,fontSize:12,color:selSite[5]===1?X.r:X.o,marginTop:4}}>{selSite[5]===1?"Rate is 2× above average":"Rate is above average"} for this road type</div>
+            <div style={{fontFamily:F.m,fontSize:10,color:"#777",marginTop:6,lineHeight:1.4}}>This is injury collisions, not deaths — but each one could have been fatal. TII ranks every ~1km section against comparable roads. This section stands out as significantly worse than similar roads elsewhere.</div>
           </div>}
           {/* County picker (compact) */}
           <div style={{background:"#0d0d0d",border:"1px solid #222",borderRadius:4,padding:"8px 10px"}}>
