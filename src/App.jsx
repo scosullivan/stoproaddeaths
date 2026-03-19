@@ -267,7 +267,7 @@ const TRACKER = [
   {n:"Alan Kelly",p:"Lab",con:"Tipperary North",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"Labour party-wide position. All five demands adopted as party policy."},
   {n:"Darragh O'Brien",p:"FF",con:"Dublin Fingal East",j:"ROI",status:"generic",responded:"2026-03-02",summary:"Minister for Transport. Constituency office referred to ministerial office, which referred to Minister of State Canney. Ref: TTAS-MO-01247-2026."},
   {n:"Carol Nolan",p:"Ind",con:"Offaly",j:"ROI",status:"generic",responded:"2026-03-02",summary:"PA asked detailed policy questions on Commissioner role and speed cameras. Indicated TD will engage constructively with some proposals."},
-  {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-02",summary:"First NI response. PA committed to tabling Assembly Questions on road safety governance."},
+  {n:"Mark H. Durkan",p:"SDLP",con:"Foyle",j:"NI",status:"meaningful",responded:"2026-03-02",summary:"Tabled AQW 41757 on Commissioner + international models + cross-border coordination. Kimmins rejected Commissioner flat — 'not considering at this time.' First NI Assembly answer on road safety governance."},
   {n:"Hildegarde Naughton",p:"FG",con:"Galway West",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Cabinet Minister. Former MoS at Transport 2020–2025. Redirected to Minister for Transport. Road deaths rose 32% during her tenure."},
   {n:"Mary Lou McDonald",p:"SF",con:"Dublin Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF leader. Office routed to Pa Daly (transport spokesperson). SF has adopted all five demands as party policy."},
   {n:"Jennifer Carroll MacNeill",p:"FG",con:"Dún Laoghaire",j:"ROI",status:"generic",responded:"2026-03-03",summary:"Minister for Health. Office sent Programme for Government copy-paste to constituent. No personal position on five demands."},
@@ -403,6 +403,12 @@ const PQS = [
    status:"tabled",answered:null,minister:"Seán Canney",
    response:null,
    assessment:"Minister of State. PQs on cameras and enforcement — awaiting answers."},
+  // === NORTHERN IRELAND ASSEMBLY QUESTIONS ===
+  {td:"Mark H. Durkan",p:"SDLP",con:"Foyle",date:"2026-03-02",type:"AQW (NI Assembly)",
+   q:"AQW 41757/22-27: To ask the Minister for Infrastructure (i) whether she has considered appointing a dedicated Road Safety Commissioner with statutory authority and a mandate to deliver casualty reduction targets; (ii) whether her Department has assessed governance models in Norway and Sweden where designated lead agencies hold road safety targets; (iii) any engagement with the Department of Transport in the south on all-island coordination of road safety strategy.",
+   status:"answered",answered:"2026-03-18",minister:"Liz Kimmins",
+   response:"(i) 'I am not considering appointing a Road Safety Commissioner at this time.' Department chairs Road Safety Strategic Forum. (ii) 'Designating lead agencies to hold road safety targets is not part of the current Road Safety Strategy governance plan.' Officials 'keep abreast of road safety interventions in general.' (iii) Officials meet counterparts regularly. Road safety approved as official NSMC Transport sectoral workstream by predecessor John O'Dowd.",
+   assessment:"First NI Assembly answer on the Commissioner. SF Minister for Infrastructure flatly rejects the model her own party's 65 TDs and MLAs have supported through this campaign. Norway and Sweden named in the question — neither mentioned in the answer. The cross-border NSMC workstream confirmation is useful but the substance is untested. Creates a major SF contradiction: supporting accountability in opposition, rejecting it in government."},
 ];
 
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
@@ -1387,16 +1393,17 @@ export default function App(){
             The 2030 target requires 72 deaths. Actual deaths in 2024 were 171. The Minister will not set waypoints to measure progress. A target without milestones is a wish.
           </div>
         </div>
-        {/* Pattern 6: Commissioner asked 5 times — 18 March */}
+        {/* Pattern 6: Commissioner asked 6 times across two jurisdictions — 18-19 March */}
         <div style={{background:"#1a0808",border:"1px solid rgba(255,26,26,0.4)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
-            <div style={{fontFamily:F.h,fontSize:20,color:X.r}}>COMMISSIONER — ASKED 5 TIMES, ANSWERED 0</div>
-            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>18 Mar 2026</span>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.r}}>COMMISSIONER — ASKED 6 TIMES, ANSWERED 0</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>18–19 Mar 2026</span>
           </div>
           <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:10}}>
-            Five TDs from three parties asked the Minister on the same day whether the Government has examined the Road Safety Commissioner model. All five received the identical copy-paste response. The word "Commissioner" does not appear in the answer. Neither do Sweden, Norway, or Finland.
+            Six elected representatives from four parties across both jurisdictions asked their governments about the Road Safety Commissioner model. All six received dismissive responses. The word "Commissioner" does not appear in any answer. Neither do Sweden, Norway, or Finland.
           </div>
-          <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:10}}>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.l,marginBottom:6}}>DÁIL ÉIREANN — 5 TDs, 18 MARCH</div>
+          <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:8}}>
             {[{n:"Cathal Crowe",p:"FF",con:"Clare",pq:"231"},{n:"John Paul O'Shea",p:"FG",con:"Cork North-West",pq:"250"},{n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",pq:"263"},{n:"Pat the Cope Gallagher",p:"FF",con:"Donegal",pq:"279"},{n:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",pq:"343"}].map((td,i)=>(
               <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
                 <span style={{fontFamily:F.m,fontSize:10,color:"#666",minWidth:42}}>PQ {td.pq}</span>
@@ -1405,11 +1412,20 @@ export default function App(){
               </div>
             ))}
           </div>
+          <div style={{fontFamily:F.m,fontSize:10,color:X.o,marginBottom:6}}>NI ASSEMBLY — 1 MLA, 19 MARCH</div>
+          <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:10}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",background:"#0a0a0a",border:`1px solid ${X.o}40`,borderRadius:3}}>
+              <span style={{fontFamily:F.m,fontSize:10,color:"#666",minWidth:42}}>AQW</span>
+              <span style={{fontFamily:F.b,fontSize:12,color:"#fff",flex:1}}>Mark H. Durkan</span>
+              <span style={{fontFamily:F.m,fontSize:10,color:X.l}}>SDLP · Foyle</span>
+            </div>
+          </div>
           <div style={{fontFamily:F.b,fontSize:14,color:"#fff",lineHeight:1.5,padding:"12px 16px",background:"rgba(255,26,26,0.08)",border:"1px solid rgba(255,26,26,0.2)",borderRadius:4,borderLeft:`3px solid ${X.r}`,marginBottom:8}}>
-            The Minister's alternative to structural accountability reform: <strong style={{color:X.r}}>"high-profile road safety ambassadors."</strong>
+            Dublin: <strong style={{color:X.r}}>"high-profile road safety ambassadors"</strong><br/>
+            Belfast: <strong style={{color:X.o}}>"I am not considering appointing a Road Safety Commissioner at this time."</strong>
           </div>
           <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
-            The Cabinet approved splitting the RSA in November 2024. The Minister abandoned that in December 2025. Five TDs asked what replaces it. The answer: ambassadors and a quarterly meeting. <strong style={{color:X.r}}>Nobody holds the 2030 target.</strong>
+            Both governments reject the Commissioner model. In Dublin, the Minister's alternative is ambassadors and a quarterly meeting. In Belfast, Minister Kimmins (SF) flatly rejected it — while her own party's 65 TDs and MLAs support it through this campaign. <strong style={{color:X.r}}>Nobody holds the 2030 target on either side of the border.</strong>
           </div>
         </div>
         {/* Pattern 7: Every structural question gets a comms answer */}
