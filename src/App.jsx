@@ -359,15 +359,50 @@ const PQS = [
    response:null,
    assessment:"Awaiting answer. FF Finance spokesperson — targets the economics of enforcement."},
   {td:"Pat the Cope Gallagher",p:"FF",con:"Donegal",date:"2026-03-06",type:"Written",
-   q:"(1) To ask the Minister for Transport if he would support the establishment of a position of Road Safety Commissioner to oversee the implementation of our Road Safety Strategy, in particular, the aim of achieving a 50% reduction in road deaths in Ireland by 2030, and if he will make a statement on the matter. (2) To ask the Minister for Transport what body is responsible for overseeing the implementation of the Road Safety Strategy, and if he will make a statement on the matter.",
-   status:"tabled",answered:null,minister:"Darragh O'Brien",
-   response:null,
-   assessment:"Awaiting answer. Two PQs directly targeting the accountability gap — forces Minister to state a position on the Commissioner and name who holds the target."},
+   q:"(1) To ask the Minister for Transport if he would support the establishment of a position of Road Safety Commissioner. (2) To ask the Minister for Transport what body is responsible for overseeing the implementation of the Road Safety Strategy.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Identical copy-paste to 5 TDs. Did not mention Commissioner, Sweden, Norway or Finland. Alternative: 'high-profile road safety ambassadors.' Accountability answer: RSLG quarterly meeting.",
+   assessment:"Two PQs answered with grouped copy-paste. The word Commissioner does not appear in the answer. Accountability = a quarterly meeting Canney chairs."},
   {td:"Shane Moynihan",p:"FF",con:"Dublin Mid-West",date:"2026-03-06",type:"Written",
    q:"To ask the Minister for Transport for an update on any reforms being considered to the coordination structures for road safety governance to further strengthen implementation of the Road Safety Strategy 2021–2030; and if he will make a statement on the matter.",
    status:"tabled",answered:null,minister:"Darragh O'Brien",
    response:null,
    assessment:"Awaiting answer. FF Transport Spokesperson — asks about governance coordination reforms."},
+  {td:"Cathal Crowe",p:"FF",con:"Clare",date:"2026-03-18",type:"Written",
+   q:"To ask the Minister for Transport following the decision in December 2025 to abandon the planned restructuring of the Road Safety Authority, to state which body or individual is now responsible for delivering the Government's target of halving road deaths by 2030; whether the Government has examined the Road Safety Commissioner model or equivalent statutory accountability mechanisms used in Sweden, Norway, and Finland.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped with 4 other TDs. Copy-paste non-answer. RSA reform proposals 'in coming weeks' including 'road safety ambassadors.' Did not address Commissioner or international models.",
+   assessment:"The sharpest accountability question any TD has tabled. Minister's answer does not contain the words Commissioner, Sweden, Norway or Finland. Five TDs from three parties got the same copy-paste."},
+  {td:"John Paul O'Shea",p:"FG",con:"Cork North-West",date:"2026-03-18",type:"Written",
+   q:"(1) Governance reforms to ensure delivery of 2030 target + Commissioner with independent oversight. (2) Accountability mechanisms in place + whether performance reporting will be published.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped copy-paste. Same non-answer as Crowe, Heneghan, Gallagher, Ó Fearghaíl.",
+   assessment:"Two PQs — Commissioner + accountability. First FG TD from Cork to engage. Both answered with identical text that does not address either question."},
+  {td:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",date:"2026-03-18",type:"Written",
+   q:"To ask the Minister for Transport if he will examine the potential establishment of a statutory road safety commissioner with clear responsibility for overseeing and coordinating national road safety policy and for monitoring progress towards Ireland's 2030 road safety targets.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped copy-paste. Same non-answer.",
+   assessment:"Govt-supporting Independent asking for Commissioner. Minister did not address the question."},
+  {td:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",date:"2026-03-18",type:"Written",
+   q:"To ask the Minister for Transport if he has any plans to appoint a statutory road safety commissioner with the power to deliver safety targets set for 2030, in light of the increasing death rate on our roads.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped copy-paste. Same non-answer.",
+   assessment:"Former Ceann Comhairle. Asked directly about Commissioner. Answer does not mention Commissioner."},
+  {td:"Claire Kerrane",p:"SF",con:"Roscommon–Galway",date:"2026-03-18",type:"Written",
+   q:"To ask the Minister for Transport the actions he is taking to reduce road deaths aside from the RSA Vision Zero Strategy.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped with Ward. Listed Phase 2 Action Plan, NVDF Bill 'by summer' (4th deadline), camera strategy 'shortly', Grace's Law 'coming weeks', €18m RSA awareness spending, 'Be Safe Be Seen' high-vis campaign.",
+   assessment:"NVDF Bill: 4th deadline ('summer'). Minister's answer to protecting vulnerable road users ends with distributing free high-vis armbands."},
+  {td:"Barry Ward",p:"FG",con:"Dún Laoghaire",date:"2026-03-18",type:"Written",
+   q:"To ask the Minister for Transport the actions he is taking to address road safety concerns for vulnerable road users including pedestrians and cyclists as set out in a report (details supplied).",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Grouped with Kerrane. Same answer. Final paragraph on vulnerable road users: free high-vis vests and armbands via 'Be Safe, Be Seen' campaign.",
+   assessment:"Asked about protecting pedestrians and cyclists. Minister's answer: wear a reflective armband. €18m on awareness campaigns while deaths rose 31%."},
+  {td:"Timmy Dooley",p:"FF",con:"Clare",date:"2026-03-18",type:"Written",
+   q:"PQs on speed camera deployment rollout and road policing unit resourcing.",
+   status:"tabled",answered:null,minister:"Seán Canney",
+   response:null,
+   assessment:"Minister of State. PQs on cameras and enforcement — awaiting answers."},
 ];
 
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
@@ -1273,26 +1308,27 @@ export default function App(){
         {/* Pattern 3: NVDF Bill sliding deadlines */}
         <div style={{background:"#0a1a1a",border:"1px solid rgba(78,205,196,0.3)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
-            <div style={{fontFamily:F.h,fontSize:20,color:X.c}}>NVDF BILL — THREE DEADLINES AND COUNTING</div>
-            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Buckley · Whitmore · Currie</span>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.c}}>NVDF BILL — FOUR DEADLINES AND COUNTING</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Buckley · Whitmore · Currie · Kerrane</span>
           </div>
           <div style={{display:"flex",gap:0,marginBottom:12,position:"relative"}}>
             {[{date:"MAY 2025",promise:"'Enacted by year-end'",who:"Canney to JOC",missed:true},
               {date:"FEB 2026",promise:"'Summer 2026'",who:"Canney to Whitmore",missed:true},
-              {date:"MAR 2026",promise:"'Coming weeks'",who:"Canney to Buckley",missed:false},
+              {date:"MAR 2026",promise:"'Coming weeks'",who:"Canney to Buckley",missed:true},
+              {date:"18 MAR 2026",promise:"'By the summer'",who:"Canney to Kerrane",missed:false},
             ].map((d,i)=>(<div key={i} style={{flex:1,textAlign:"center",position:"relative"}}>
               {i>0&&<div style={{position:"absolute",left:0,top:12,width:"50%",height:2,background:d.missed?X.r:"#444"}}/>}
-              {i<2&&<div style={{position:"absolute",right:0,top:12,width:"50%",height:2,background:X.r}}/>}
+              {i<3&&<div style={{position:"absolute",right:0,top:12,width:"50%",height:2,background:d.missed?X.r:"#444"}}/>}
               <div style={{width:24,height:24,borderRadius:"50%",background:d.missed?X.r:"#444",border:`2px solid ${d.missed?X.r:X.c}`,margin:"0 auto",position:"relative",zIndex:1,display:"flex",alignItems:"center",justifyContent:"center"}}>
                 {d.missed&&<span style={{color:"#fff",fontSize:12,fontFamily:F.h}}>✗</span>}
               </div>
-              <div style={{fontFamily:F.m,fontSize:9,color:d.missed?X.r:X.c,marginTop:6}}>{d.date}</div>
-              <div style={{fontFamily:F.b,fontSize:11,color:"#fff",marginTop:2}}>{d.promise}</div>
-              <div style={{fontFamily:F.m,fontSize:9,color:"#666",marginTop:1}}>{d.who}</div>
+              <div style={{fontFamily:F.m,fontSize:8,color:d.missed?X.r:X.c,marginTop:6}}>{d.date}</div>
+              <div style={{fontFamily:F.b,fontSize:10,color:"#fff",marginTop:2}}>{d.promise}</div>
+              <div style={{fontFamily:F.m,fontSize:8,color:"#666",marginTop:1}}>{d.who}</div>
             </div>))}
           </div>
           <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
-            Local authority road engineers have been unable to see where crashes are happening on their roads since November 2023. The Data Protection Commission said in April 2024 that GDPR should not prevent sharing this data. The Bill to fix it has missed every deadline.
+            Local authority road engineers have been unable to see where crashes are happening on their roads since November 2023. The Data Protection Commission said in April 2024 that GDPR should not prevent sharing this data. The Bill to fix it has missed every deadline. Each new promise is vaguer than the last.
           </div>
         </div>
         {/* Pattern 4: The data that came out */}
@@ -1349,6 +1385,56 @@ export default function App(){
           </div>
           <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5,marginTop:8}}>
             The 2030 target requires 72 deaths. Actual deaths in 2024 were 171. The Minister will not set waypoints to measure progress. A target without milestones is a wish.
+          </div>
+        </div>
+        {/* Pattern 6: Commissioner asked 5 times — 18 March */}
+        <div style={{background:"#1a0808",border:"1px solid rgba(255,26,26,0.4)",borderRadius:6,padding:"18px 22px",marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.r}}>COMMISSIONER — ASKED 5 TIMES, ANSWERED 0</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>18 Mar 2026</span>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:10}}>
+            Five TDs from three parties asked the Minister on the same day whether the Government has examined the Road Safety Commissioner model. All five received the identical copy-paste response. The word "Commissioner" does not appear in the answer. Neither do Sweden, Norway, or Finland.
+          </div>
+          <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:10}}>
+            {[{n:"Cathal Crowe",p:"FF",con:"Clare",pq:"231"},{n:"John Paul O'Shea",p:"FG",con:"Cork North-West",pq:"250"},{n:"Barry Heneghan",p:"Ind",con:"Dublin Bay North",pq:"263"},{n:"Pat the Cope Gallagher",p:"FF",con:"Donegal",pq:"279"},{n:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",pq:"343"}].map((td,i)=>(
+              <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",background:"#0a0a0a",border:"1px solid #222",borderRadius:3}}>
+                <span style={{fontFamily:F.m,fontSize:10,color:"#666",minWidth:42}}>PQ {td.pq}</span>
+                <span style={{fontFamily:F.b,fontSize:12,color:"#fff",flex:1}}>{td.n}</span>
+                <span style={{fontFamily:F.m,fontSize:10,color:X.l}}>{td.p} · {td.con}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:"#fff",lineHeight:1.5,padding:"12px 16px",background:"rgba(255,26,26,0.08)",border:"1px solid rgba(255,26,26,0.2)",borderRadius:4,borderLeft:`3px solid ${X.r}`,marginBottom:8}}>
+            The Minister's alternative to structural accountability reform: <strong style={{color:X.r}}>"high-profile road safety ambassadors."</strong>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            The Cabinet approved splitting the RSA in November 2024. The Minister abandoned that in December 2025. Five TDs asked what replaces it. The answer: ambassadors and a quarterly meeting. <strong style={{color:X.r}}>Nobody holds the 2030 target.</strong>
+          </div>
+        </div>
+        {/* Pattern 7: Every structural question gets a comms answer */}
+        <div style={{background:"#1a1008",border:"1px solid rgba(255,107,53,0.4)",borderRadius:6,padding:"18px 22px",marginBottom:20}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8}}>
+            <div style={{fontFamily:F.h,fontSize:20,color:X.o}}>STRUCTURAL QUESTIONS → AWARENESS CAMPAIGNS</div>
+            <span style={{fontFamily:F.m,fontSize:9,color:"#888"}}>Pattern across 18 Mar answers</span>
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.5,marginBottom:12}}>
+            On 18 March, TDs asked about governance, accountability, and protecting vulnerable road users. Every structural question received a communications answer:
+          </div>
+          <div style={{display:"flex",flexDirection:"column",gap:6,marginBottom:10}}>
+            {[{q:"5 TDs ask about a statutory Commissioner",a:"→ \"high-profile road safety ambassadors\""},
+              {q:"2 TDs ask who holds the 2030 target",a:"→ \"a quarterly meeting I chair\""},
+              {q:"Ward asks how to protect pedestrians & cyclists",a:"→ free high-vis vests and armbands"},
+              {q:"Kerrane asks what actions beyond the strategy",a:"→ \"Be Safe, Be Seen\" campaign (€18m/year)"}
+            ].map((r,i)=>(
+              <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 12px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4}}>
+                <span style={{fontFamily:F.b,fontSize:12,color:"#ddd",flex:1}}>{r.q}</span>
+                <span style={{fontFamily:F.b,fontSize:12,color:X.o,textAlign:"right",minWidth:180}}>{r.a}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.5}}>
+            Ireland's institutional response to 247 deaths and a 31% increase in five years is publicity. Commissioner → ambassadors. Infrastructure → vests. Enforcement → campaigns. <strong style={{color:X.o}}>The pattern is now documented across the Dáil record.</strong>
           </div>
         </div>
         {/* === FULL PQ LIST (expandable) === */}
