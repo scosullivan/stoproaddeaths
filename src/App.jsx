@@ -274,6 +274,8 @@ const TRACKER = [
   {n:"James Geoghegan",p:"FG",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-03-12",summary:"Detailed response listing government actions. No personal position on five demands. No PQ commitment. Vague on parliamentary action."},
   {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Tabled Assembly Questions to Infrastructure Minister. SDLP council motion on roads emergency blocked by DUP and SF."},
   {n:"Séamus McGrath",p:"FF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-11",summary:"Supports all five demands. Committed to tabling PQs."},
+  {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-19",summary:"Minister of State. Raised campaign with Canney directly. Tabled PQs on speed cameras and road policing. Engaged on 4/5 demands. Did not commit on Commissioner, citing collective cabinet responsibility."},
+  {n:"Niall Collins",p:"FF",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-03-18",summary:"Represents Dept of Justice on Road Safety Forum. Five one-line answers. Refused to table PQ. Described current system as adequate."},
 ];
 
 const F={m:"'JetBrains Mono',monospace",h:"'Bebas Neue',sans-serif",b:"'IBM Plex Sans',sans-serif"};
