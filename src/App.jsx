@@ -355,10 +355,10 @@ const PQS = [
    response:null,
    assessment:"Awaiting answer."},
   {td:"Shay Brennan",p:"FF",con:"Dublin Rathdown",date:"2026-03-06",type:"Written",
-   q:"PQ on road safety expenditure and cost-effectiveness of speed camera deployment.",
-   status:"tabled",answered:null,minister:"Darragh O'Brien",
-   response:null,
-   assessment:"Awaiting answer. FF Finance spokesperson — targets the economics of enforcement."},
+   q:"To ask the Minister for Transport the total annual expenditure on road safety by the RSA, An Garda Síochána, and TII in each of the past five years; how this compares with equivalent expenditure in Finland, Norway, and Sweden on a per-capita basis; and whether the Government has assessed the cost-effectiveness of deploying a national network of automated speed cameras, given international evidence that such networks are net revenue-positive within two years.",
+   status:"partial",answered:"2026-03-18",minister:"Leas-Cheann Comhairle",
+   response:"Garda Síochána expenditure portion ruled outside Minister for Transport's responsibility under Standing Order 45 — 'a matter for the Garda Commissioner.' RSA and TII expenditure + international comparison + camera cost-effectiveness awaiting answer from Transport.",
+   assessment:"You cannot ask one Minister how much Ireland spends on road safety because responsibility is split between Transport and Justice. The PQ was partially rejected — not because the question was wrong, but because no single Minister owns the answer. That is the accountability gap in a single procedural ruling. Garda portion to be retabled to Justice Minister."},
   {td:"Pat the Cope Gallagher",p:"FF",con:"Donegal",date:"2026-03-06",type:"Written",
    q:"(1) To ask the Minister for Transport if he would support the establishment of a position of Road Safety Commissioner. (2) To ask the Minister for Transport what body is responsible for overseeing the implementation of the Road Safety Strategy.",
    status:"answered",answered:"2026-03-18",minister:"Seán Canney",
@@ -1286,7 +1286,7 @@ export default function App(){
         </div>);
       })()}
       {tab==="pqs"&&(()=>{
-        const answered=PQS.filter(p=>p.status==="answered"||p.status==="repeat");
+        const answered=PQS.filter(p=>p.status==="answered"||p.status==="repeat"||p.status==="partial");
         const tabled=PQS.filter(p=>p.status==="tabled");
         return(<div style={{maxWidth:800,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:24}}>
@@ -1488,14 +1488,14 @@ export default function App(){
         <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.15em",color:X.g,marginBottom:10}}>ALL {PQS.length} PARLIAMENTARY QUESTIONS — CLICK TO EXPAND</div>
         {PQS.map((pq,i)=>{
           const isOpen=expandedPQ===i;
-          const sc=pq.status==="answered"?X.g:pq.status==="repeat"?"#888":X.o;
-          const sl=pq.status==="answered"?"ANSWERED":pq.status==="repeat"?"REPEAT":"AWAITING";
+          const sc=pq.status==="answered"?X.g:pq.status==="repeat"?"#888":pq.status==="partial"?X.r:X.o;
+          const sl=pq.status==="answered"?"ANSWERED":pq.status==="repeat"?"REPEAT":pq.status==="partial"?"PARTIAL":"AWAITING";
           return(<div key={`pq${i}`} style={{marginBottom:4}}>
             <div onClick={()=>setExpandedPQ(isOpen?null:i)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 14px",background:isOpen?"#1a1a1a":"#0d0d0d",border:`1px solid ${isOpen?"#444":"#222"}`,borderLeft:`3px solid ${sc}`,borderRadius:isOpen?"4px 4px 0 0":4,cursor:"pointer"}}>
               <div style={{display:"flex",alignItems:"center",gap:10,flex:1}}>
                 <span style={{fontFamily:F.b,fontSize:13,color:"#fff",fontWeight:500}}>{pq.td}</span>
                 <span style={{fontFamily:F.m,fontSize:10,color:X.l}}>{pq.p}</span>
-                {pq.status==="answered"&&pq.assessment&&<span style={{fontFamily:F.b,fontSize:11,color:"#888",flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{pq.assessment.split('.')[0]}</span>}
+                {(pq.status==="answered"||pq.status==="partial")&&pq.assessment&&<span style={{fontFamily:F.b,fontSize:11,color:"#888",flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{pq.assessment.split('.')[0]}</span>}
               </div>
               <div style={{display:"flex",alignItems:"center",gap:8}}>
                 <span style={{fontFamily:F.m,fontSize:9,color:"#666"}}>{pq.date}</span>
