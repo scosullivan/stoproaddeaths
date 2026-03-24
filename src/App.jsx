@@ -275,6 +275,7 @@ const TRACKER = [
   {n:"Tom Brabazon",p:"FF",con:"Dublin Bay North",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"PQ to Justice Minister on restoring road policing to 2014 levels. Minister did not commit — directed to Garda website."},
   {n:"James Geoghegan",p:"FG",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-03-12",summary:"Detailed response listing government actions. No personal position on five demands. No PQ commitment. Vague on parliamentary action."},
   {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Tabled Assembly Questions to Infrastructure Minister. SDLP council motion on roads emergency blocked by DUP and SF."},
+  {n:"Justin McNulty",p:"SDLP",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-23",summary:"Tabled AQW 42979 following up on Kimmins' rejection of Commissioner. Asks for NSMC meeting count, joint actions, cross-border targets, and whether Commissioner discussed with Dublin. Committed to probing at Infrastructure Committee."},
   {n:"Séamus McGrath",p:"FF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-11",summary:"Supports all five demands. Committed to tabling PQs."},
   {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-19",summary:"Minister of State. Raised campaign with Canney directly. Tabled PQs on speed cameras and road policing. Engaged on 4/5 demands. Did not commit on Commissioner, citing collective cabinet responsibility."},
   {n:"Niall Collins",p:"FF",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-03-18",summary:"Represents Dept of Justice on Road Safety Forum. Five one-line answers. Refused to table PQ. Described current system as adequate."},
@@ -461,6 +462,11 @@ const PQS = [
    status:"answered",answered:"2026-03-18",minister:"Liz Kimmins",
    response:"(i) 'I am not considering appointing a Road Safety Commissioner at this time.' Department chairs Road Safety Strategic Forum. (ii) 'Designating lead agencies to hold road safety targets is not part of the current Road Safety Strategy governance plan.' Officials 'keep abreast of road safety interventions in general.' (iii) Officials meet counterparts regularly. Road safety approved as official NSMC Transport sectoral workstream by predecessor John O'Dowd.",
    assessment:"First NI Assembly answer on the Commissioner. SF Minister for Infrastructure flatly rejects the model her own party's 65 TDs and MLAs have supported through this campaign. Norway and Sweden named in the question — neither mentioned in the answer. The cross-border NSMC workstream confirmation is useful but the substance is untested. Creates a major SF contradiction: supporting accountability in opposition, rejecting it in government."},
+  {td:"Justin McNulty",p:"SDLP",con:"Newry & Armagh",date:"2026-03-23",type:"AQW (NI Assembly)",
+   q:"AQW 42979/22-27: To ask the Minister for Infrastructure, pursuant to AQW 41757/22-27, to detail (i) the number of meetings held under the NSMC Transport sectoral workstream on road safety since its establishment; (ii) any joint actions or policy initiatives agreed at those meetings; (iii) whether any joint targets for casualty reduction have been set on a cross-border basis; (iv) whether she has discussed with her counterpart in the Department of Transport the Road Safety Commissioner model or equivalent statutory accountability mechanisms.",
+   status:"tabled",answered:null,minister:"Liz Kimmins",
+   response:null,
+   assessment:"Follow-up to Durkan's AQW. Tests whether the NSMC workstream Kimmins confirmed is substantive or performative. Parts (i)-(iii) will likely reveal minimal activity. Part (iv) reopens the Commissioner through the cross-border door."},
 ];
 
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
