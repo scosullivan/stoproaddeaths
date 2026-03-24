@@ -445,17 +445,19 @@ function SupportersPage({onAct}){
   });
   const sec={background:X.bg,border:`1px solid ${X.br}`,borderRadius:6,padding:"24px 28px",marginBottom:16};
   const txt={fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7};
+  const hdr=(text,color=X.c)=>(<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}><div style={{width:4,height:28,background:color,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:26,color:"#fff"}}>{text}</div></div>);
 
   return(<div style={{maxWidth:800,margin:"0 auto"}}>
+    {/* Hero */}
     <div style={{textAlign:"center",marginBottom:28}}>
-      <div style={{fontFamily:F.h,fontSize:48,color:"#fff",letterSpacing:"0.03em"}}>WHO STANDS WITH US</div>
-      <div style={{...txt,fontSize:15,marginTop:8,maxWidth:560,margin:"8px auto 0"}}>
-        These organisations have publicly endorsed our five structural demands for road safety reform. This is not a petition — it is a coalition of professional bodies, campaigns, and communities demanding accountability.
+      <div style={{fontFamily:F.h,fontSize:48,color:"#fff",letterSpacing:"0.03em"}}>SUPPORTERS PROGRAMME</div>
+      <div style={{...txt,fontSize:15,marginTop:8,maxWidth:600,margin:"8px auto 0"}}>
+        247 people killed on Irish roads in 2025. The organisations listed here have publicly endorsed five structural demands for reform. This is not a petition — it is a professional coalition demanding accountability from Government.
       </div>
     </div>
 
-    {hasSupporters ? (<>
-      {/* Count banner */}
+    {/* Supporter logos — if any exist */}
+    {hasSupporters && (<>
       <div style={{display:"flex",justifyContent:"center",gap:16,marginBottom:24,flexWrap:"wrap"}}>
         <div style={{background:"#0a0a0a",border:`1px solid ${X.br}`,borderRadius:6,padding:"16px 28px",textAlign:"center",borderTop:`2px solid ${X.c}`}}>
           <div style={{fontFamily:F.h,fontSize:48,color:X.c}}>{SUPPORTERS.length}</div>
@@ -467,7 +469,6 @@ function SupportersPage({onAct}){
         </div>
       </div>
 
-      {/* Supporters by category */}
       {Object.entries(cats).map(([catId, orgs]) => {
         const catInfo = SUPPORTER_CATS[catId] || SUPPORTER_CATS.other;
         return (
@@ -479,7 +480,6 @@ function SupportersPage({onAct}){
                   background:"#0a0a0a",border:"1px solid #222",borderRadius:6,
                   padding:"16px 18px",display:"flex",flexDirection:"column",alignItems:"center",
                   gap:10,textAlign:"center",
-                  transition:"border-color 0.2s",
                   cursor: org.url ? "pointer" : "default",
                 }} onClick={() => org.url && window.open(org.url, '_blank')}>
                   {org.logo ? (
@@ -502,47 +502,104 @@ function SupportersPage({onAct}){
           </div>
         );
       })}
-    </>) : (
-      /* Pre-supporter state — building momentum */
-      <div style={{textAlign:"center",padding:"20px 0 10px"}}>
-        <div style={{...sec,borderTop:`2px solid ${X.c}`,maxWidth:600,margin:"0 auto 20px"}}>
-          <div style={{fontFamily:F.h,fontSize:28,color:X.c,marginBottom:12}}>COALITION BUILDING</div>
-          <div style={{...txt,marginBottom:16}}>
-            We are building a coalition of professional bodies, advocacy organisations, and community groups who publicly endorse our five structural demands. If your organisation wants to add its name, get in touch.
-          </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:16}}>
-            {Object.entries(SUPPORTER_CATS).slice(0,6).map(([id,cat])=>(
-              <div key={id} style={{padding:"8px 12px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,borderLeft:`3px solid ${cat.color}`}}>
-                <div style={{fontFamily:F.m,fontSize:10,color:cat.color}}>{cat.label}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>
-            Medical colleges · Cycling campaigns · Legal bodies · Academic researchers · Trade unions · Community groups · Transport professionals · Anyone who believes 247 deaths a year is a governance failure, not an inevitability.
-          </div>
-        </div>
-      </div>
-    )}
 
-    {/* CTA section */}
-    <div style={{...sec,borderTop:`2px solid ${X.g}`,textAlign:"center"}}>
-      <div style={{fontFamily:F.h,fontSize:24,color:X.g,marginBottom:8}}>YOUR ORGANISATION CAN JOIN</div>
-      <div style={{...txt,marginBottom:16,maxWidth:500,margin:"0 auto 16px"}}>
-        If your professional body, campaign group, union, or organisation supports our five demands, email us to be listed here. We'll add your name and logo.
+      <div style={{height:1,background:X.br,margin:"24px 0"}}/>
+    </>)}
+
+    {/* THE PROGRAMME — always visible */}
+    <div style={{...sec,borderTop:`2px solid ${X.c}`}}>
+      {hdr("WHAT YOUR ORGANISATION IS ENDORSING")}
+      <div style={{...txt,marginBottom:16}}>
+        By joining, your organisation publicly endorses our five structural demands. These are not aspirations — they are specific, binary asks directed at every TD and MLA. Yes or no. No wiggle room.
       </div>
-      <a href="mailto:campaign@stoproaddeaths.ie?subject=Organisation%20Support%20—%20stoproaddeaths.ie&body=Organisation%20name%3A%20%0AContact%20name%3A%20%0AWebsite%3A%20%0ALogo%20URL%20(or%20attach)%3A%20%0A%0AWe%20endorse%20the%20five%20demands%20at%20stoproaddeaths.ie." style={{
-        display:"inline-block",background:X.c,color:"#000",padding:"12px 24px",borderRadius:4,
-        fontFamily:F.h,fontSize:16,textDecoration:"none",letterSpacing:"0.04em"
-      }}>PLEDGE YOUR ORGANISATION'S SUPPORT →</a>
-      <div style={{fontFamily:F.m,fontSize:10,color:"#888",marginTop:10}}>campaign@stoproaddeaths.ie · Include your org name, logo, and website</div>
+      <div style={{display:"grid",gap:8}}>
+        {DEMANDS.map(d=>(
+          <div key={d.id} style={{display:"flex",gap:12,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,alignItems:"baseline"}}>
+            <div style={{fontFamily:F.h,fontSize:22,color:X.r,minWidth:20}}>{d.id}</div>
+            <div>
+              <div style={{fontFamily:F.b,fontSize:13,color:"#fff",fontWeight:600}}>{d.short}</div>
+              <div style={{fontFamily:F.b,fontSize:12,color:"#999",marginTop:2,lineHeight:1.5}}>{d.detail.length > 120 ? d.detail.slice(0,120)+"…" : d.detail}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{fontFamily:F.m,fontSize:10,color:X.c,marginTop:12,cursor:"pointer",textDecoration:"underline"}} onClick={()=>{onAct&&onAct();window.scrollTo(0,0)}}>READ THE FULL DEMANDS →</div>
     </div>
 
-    {/* What we're asking */}
-    <div style={{...sec,borderLeft:`3px solid ${X.r}`}}>
-      <div style={{fontFamily:F.h,fontSize:20,color:"#fff",marginBottom:10}}>WHAT ENDORSEMENT MEANS</div>
-      <div style={{...txt}}>
-        By endorsing this campaign, your organisation publicly supports our five structural demands: a statutory Road Safety Commissioner, automated speed cameras, black spot redesign, restoring enforcement, and parliamentary accountability. Your name and logo will appear on this page. You are not signing up to any financial commitment or operational obligation — just standing publicly with 247 families who deserved better.
+    {/* What you get */}
+    <div style={{...sec,borderTop:`2px solid ${X.g}`}}>
+      {hdr("WHAT SUPPORTING ORGANISATIONS RECEIVE",X.g)}
+      <div style={{display:"grid",gap:10}}>
+        {[
+          {icon:"◉",title:"PUBLIC LISTING",desc:"Your organisation's name and logo on this page — visible to every TD, MLA, journalist, and member of the public who visits the site. Politicians notice when professional bodies line up behind a campaign."},
+          {icon:"◈",title:"EARLY ACCESS TO CAMPAIGN DATA",desc:"Parliamentary Question answers, enforcement data, crash statistics, and analysis — shared with supporting organisations before public release. You'll have the numbers before the media does."},
+          {icon:"◇",title:"CO-SIGN JOINT STATEMENTS",desc:"When we write open letters to Ministers, publish responses to Government announcements, or issue public statements, supporting organisations are invited to co-sign. Collective weight amplifies every voice."},
+        ].map((item,i)=>(
+          <div key={i} style={{padding:"14px 18px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+              <span style={{fontFamily:F.h,fontSize:18,color:X.g}}>{item.icon}</span>
+              <span style={{fontFamily:F.h,fontSize:16,color:"#fff"}}>{item.title}</span>
+            </div>
+            <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>{item.desc}</div>
+          </div>
+        ))}
       </div>
+    </div>
+
+    {/* What it costs */}
+    <div style={{...sec,borderLeft:`3px solid ${X.r}`}}>
+      {hdr("WHAT IT COSTS",X.r)}
+      <div style={{...txt}}>
+        Nothing. There is no financial commitment, membership fee, or operational obligation. You are lending your organisation's name and credibility to five specific demands for structural reform. You can withdraw at any time by emailing us. That's it.
+      </div>
+    </div>
+
+    {/* Who we're looking for */}
+    <div style={{...sec,borderTop:`2px solid ${X.o}`}}>
+      {hdr("WHO WE'RE LOOKING FOR",X.o)}
+      <div style={{...txt,marginBottom:14}}>
+        Any organisation that believes 247 deaths a year is a governance failure — not an inevitability — and is willing to say so publicly.
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+        {Object.entries(SUPPORTER_CATS).map(([id,cat])=>(
+          <div key={id} style={{padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,borderLeft:`3px solid ${cat.color}`}}>
+            <div style={{fontFamily:F.m,fontSize:10,color:cat.color,letterSpacing:"0.1em"}}>{cat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.6,marginTop:12}}>
+        Emergency medicine · Trauma surgery · Public health · Cycling campaigns · Pedestrian safety · Urban planning · Road engineering · Insurance · Legal · Academic research · Trade unions · Community groups · Families of victims · Anyone with standing and something to say.
+      </div>
+    </div>
+
+    {/* How to join */}
+    <div style={{background:"#0a1a1a",border:`1px solid ${X.c}`,borderRadius:6,padding:"28px 32px",marginBottom:16,textAlign:"center"}}>
+      <div style={{fontFamily:F.h,fontSize:32,color:X.c,marginBottom:10}}>JOIN THE COALITION</div>
+      <div style={{...txt,marginBottom:6,maxWidth:520,margin:"0 auto 16px"}}>
+        Email us with your organisation's name, logo, and website. We'll confirm and add you within 48 hours.
+      </div>
+      <a href="mailto:campaign@stoproaddeaths.ie?subject=Supporters%20Programme%20—%20stoproaddeaths.ie&body=Organisation%20name%3A%20%0AContact%20person%3A%20%0ARole%20%2F%20title%3A%20%0AWebsite%3A%20%0ALogo%20(attach%20or%20link)%3A%20%0A%0AWe%20endorse%20the%20five%20structural%20demands%20at%20stoproaddeaths.ie%20and%20wish%20to%20be%20listed%20as%20a%20supporting%20organisation.%0A%0ASigned%3A%20" style={{
+        display:"inline-block",background:X.c,color:"#000",padding:"14px 28px",borderRadius:4,
+        fontFamily:F.h,fontSize:18,textDecoration:"none",letterSpacing:"0.04em"
+      }}>PLEDGE YOUR SUPPORT →</a>
+      <div style={{fontFamily:F.m,fontSize:10,color:"#888",marginTop:12}}>campaign@stoproaddeaths.ie</div>
+    </div>
+
+    {/* FAQ */}
+    <div style={{...sec}}>
+      {hdr("COMMON QUESTIONS","#888")}
+      {[
+        {q:"Does endorsing mean we agree with everything on the site?",a:"No. You are endorsing the five structural demands only. The site contains data, analysis, and campaign materials — your endorsement covers the demands, not every data point or editorial choice."},
+        {q:"Can we endorse some demands but not others?",a:"We'd prefer full endorsement of all five, since they form a coherent package. But if your organisation has a specific concern, email us and we'll discuss it. We'd rather have you partially in than fully out."},
+        {q:"Will you use our logo in ways we haven't approved?",a:"Your logo appears on this page and nowhere else without your explicit consent. If we want to use it in a letter, press release, or any other material, we'll ask first."},
+        {q:"What if our position changes?",a:"Email us and we'll remove you within 24 hours. No questions, no hard feelings."},
+        {q:"We're a public body — can we still endorse?",a:"That depends on your governance rules. Some public bodies can endorse policy positions; others can't. If you can issue a statement of support rather than a formal endorsement, we can list you with that framing. Talk to us."},
+      ].map((faq,i)=>(
+        <div key={i} style={{padding:"12px 0",borderBottom:i<4?`1px solid ${X.br}`:"none"}}>
+          <div style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600,marginBottom:4}}>{faq.q}</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>{faq.a}</div>
+        </div>
+      ))}
     </div>
 
     <div style={{textAlign:"center",margin:"24px 0"}}>
