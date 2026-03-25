@@ -38,7 +38,7 @@ const COUNTIES = {
 
 // TDs by constituency (34th Dáil, elected Nov 2024)
 const TDS = {
-  "Carlow–Kilkenny":[{n:"John McGuinness",p:"FF"},{n:"Kathleen Funchion",p:"SF"},{n:"John Paul Phelan",p:"FG"},{n:"Peter Cleere",p:"FF"},{n:"Catherine Callaghan",p:"FG"}],
+  "Carlow–Kilkenny":[{n:"John McGuinness",p:"FF"},{n:"Natasha Newsome Drennan",p:"SF"},{n:"Peter Cleere",p:"FF"},{n:"Catherine Callaghan",p:"FG"},{n:"Jennifer Murnane O'Connor",p:"FF"}],
   "Cavan–Monaghan":[{n:"Matt Carthy",p:"SF"},{n:"Cathy Bennett",p:"SF"},{n:"Niamh Smyth",p:"FF"},{n:"Brendan Smith",p:"FF"},{n:"David Maxwell",p:"FG"}],
   "Clare":[{n:"Timmy Dooley",p:"FF"},{n:"Cathal Crowe",p:"FF"},{n:"Joe Cooney",p:"FG"},{n:"Donna McGettigan",p:"SF"}],
   "Cork East":[{n:"Noel McCarthy",p:"FG"},{n:"Pat Buckley",p:"SF"},{n:"James O'Connor",p:"FF"},{n:"Liam Quaide",p:"SD"}],
@@ -55,11 +55,11 @@ const TDS = {
   "Dublin Mid-West":[{n:"Eoin Ó Broin",p:"SF"},{n:"Shane Moynihan",p:"FF"},{n:"Mark Ward",p:"SF"},{n:"Emer Higgins",p:"FG"},{n:"John Lahart",p:"FF"}],
   "Dublin North-West":[{n:"Dessie Ellis",p:"SF"},{n:"Rory Hearne",p:"SD"},{n:"Paul McAuliffe",p:"FF"}],
   "Dublin Rathdown":[{n:"Neale Richmond",p:"FG"},{n:"Shay Brennan",p:"FF"},{n:"Sinéad Gibney",p:"SD"},{n:"Maeve O'Connell",p:"FG"}],
-  "Dublin South-Central":[{n:"Catherine Ardagh",p:"FF"},{n:"Bríd Smith",p:"PBP"},{n:"Jen Cummins",p:"SD"},{n:"Aengus Ó Snodaigh",p:"SF"}],
+  "Dublin South-Central":[{n:"Catherine Ardagh",p:"FF"},{n:"Máire Devine",p:"SF"},{n:"Jen Cummins",p:"SD"},{n:"Aengus Ó Snodaigh",p:"SF"}],
   "Dublin South-West":[{n:"Seán Crowe",p:"SF"},{n:"John Lahart",p:"FF"},{n:"Ciarán Ahern",p:"Lab"},{n:"Colm Brophy",p:"FG"},{n:"Paul Murphy",p:"PBP"}],
   "Dublin West":[{n:"Jack Chambers",p:"FF"},{n:"Paul Donnelly",p:"SF"},{n:"Emer Currie",p:"FG"},{n:"Ruth Coppinger",p:"PBP"},{n:"Roderic O'Gorman",p:"GP"}],
   "Dún Laoghaire":[{n:"Jennifer Carroll MacNeill",p:"FG"},{n:"Cormac Devlin",p:"FF"},{n:"Richard Boyd Barrett",p:"PBP"},{n:"Barry Ward",p:"FG"}],
-  "Galway East":[{n:"Seán Canney",p:"Ind"},{n:"Pete Roche",p:"FG"},{n:"Albert Dolan",p:"FF"},{n:"Louis O'Hara",p:"SF"}],
+  "Galway East":[{n:"Seán Canney",p:"Ind"},{n:"Peter Roche",p:"FG"},{n:"Albert Dolan",p:"FF"},{n:"Louis O'Hara",p:"SF"}],
   "Galway West":[{n:"Noel Grealish",p:"Ind"},{n:"John Connolly",p:"FF"},{n:"Mairéad Farrell",p:"SF"},{n:"Hildegarde Naughton",p:"FG"},{n:"Vacant (by-election May 2026)",p:""}],
   "Kerry":[{n:"Pa Daly",p:"SF"},{n:"Michael Healy-Rae",p:"Ind"},{n:"Norma Foley",p:"FF"},{n:"Michael Cahill",p:"FF"},{n:"Danny Healy-Rae",p:"Ind"}],
   "Kildare North":[{n:"James Lawless",p:"FF"},{n:"Aidan Farrelly",p:"SD"},{n:"Réada Cronin",p:"SF"},{n:"Naoise Ó Cearúil",p:"FF"},{n:"Joe Neville",p:"FG"}],
@@ -193,7 +193,7 @@ const TRACKER = [
   {n:"Pat Buckley",p:"SF",con:"Cork East",j:"ROI",status:"meaningful",responded:"2026-03-02",summary:"Tabled PQ on NVDF Bill delay and collision data access. Extracted collision data tables from Minister — fatal crashes on local roads up 50% since 2019."},
   // SF PARTY-WIDE POSITION — adopted 2026-03-06
   {n:"Pa Daly",p:"SF",con:"Kerry",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF Transport spokesperson. Drove party-wide adoption of all five demands."},
-  {n:"Kathleen Funchion",p:"SF",con:"Carlow–Kilkenny",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  // Kathleen Funchion — now MEP, removed from TD tracker
   {n:"Matt Carthy",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Cathy Bennett",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Donna McGettigan",p:"SF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
@@ -526,11 +526,25 @@ Yours sincerely,
 [Your name]
 [Your address]`;
 
+const EMAIL_OVERRIDES = {
+  "Kevin 'Boxer' Moran":"kevinboxer.moran@oireachtas.ie",
+  "Peter Cleere":"peterchap.cleere@oireachtas.ie",
+  "Rose Conway-Walsh":"rose.conwaywalsh@oireachtas.ie",
+  "Jennifer Carroll MacNeill":"jennifer.carrollmacneill@oireachtas.ie",
+  "Richard Boyd Barrett":"richard.boydbarrett@oireachtas.ie",
+  "Mary Lou McDonald":"marylou.mcdonald@oireachtas.ie",
+  "John Paul Phelan":"johnpaul.phelan@oireachtas.ie",
+  "John Paul O'Shea":"johnpaul.oshea@oireachtas.ie",
+  "Pat the Cope Gallagher":"patthecooe.gallagher@oireachtas.ie",
+  "Jennifer Murnane O'Connor":"jennifer.murnane-oconnor@oireachtas.ie",
+  "Conor D. McGuinness":"conor.mcguinness@oireachtas.ie",
+};
 function makeEmail(name, isNI) {
+  if (!isNI && EMAIL_OVERRIDES[name]) return EMAIL_OVERRIDES[name];
   const clean = name.replace(/['']/g, "'").replace(/\s+/g, " ").trim();
   const parts = clean.split(" ");
   const first = parts[0].toLowerCase().replace(/[áàâä]/g,"a").replace(/[éèêë]/g,"e").replace(/[íìîï]/g,"i").replace(/[óòôö]/g,"o").replace(/[úùûü]/g,"u").replace(/[ñ]/g,"n").replace(/[^a-z]/g,"");
-  const last = parts[parts.length-1].toLowerCase().replace(/[áàâä]/g,"a").replace(/[éèêë]/g,"e").replace(/[íìîï]/g,"i").replace(/[óòôö]/g,"o").replace(/[úùûü]/g,"u").replace(/[ñ]/g,"n").replace(/[^a-z'-]/g,"");
+  const last = parts[parts.length-1].toLowerCase().replace(/[áàâä]/g,"a").replace(/[éèêë]/g,"e").replace(/[íìîï]/g,"i").replace(/[óòôö]/g,"o").replace(/[úùûü]/g,"u").replace(/[ñ]/g,"n").replace(/[^a-z'-]/g,"").replace(/'/g,"");
   if (isNI) return `${first}.${last}@mla.niassembly.gov.uk`;
   return `${first}.${last}@oireachtas.ie`;
 }
