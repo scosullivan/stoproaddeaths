@@ -469,6 +469,33 @@ const PQS = [
    assessment:"Follow-up to Durkan's AQW. Tests whether the NSMC workstream Kimmins confirmed is substantive or performative. Parts (i)-(iii) will likely reveal minimal activity. Part (iv) reopens the Commissioner through the cross-border door."},
 ];
 
+// ===== ORGANISATIONAL SUPPORTERS =====
+// UPDATE THIS: add organisations as they confirm support
+// cat: "medical" | "cycling" | "transport" | "legal" | "community" | "academic" | "union" | "other"
+// logo: URL to org logo (use transparent PNG where possible)
+// url: org website
+const SUPPORTERS = [
+  // Example entries — uncomment/add as organisations confirm:
+  // {name:"Irish Association of Emergency Medicine",cat:"medical",logo:"https://iaem.ie/wp-content/uploads/iaem-logo.png",url:"https://iaem.ie"},
+  // {name:"Cycling Ireland",cat:"cycling",logo:"https://www.cyclingireland.ie/logo.png",url:"https://www.cyclingireland.ie"},
+  // {name:"Dublin Cycling Campaign",cat:"cycling",logo:"https://dublincycling.ie/logo.png",url:"https://dublincycling.ie"},
+  // {name:"Cosáin",cat:"transport",logo:null,url:"https://cosain.ie"},
+  // {name:"Love 30",cat:"transport",logo:null,url:null},
+  // {name:"PARC Road Safety Group",cat:"community",logo:null,url:"https://parc.ie"},
+  // {name:"Climate and Health Alliance",cat:"medical",logo:null,url:"https://climateandhealth.ie"},
+];
+
+const SUPPORTER_CATS = {
+  medical:{label:"MEDICAL & HEALTH",color:"#ff4444"},
+  cycling:{label:"CYCLING & ACTIVE TRAVEL",color:"#4ecdc4"},
+  transport:{label:"TRANSPORT & SAFETY",color:"#ffd700"},
+  legal:{label:"LEGAL & PROFESSIONAL",color:"#a78bfa"},
+  community:{label:"COMMUNITY & FAMILIES",color:"#ff6b35"},
+  academic:{label:"ACADEMIC & RESEARCH",color:"#60a5fa"},
+  union:{label:"TRADE UNIONS",color:"#f472b6"},
+  other:{label:"OTHER",color:"#e0e0e0"},
+};
+
 const EMAIL_SUBJECT = "Road Safety Crisis — I Need Your Response";
 const DEMANDS = [
   {id:1,short:"Single Accountable Officeholder",detail:"Support the creation of a statutory Road Safety Commissioner (or equivalent) with the authority, budget and legal mandate to deliver the 2030 target — ending the current system where responsibility is diffused across the RSA, Department of Transport, local authorities, An Garda Síochána/PSNI and TII/DfI with no single point of ownership.",ni_note:"In NI, this means a dedicated Road Safety Commissioner within the Department for Infrastructure, with cross-departmental enforcement powers."},
@@ -920,6 +947,178 @@ Yours sincerely,
   </div>);
 }
 
+function SupportersPage({onAct}){
+  const hasSupporters = SUPPORTERS.length > 0;
+  const cats = {};
+  SUPPORTERS.forEach(s => {
+    if (!cats[s.cat]) cats[s.cat] = [];
+    cats[s.cat].push(s);
+  });
+  const sec={background:X.bg,border:`1px solid ${X.br}`,borderRadius:6,padding:"24px 28px",marginBottom:16};
+  const txt={fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7};
+  const hdr=(text,color=X.c)=>(<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}><div style={{width:4,height:28,background:color,borderRadius:2}}/><div style={{fontFamily:F.h,fontSize:26,color:"#fff"}}>{text}</div></div>);
+
+  return(<div style={{maxWidth:800,margin:"0 auto"}}>
+    {/* Hero */}
+    <div style={{textAlign:"center",marginBottom:28}}>
+      <div style={{fontFamily:F.h,fontSize:48,color:"#fff",letterSpacing:"0.03em"}}>SUPPORTERS PROGRAMME</div>
+      <div style={{...txt,fontSize:15,marginTop:8,maxWidth:600,margin:"8px auto 0"}}>
+        247 people killed on Irish roads in 2025. The organisations listed here have publicly endorsed five structural demands for reform. This is not a petition — it is a professional coalition demanding accountability from Government.
+      </div>
+    </div>
+
+    {/* Supporter logos — if any exist */}
+    {hasSupporters && (<>
+      <div style={{display:"flex",justifyContent:"center",gap:16,marginBottom:24,flexWrap:"wrap"}}>
+        <div style={{background:"#0a0a0a",border:`1px solid ${X.br}`,borderRadius:6,padding:"16px 28px",textAlign:"center",borderTop:`2px solid ${X.c}`}}>
+          <div style={{fontFamily:F.h,fontSize:48,color:X.c}}>{SUPPORTERS.length}</div>
+          <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.l}}>ORGANISATIONS</div>
+        </div>
+        <div style={{background:"#0a0a0a",border:`1px solid ${X.br}`,borderRadius:6,padding:"16px 28px",textAlign:"center",borderTop:`2px solid ${X.g}`}}>
+          <div style={{fontFamily:F.h,fontSize:48,color:X.g}}>{Object.keys(cats).length}</div>
+          <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:X.l}}>SECTORS</div>
+        </div>
+      </div>
+
+      {Object.entries(cats).map(([catId, orgs]) => {
+        const catInfo = SUPPORTER_CATS[catId] || SUPPORTER_CATS.other;
+        return (
+          <div key={catId} style={{...sec, borderLeft:`3px solid ${catInfo.color}`}}>
+            <div style={{fontFamily:F.m,fontSize:10,letterSpacing:"0.15em",color:catInfo.color,marginBottom:14}}>{catInfo.label}</div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(220px, 1fr))",gap:12}}>
+              {orgs.map((org, i) => (
+                <div key={i} style={{
+                  background:"#0a0a0a",border:"1px solid #222",borderRadius:6,
+                  padding:"16px 18px",display:"flex",flexDirection:"column",alignItems:"center",
+                  gap:10,textAlign:"center",
+                  cursor: org.url ? "pointer" : "default",
+                }} onClick={() => org.url && window.open(org.url, '_blank')}>
+                  {org.logo ? (
+                    <div style={{width:80,height:50,display:"flex",alignItems:"center",justifyContent:"center"}}>
+                      <img src={org.logo} alt={org.name} style={{maxWidth:80,maxHeight:50,objectFit:"contain",filter:"brightness(0.95)"}} onError={(e)=>{e.target.style.display='none';e.target.nextSibling.style.display='flex'}}/>
+                      <div style={{display:"none",width:50,height:50,borderRadius:"50%",background:"#1a1a1a",border:`1px solid ${catInfo.color}`,alignItems:"center",justifyContent:"center"}}>
+                        <span style={{fontFamily:F.h,fontSize:22,color:catInfo.color}}>{org.name.charAt(0)}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{width:50,height:50,borderRadius:"50%",background:"#1a1a1a",border:`1px solid ${catInfo.color}`,display:"flex",alignItems:"center",justifyContent:"center"}}>
+                      <span style={{fontFamily:F.h,fontSize:22,color:catInfo.color}}>{org.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  <div style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600,lineHeight:1.3}}>{org.name}</div>
+                  {org.url && <div style={{fontFamily:F.m,fontSize:9,color:catInfo.color}}>↗ WEBSITE</div>}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      <div style={{height:1,background:X.br,margin:"24px 0"}}/>
+    </>)}
+
+    {/* THE PROGRAMME — always visible */}
+    <div style={{...sec,borderTop:`2px solid ${X.c}`}}>
+      {hdr("WHAT YOUR ORGANISATION IS ENDORSING")}
+      <div style={{...txt,marginBottom:16}}>
+        By joining, your organisation publicly endorses our five structural demands. These are not aspirations — they are specific, binary asks directed at every TD and MLA. Yes or no. No wiggle room.
+      </div>
+      <div style={{display:"grid",gap:8}}>
+        {DEMANDS.map(d=>(
+          <div key={d.id} style={{display:"flex",gap:12,padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,alignItems:"baseline"}}>
+            <div style={{fontFamily:F.h,fontSize:22,color:X.r,minWidth:20}}>{d.id}</div>
+            <div>
+              <div style={{fontFamily:F.b,fontSize:13,color:"#fff",fontWeight:600}}>{d.short}</div>
+              <div style={{fontFamily:F.b,fontSize:12,color:"#999",marginTop:2,lineHeight:1.5}}>{d.detail.length > 120 ? d.detail.slice(0,120)+"…" : d.detail}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{fontFamily:F.m,fontSize:10,color:X.c,marginTop:12,cursor:"pointer",textDecoration:"underline"}} onClick={()=>{onAct&&onAct();window.scrollTo(0,0)}}>READ THE FULL DEMANDS →</div>
+    </div>
+
+    {/* What you get */}
+    <div style={{...sec,borderTop:`2px solid ${X.g}`}}>
+      {hdr("WHAT SUPPORTING ORGANISATIONS RECEIVE",X.g)}
+      <div style={{display:"grid",gap:10}}>
+        {[
+          {icon:"◉",title:"PUBLIC LISTING",desc:"Your organisation's name and logo on this page — visible to every TD, MLA, journalist, and member of the public who visits the site. Politicians notice when professional bodies line up behind a campaign."},
+          {icon:"◈",title:"EARLY ACCESS TO CAMPAIGN DATA",desc:"Parliamentary Question answers, enforcement data, crash statistics, and analysis — shared with supporting organisations before public release. You'll have the numbers before the media does."},
+          {icon:"◇",title:"CO-SIGN JOINT STATEMENTS",desc:"When we write open letters to Ministers, publish responses to Government announcements, or issue public statements, supporting organisations are invited to co-sign. Collective weight amplifies every voice."},
+        ].map((item,i)=>(
+          <div key={i} style={{padding:"14px 18px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+              <span style={{fontFamily:F.h,fontSize:18,color:X.g}}>{item.icon}</span>
+              <span style={{fontFamily:F.h,fontSize:16,color:"#fff"}}>{item.title}</span>
+            </div>
+            <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* What it costs */}
+    <div style={{...sec,borderLeft:`3px solid ${X.r}`}}>
+      {hdr("WHAT IT COSTS",X.r)}
+      <div style={{...txt}}>
+        Nothing. There is no financial commitment, membership fee, or operational obligation. You are lending your organisation's name and credibility to five specific demands for structural reform. You can withdraw at any time by emailing us. That's it.
+      </div>
+    </div>
+
+    {/* Who we're looking for */}
+    <div style={{...sec,borderTop:`2px solid ${X.o}`}}>
+      {hdr("WHO WE'RE LOOKING FOR",X.o)}
+      <div style={{...txt,marginBottom:14}}>
+        Any organisation that believes 247 deaths a year is a governance failure — not an inevitability — and is willing to say so publicly.
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+        {Object.entries(SUPPORTER_CATS).map(([id,cat])=>(
+          <div key={id} style={{padding:"10px 14px",background:"#0a0a0a",border:"1px solid #222",borderRadius:4,borderLeft:`3px solid ${cat.color}`}}>
+            <div style={{fontFamily:F.m,fontSize:10,color:cat.color,letterSpacing:"0.1em"}}>{cat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{fontFamily:F.b,fontSize:13,color:"#999",lineHeight:1.6,marginTop:12}}>
+        Emergency medicine · Trauma surgery · Public health · Cycling campaigns · Pedestrian safety · Urban planning · Road engineering · Insurance · Legal · Academic research · Trade unions · Community groups · Families of victims · Anyone with standing and something to say.
+      </div>
+    </div>
+
+    {/* How to join */}
+    <div style={{background:"#0a1a1a",border:`1px solid ${X.c}`,borderRadius:6,padding:"28px 32px",marginBottom:16,textAlign:"center"}}>
+      <div style={{fontFamily:F.h,fontSize:32,color:X.c,marginBottom:10}}>JOIN THE COALITION</div>
+      <div style={{...txt,marginBottom:6,maxWidth:520,margin:"0 auto 16px"}}>
+        Email us with your organisation's name, logo, and website. We'll confirm and add you within 48 hours.
+      </div>
+      <a href="mailto:campaign@stoproaddeaths.ie?subject=Supporters%20Programme%20—%20stoproaddeaths.ie&body=Organisation%20name%3A%20%0AContact%20person%3A%20%0ARole%20%2F%20title%3A%20%0AWebsite%3A%20%0ALogo%20(attach%20or%20link)%3A%20%0A%0AWe%20endorse%20the%20five%20structural%20demands%20at%20stoproaddeaths.ie%20and%20wish%20to%20be%20listed%20as%20a%20supporting%20organisation.%0A%0ASigned%3A%20" style={{
+        display:"inline-block",background:X.c,color:"#000",padding:"14px 28px",borderRadius:4,
+        fontFamily:F.h,fontSize:18,textDecoration:"none",letterSpacing:"0.04em"
+      }}>PLEDGE YOUR SUPPORT →</a>
+      <div style={{fontFamily:F.m,fontSize:10,color:"#888",marginTop:12}}>campaign@stoproaddeaths.ie</div>
+    </div>
+
+    {/* FAQ */}
+    <div style={{...sec}}>
+      {hdr("COMMON QUESTIONS","#888")}
+      {[
+        {q:"Does endorsing mean we agree with everything on the site?",a:"No. You are endorsing the five structural demands only. The site contains data, analysis, and campaign materials — your endorsement covers the demands, not every data point or editorial choice."},
+        {q:"Can we endorse some demands but not others?",a:"We'd prefer full endorsement of all five, since they form a coherent package. But if your organisation has a specific concern, email us and we'll discuss it. We'd rather have you partially in than fully out."},
+        {q:"Will you use our logo in ways we haven't approved?",a:"Your logo appears on this page and nowhere else without your explicit consent. If we want to use it in a letter, press release, or any other material, we'll ask first."},
+        {q:"What if our position changes?",a:"Email us and we'll remove you within 24 hours. No questions, no hard feelings."},
+        {q:"We're a public body — can we still endorse?",a:"That depends on your governance rules. Some public bodies can endorse policy positions; others can't. If you can issue a statement of support rather than a formal endorsement, we can list you with that framing. Talk to us."},
+      ].map((faq,i)=>(
+        <div key={i} style={{padding:"12px 0",borderBottom:i<4?`1px solid ${X.br}`:"none"}}>
+          <div style={{fontFamily:F.b,fontSize:14,color:"#fff",fontWeight:600,marginBottom:4}}>{faq.q}</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>{faq.a}</div>
+        </div>
+      ))}
+    </div>
+
+    <div style={{textAlign:"center",margin:"24px 0"}}>
+      <button onClick={()=>{onAct&&onAct();window.scrollTo(0,0)}} style={{background:X.r,color:"#fff",border:"none",padding:"12px 24px",borderRadius:4,fontFamily:F.h,fontSize:16,cursor:"pointer"}}>READ THE FIVE DEMANDS →</button>
+    </div>
+  </div>);
+}
+
 function ActPage(){const[cp,setCp]=useState(null);const[tpl,setTpl]=useState("roi");
   const sec={background:X.bg,border:`1px solid ${X.br}`,borderRadius:6,padding:"24px 28px",marginBottom:16};
   const lnk={color:X.c,textDecoration:"underline",textUnderlineOffset:3};
@@ -968,7 +1167,7 @@ export default function App(){
   const[sel,setSel]=useState(null);const[tab,setTab]=useState("map");const[filt,setFilt]=useState("all");const[pledged,setPledged]=useState(false);const[lookupCounty,setLookupCounty]=useState(null);const[expandedPQ,setExpandedPQ]=useState(null);
   const filtered=Object.entries(COUNTIES).filter(([_,d])=>filt==="all"||d.j===filt);
   const ranking=filtered.map(([n,d])=>({name:n,...d,pc:(d.d/d.pop)*1e5})).sort((a,b)=>b.pc-a.pc);
-  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"2026"},{id:"report",l:"⚠ REPORT A ROAD"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"act",l:"TAKE ACTION"}];
+  const tabs=[{id:"map",l:"WHERE"},{id:"when",l:"WHEN"},{id:"trend",l:"TREND"},{id:"who",l:"WHO"},{id:"latest",l:"2026"},{id:"report",l:"⚠ REPORT A ROAD"},{id:"tracker",l:"TD TRACKER"},{id:"pqs",l:"PQ TRACKER"},{id:"demands",l:"DEMANDS"},{id:"supporters",l:"SUPPORTERS"},{id:"act",l:"TAKE ACTION"}];
   return(<div style={{minHeight:"100vh",background:"#0a0a0a",color:"#fff",fontFamily:F.b}}>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
     <style>{`
@@ -1009,8 +1208,8 @@ export default function App(){
     </div>
     <div style={{display:"flex",justifyContent:"center",gap:4,padding:"18px 12px 0",flexWrap:"wrap"}}>
       {tabs.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{
-        background:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"?X.c:t.id==="report"?X.o:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"?X.c:t.id==="report"?X.o:X.r):X.br}`,
-        color:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"||t.id==="report"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
+        background:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"||t.id==="supporters"?X.c:t.id==="report"?X.o:X.r):X.bg,border:`1px solid ${tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"||t.id==="supporters"?X.c:t.id==="report"?X.o:X.r):X.br}`,
+        color:tab===t.id?(t.id==="act"||t.id==="tracker"||t.id==="demands"||t.id==="pqs"||t.id==="report"||t.id==="supporters"?"#000":"#fff"):"#aaa",padding:"9px 16px",borderRadius:4,cursor:"pointer",
         fontFamily:F.m,fontSize:11,letterSpacing:"0.12em",fontWeight:tab===t.id?600:400}}>{t.l}</button>))}
     </div>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"20px"}}>
@@ -1594,6 +1793,7 @@ export default function App(){
         </div>
       </div>)}
       {tab==="report"&&<ReportPage/>}
+      {tab==="supporters"&&<SupportersPage onAct={()=>setTab("demands")}/>}
       {tab==="act"&&<ActPage/>}
     </div>
     <div style={{background:X.r,padding:"26px 20px",textAlign:"center",marginTop:28}}>
