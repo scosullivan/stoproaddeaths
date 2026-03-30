@@ -475,6 +475,7 @@ const PQS = [
 // logo: URL to org logo (use transparent PNG where possible)
 // url: org website
 const SUPPORTERS = [
+  {name:"Irish Doctors for the Environment",cat:"medical",logo:"/ide-logo.png",url:"https://ide.ie"},
   // Example entries — uncomment/add as organisations confirm:
   // {name:"Irish Association of Emergency Medicine",cat:"medical",logo:"https://iaem.ie/wp-content/uploads/iaem-logo.png",url:"https://iaem.ie"},
   // {name:"Cycling Ireland",cat:"cycling",logo:"https://www.cyclingireland.ie/logo.png",url:"https://www.cyclingireland.ie"},
