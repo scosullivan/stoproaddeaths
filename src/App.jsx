@@ -329,6 +329,11 @@ const PQS = [
    status:"answered",answered:"2026-03-05",minister:"Seán Canney",
    response:"Enforcement of illegal sulky racing is a matter for An Garda Síochána under section 74 of the Roads Act 1993. Animal welfare issues are a matter for the Minister for Agriculture.",
    assessment:"Not from our campaign, but illustrates the same pattern: Minister points to existing law and other bodies rather than taking ownership. Enforcement is always someone else's problem."},
+  {td:"Jen Cummins",p:"SD",con:"Dublin South-Central",date:"2026-03-18",type:"Written",
+   q:"[Ref 19234/26] To ask the Minister for Transport if Dublin City Council and the other Dublin local authorities currently have access to collision location data from 2019 onwards; the reason the RSA ceased sharing this data with LAs in 2020; how LA road engineers are expected to identify and redesign dangerous junctions without access to this data; and to provide a specific date by which the NVDF Bill will be enacted.",
+   status:"answered",answered:"2026-03-18",minister:"Seán Canney",
+   response:"Confirms collision data not shared with LAs since November 2023 due to GDPR legal advice. LAs have also identified issue with legal basis to PROCESS data once received. Interim measure: Dept does own analysis and sends 'locations of interest' to LAs. NVDF Bill at OPC, 'coming weeks' for publication, 'first half of 2026' for enactment.",
+   assessment:"Third PQ to confirm data blackout since Nov 2023 (after Buckley Q309 and Heneghan Q317). Dublin councils are designing BusConnects junctions and cycling infrastructure blind. The processing obstacle is now a standard line — it appeared in Heneghan's 24 March answer and is repeated here. Even after the Bill passes, LAs may not be able to USE the data. The 'locations of interest' interim measure is not data access — it's the Department acting as middleman. Walsh claimed in the 25 March meeting that local engineers have access. The Minister's own PQ answers say they don't."},
   // === TABLED — AWAITING ANSWER ===
   {td:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",date:"2026-03-01",type:"Written",
    q:"To ask the Minister for Transport regarding TII road classification and whether local authorities must self-fund safety fixes on non-national roads.",
