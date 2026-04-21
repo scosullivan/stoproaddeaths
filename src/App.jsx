@@ -163,7 +163,7 @@ const COLLISIONS=[[53.8601,-6.5415,"N02","Louth",6,1],[53.5655,-6.4451,"N02","Me
 // UPDATE THIS: date you sent emails to all TDs/MLAs
 const CAMPAIGN_SENT_DATE = "2026-03-01";
 // UPDATE THIS: bump as people report emailing their TDs
-const ACTION_COUNT = 99;
+const ACTION_COUNT = 112;
 // UPDATE THIS: add responses as they come in
 // status: "meaningful" | "generic" | "none"
 // summary: one-line description of response (or null)
@@ -200,7 +200,7 @@ const TRACKER = [
   // Kathleen Funchion — now MEP, removed from TD tracker
   {n:"Matt Carthy",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Cathy Bennett",p:"SF",con:"Cavan–Monaghan",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
-  {n:"Donna McGettigan",p:"SF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
+  {n:"Donna McGettigan",p:"SF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-04-18",summary:"SF party-wide. Consulted Pa Daly, then committed to tabling PQs on Commissioner + 500 cameras with campaign wording."},
   {n:"Thomas Gould",p:"SF",con:"Cork North-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Donnchadh Ó Laoghaire",p:"SF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
   {n:"Pearse Doherty",p:"SF",con:"Donegal",j:"ROI",status:"meaningful",responded:"2026-03-06",summary:"SF party-wide position. All five demands adopted as party policy."},
@@ -279,10 +279,12 @@ const TRACKER = [
   {n:"Tom Brabazon",p:"FF",con:"Dublin Bay North",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"PQ to Justice Minister on restoring road policing to 2014 levels. Minister did not commit — directed to Garda website."},
   {n:"James Geoghegan",p:"FG",con:"Dublin Bay South",j:"ROI",status:"generic",responded:"2026-03-12",summary:"Detailed response listing government actions. No personal position on five demands. No PQ commitment. Vague on parliamentary action."},
   {n:"Colin McGrath",p:"SDLP",con:"South Down",j:"NI",status:"meaningful",responded:"2026-03-06",summary:"Tabled Assembly Questions to Infrastructure Minister. SDLP council motion on roads emergency blocked by DUP and SF."},
-  {n:"Justin McNulty",p:"SDLP",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-23",summary:"Tabled AQW 42979 following up on Kimmins' rejection of Commissioner. Asks for NSMC meeting count, joint actions, cross-border targets, and whether Commissioner discussed with Dublin. Committed to probing at Infrastructure Committee."},
+  {n:"Justin McNulty",p:"SDLP",con:"Newry & Armagh",j:"NI",status:"meaningful",responded:"2026-03-23",summary:"AQW 42979 answered: 1 NSMC meeting in 14 months, no joint targets, Commissioner 'not an action' in either strategy. Proposed Infrastructure Committee hearing — committee agreed to invite campaign to present at Stormont."},
   {n:"Séamus McGrath",p:"FF",con:"Cork South-Central",j:"ROI",status:"meaningful",responded:"2026-03-11",summary:"Supports all five demands. Committed to tabling PQs."},
   {n:"Timmy Dooley",p:"FF",con:"Clare",j:"ROI",status:"meaningful",responded:"2026-03-19",summary:"Minister of State. Raised campaign with Canney directly. Tabled PQs on speed cameras and road policing. Engaged on 4/5 demands. Did not commit on Commissioner, citing collective cabinet responsibility."},
   {n:"Niall Collins",p:"FF",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-03-18",summary:"Represents Dept of Justice on Road Safety Forum. Five one-line answers. Refused to table PQ. Described current system as adequate."},
+  {n:"Patrick O'Donovan",p:"FG",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-04-21",summary:"'Not my policy role.' Referred to Canney. Offered meeting but no commitment to PQ or demands."},
+  {n:"Brian Brennan",p:"FG",con:"Wicklow\u2013Wexford",j:"ROI",status:"generic",responded:"2026-04-18",summary:"'Happy to bring initiatives to Minister.' No commitment to PQ, no position on five demands."},
   {n:"John Paul O'Shea",p:"FG",con:"Cork North-West",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Tabled TWO PQs: one on Commissioner model, one on accountability mechanisms. First FG TD from Cork to engage. Minister gave copy-paste non-answer."},
   {n:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Former Ceann Comhairle. Tabled PQ on statutory Road Safety Commissioner. Minister's answer did not address the Commissioner question."},
 ];
@@ -473,9 +475,25 @@ const PQS = [
    assessment:"First NI Assembly answer on the Commissioner. SF Minister for Infrastructure flatly rejects the model her own party's 65 TDs and MLAs have supported through this campaign. Norway and Sweden named in the question — neither mentioned in the answer. The cross-border NSMC workstream confirmation is useful but the substance is untested. Creates a major SF contradiction: supporting accountability in opposition, rejecting it in government."},
   {td:"Justin McNulty",p:"SDLP",con:"Newry & Armagh",date:"2026-03-23",type:"AQW (NI Assembly)",
    q:"AQW 42979/22-27: To ask the Minister for Infrastructure, pursuant to AQW 41757/22-27, to detail (i) the number of meetings held under the NSMC Transport sectoral workstream on road safety since its establishment; (ii) any joint actions or policy initiatives agreed at those meetings; (iii) whether any joint targets for casualty reduction have been set on a cross-border basis; (iv) whether she has discussed with her counterpart in the Department of Transport the Road Safety Commissioner model or equivalent statutory accountability mechanisms.",
-   status:"tabled",answered:null,minister:"Liz Kimmins",
+   status:"answered",answered:"2026-04-03",minister:"Liz Kimmins",
+   response:"(i) One meeting — 23 October 2025. Next meeting May 2026. (ii) Refers to Joint Communiqué. (iii) 'Joint targets have not been set on a cross-border basis.' Each jurisdiction has own strategy. (iv) 'A Road Safety Commissioner model or equivalent statutory accountability mechanism is not an action in either jurisdiction's current Road Safety Strategy.'",
+   assessment:"Devastating. One NSMC meeting in 14 months. No joint targets. Commissioner explicitly rejected as 'not an action' in either strategy. Most definitive rejection yet. Deepens SF contradiction: party supports Commissioner, minister rejects it. McNulty then proposed Infrastructure Committee hearing — committee agreed to invite campaign to present at Stormont."},
+  // === APRIL 2026 ===
+  {td:"Ciarán Ahern",p:"Lab",con:"Dublin South-West",date:"2026-04-14",type:"Written",
+   q:"To ask the Minister for Transport the number of local authorities that have commenced the statutory public consultation process required to implement 30km/h speed limits in built-up and urban areas, as directed by Departmental Circular of 16 October 2025; the deadline for completion; and if he will make a statement on the matter.",
+   status:"answered",answered:"2026-04-14",minister:"Darragh O'Brien",
+   response:"Circular issued 16 Oct 2025 directing LAs to complete bye-law process by 30 October 2026, with implementation by 31 March 2027. Each LA must run statutory public consultation. Making bye-laws is a reserved function — requires majority vote of elected members. 'Responsibility to commence and manage the statutory public consultation is a matter for the local authorities.'",
+   assessment:"Extracted concrete deadline: 30 Oct 2026 for bye-laws, 31 Mar 2027 for implementation. Minister confirms everything rests on local councillors voting yes — Department cannot compel. Part asking whether Government would commence default provisions if bye-law route fails was ruled out of order (Standing Order 694, hypothetical)."},
+  {td:"Jen Cummins",p:"SD",con:"Dublin South-Central",date:"2026-04-18",type:"Written",
+   q:"To ask the Minister for Transport if Dublin City Council and the other Dublin local authorities currently have access to collision location data from 2019 onwards; the reason the RSA ceased sharing this data; how LA road engineers are expected to identify and redesign dangerous junctions without this data; and a specific date for the NVDF Bill enactment.",
+   status:"answered",answered:"2026-04-18",minister:"Seán Canney",
+   response:"Confirms data not shared since Nov 2023. LAs also identified issue with legal basis to PROCESS data. Interim: Dept does analysis centrally, notifies LAs of 'locations of interest.' NVDF Bill at OPC, 'coming weeks' for publication, 'first half of 2026' for enactment.",
+   assessment:"Now in media coverage. Fifth NVDF Bill deadline iteration. New processing obstacle confirmed — even after Bill passes, LAs may lack legal basis to use the data. The 'locations of interest' middleman approach proves the system is broken."},
+  {td:"Donna McGettigan",p:"SF",con:"Clare",date:"2026-04-21",type:"Written",
+   q:"(1) To ask the Minister for Transport, following the decision in December 2025 to abandon the planned restructuring of the RSA, to state which body or individual is now responsible for delivering the Government's target of halving road deaths by 2030; and whether the Government has conducted any assessment of the Road Safety Commissioner model. (2) To ask the Minister for Transport to provide a timeline for the deployment of the 100 additional speed cameras announced in 2024; to state the current total number of fixed automated speed cameras; and whether the Government has assessed the feasibility of a 500-camera deployment.",
+   status:"tabled",answered:null,minister:"Darragh O'Brien",
    response:null,
-   assessment:"Follow-up to Durkan's AQW. Tests whether the NSMC workstream Kimmins confirmed is substantive or performative. Parts (i)-(iii) will likely reveal minimal activity. Part (iv) reopens the Commissioner through the cross-border door."},
+   assessment:"First PQ to put 500-camera figure on the Dáil record. Commissioner question is now the 8th time asked across both jurisdictions. Cleared with Pa Daly (SF transport spokesperson) before tabling."},
 ];
 
 // ===== ORGANISATIONAL SUPPORTERS =====
@@ -573,7 +591,7 @@ const EMAIL_OVERRIDES = {
   "Mary Lou McDonald":"marylou.mcdonald@oireachtas.ie",
   "John Paul Phelan":"johnpaul.phelan@oireachtas.ie",
   "John Paul O'Shea":"johnpaul.oshea@oireachtas.ie",
-  "Pat the Cope Gallagher":"patthecooe.gallagher@oireachtas.ie",
+  "Pat the Cope Gallagher":"patthecope.gallagher@oireachtas.ie",
   "Jennifer Murnane O'Connor":"jennifer.murnane-oconnor@oireachtas.ie",
   "Conor D. McGuinness":"conor.mcguinness@oireachtas.ie",
 };
@@ -1195,7 +1213,7 @@ export default function App(){
     `}</style>
     <div style={{borderBottom:"1px solid #282828",padding:"12px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
       <div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:8,height:8,borderRadius:"50%",background:X.r,boxShadow:`0 0 8px ${X.r}`}}/><span style={{fontFamily:F.h,fontSize:20,letterSpacing:"0.1em"}}>#NotAStatistic</span></div>
-      <div style={{fontFamily:F.m,fontSize:10,color:"#999"}}>ALL-ISLAND · RSA + PSNI · FEB 2026</div>
+      <div style={{fontFamily:F.m,fontSize:10,color:"#999"}}>ALL-ISLAND · RSA + PSNI · APR 2026</div>
     </div>
     <Counter/>
     <div style={{height:2,background:`linear-gradient(90deg,transparent,${X.r},transparent)`,margin:"0 40px"}}/>
@@ -1365,7 +1383,7 @@ export default function App(){
         </div>
         {/* Deadliest weekend banner */}
         <div style={{background:"#1a0a0a",border:"1px solid rgba(255,26,26,0.3)",borderRadius:4,padding:"16px 20px",marginBottom:16}}>
-          <div style={{fontFamily:F.h,fontSize:18,color:X.r,marginBottom:4}}>DEADLIEST WEEKEND — 22–25 FEB 2026</div>
+          <div style={{fontFamily:F.h,fontSize:18,color:X.r,marginBottom:4}}>DEADLIEST WEEKEND — 22–25 APR 2026</div>
           <div style={{fontFamily:F.b,fontSize:13,color:X.t,lineHeight:1.6}}>Man (20s) killed on the N4 in Westmeath, 15 March. Two killed in Co Meath on 12 March — a woman (40s) in a two-car collision on the N51, a man (40s) in a truck-van collision on the M3. A teenage girl airlifted to Temple Street. Earlier: Mia Lily Keogh O'Keeffe (16), hit-and-run, Navan. Brian and Grace Frisby (40s), parents of two, Waterford. Three parents killed in a single crash, Armagh. Daniel Cullen (18) and Caoimhín Porter-McLoone (18), St Johnston, Donegal.</div>
         </div>
         {/* Incidents */}
@@ -1601,7 +1619,7 @@ export default function App(){
           </div>
           <div style={{display:"flex",gap:0,marginBottom:12,position:"relative"}}>
             {[{date:"MAY 2025",promise:"'Enacted by year-end'",who:"Canney to JOC",missed:true},
-              {date:"FEB 2026",promise:"'Summer 2026'",who:"Canney to Whitmore",missed:true},
+              {date:"APR 2026",promise:"'Summer 2026'",who:"Canney to Whitmore",missed:true},
               {date:"MAR 2026",promise:"'Coming weeks'",who:"Canney to Buckley",missed:true},
               {date:"18 MAR 2026",promise:"'By the summer'",who:"Canney to Kerrane",missed:false},
             ].map((d,i)=>(<div key={i} style={{flex:1,textAlign:"center",position:"relative"}}>
