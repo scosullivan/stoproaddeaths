@@ -131,6 +131,7 @@ const C2C = {
 };
 
 const INCIDENTS = [
+  {date:"21 Apr",loc:"Co Down",desc:"Aoife Tinnelly (24), from Kilkeel area, killed in two-vehicle collision. Her father is Cllr Jarlath Tinnelly, independent member of Newry, Mourne and Down council.",type:"driver",lat:54.18,lng:-5.99},
   {date:"15 Mar",loc:"N4, Ballinafid, Co Westmeath",desc:"Man (20s), driver, killed in single-vehicle collision at 12:50am. Pronounced dead at scene.",type:"driver",lat:53.58,lng:-7.42},
   {date:"12 Mar",loc:"N51, Boyerstown, Navan, Co Meath",desc:"Woman (40s), passenger, killed in two-car collision at 7:45am. Teenage girl airlifted to Temple Street with serious injuries. Two other women seriously injured.",type:"passenger",lat:53.68,lng:-6.72},
   {date:"12 Mar",loc:"M3, Dunshaughlin, Co Meath",desc:"Man (40s), van driver, killed in collision with truck at 2am. Pronounced dead at scene.",type:"driver",lat:53.51,lng:-6.54},
