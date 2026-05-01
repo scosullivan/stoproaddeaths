@@ -131,6 +131,11 @@ const C2C = {
 };
 
 const INCIDENTS = [
+  {date:"27 Apr",loc:"Clanabogan Road, Omagh, Co Tyrone",desc:"Motorcyclist (61) killed in collision.",type:"motorcyclist",lat:54.45,lng:-7.33},
+  {date:"27 Apr",loc:"Belfast Road, Nutts Corner, Co Antrim",desc:"Boy (16) from Co Tipperary, passenger, killed in two-car collision at 8am. 10-year-old child in critical condition. Driver of second car arrested.",type:"passenger",lat:54.62,lng:-6.13},
+  {date:"26 Apr",loc:"Derrycourtney Road, Caledon, Co Tyrone",desc:"One person killed in single-vehicle van crash shortly after 11pm. One person arrested.",type:"driver",lat:54.34,lng:-6.93},
+  {date:"26 Apr",loc:"Glenavy Road, Upper Ballinderry, near Moira, Co Antrim",desc:"Motorcyclist and van driver both killed in collision shortly before 6pm. Third person injured.",type:"motorcyclist",lat:54.52,lng:-6.28},
+  {date:"23 Apr",loc:"Dublin Airport, Co Dublin",desc:"Man (60s), pedestrian, killed in collision with bus on main road leading to Dublin Airport just after midnight. Pronounced dead at scene. Partial road closures in place.",type:"pedestrian",lat:53.43,lng:-6.25},
   {date:"21 Apr",loc:"Co Down",desc:"Aoife Tinnelly (24), from Kilkeel area, killed in two-vehicle collision. Her father is Cllr Jarlath Tinnelly, independent member of Newry, Mourne and Down council.",type:"driver",lat:54.18,lng:-5.99},
   {date:"15 Mar",loc:"N4, Ballinafid, Co Westmeath",desc:"Man (20s), driver, killed in single-vehicle collision at 12:50am. Pronounced dead at scene.",type:"driver",lat:53.58,lng:-7.42},
   {date:"12 Mar",loc:"N51, Boyerstown, Navan, Co Meath",desc:"Woman (40s), passenger, killed in two-car collision at 7:45am. Teenage girl airlifted to Temple Street with serious injuries. Two other women seriously injured.",type:"passenger",lat:53.68,lng:-6.72},
@@ -491,10 +496,15 @@ const PQS = [
    response:"Confirms data not shared since Nov 2023. LAs also identified issue with legal basis to PROCESS data. Interim: Dept does analysis centrally, notifies LAs of 'locations of interest.' NVDF Bill at OPC, 'coming weeks' for publication, 'first half of 2026' for enactment.",
    assessment:"Now in media coverage. Fifth NVDF Bill deadline iteration. New processing obstacle confirmed — even after Bill passes, LAs may lack legal basis to use the data. The 'locations of interest' middleman approach proves the system is broken."},
   {td:"Donna McGettigan",p:"SF",con:"Clare",date:"2026-04-21",type:"Written",
-   q:"(1) To ask the Minister for Transport, following the decision in December 2025 to abandon the planned restructuring of the RSA, to state which body or individual is now responsible for delivering the Government's target of halving road deaths by 2030; and whether the Government has conducted any assessment of the Road Safety Commissioner model. (2) To ask the Minister for Transport to provide a timeline for the deployment of the 100 additional speed cameras announced in 2024; to state the current total number of fixed automated speed cameras; and whether the Government has assessed the feasibility of a 500-camera deployment.",
+   q:"To ask the Minister for Transport to provide a timeline for the deployment of the 100 additional speed cameras announced in 2024; to state the current total number of fixed automated speed cameras; and whether the Government has assessed the feasibility of a 500-camera deployment to match the enforcement density of comparable European countries.",
+   status:"answered",answered:"2026-04-27",minister:"Seán Canney",
+   response:"9 static cameras + 5 average speed = 14 total. Listed locations. National Safety Camera Strategy 'shortly.' 9,000 GoSafe hours/month across 1,901 zones. 390 new zones from 1 Jan 2026. Did NOT address the 500-camera feasibility question. Did NOT reference Finland or Sweden.",
+   assessment:"Same copy-paste as Ward, Heneghan, Dooley, Brennan. 8th time the 14-camera figure is on the Dáil record. First time from an SF TD. The 500-camera question was not answered — Minister listed existing cameras and said strategy 'shortly.' No feasibility assessment, no international comparison."},
+  {td:"Donna McGettigan",p:"SF",con:"Clare",date:"2026-04-21",type:"Written",
+   q:"To ask the Minister for Transport, following the decision in December 2025 to abandon the planned restructuring of the RSA, to state which body or individual is now responsible for delivering the Government's target of halving road deaths by 2030; and whether the Government has conducted any assessment of the Road Safety Commissioner model.",
    status:"tabled",answered:null,minister:"Darragh O'Brien",
    response:null,
-   assessment:"First PQ to put 500-camera figure on the Dáil record. Commissioner question is now the 8th time asked across both jurisdictions. Cleared with Pa Daly (SF transport spokesperson) before tabling."},
+   assessment:"Commissioner question is now the 8th time asked across both jurisdictions. Cleared with Pa Daly (SF transport spokesperson) before tabling."},
 ];
 
 // ===== ORGANISATIONAL SUPPORTERS =====
@@ -504,9 +514,9 @@ const PQS = [
 // url: org website
 const SUPPORTERS = [
   {name:"Irish Doctors for the Environment",cat:"medical",logo:"/ide-logo.png",url:"https://ide.ie"},
+  {name:"Irish Association of Emergency Medicine",cat:"medical",logo:"/iaem-logo.png",url:"https://iaem.ie"},
   {name:"DriverFocus",cat:"transport",logo:"/driverfocus-logo.png",url:"https://www.driverfocus.ie"},
   // Example entries — uncomment/add as organisations confirm:
-  // {name:"Irish Association of Emergency Medicine",cat:"medical",logo:"https://iaem.ie/wp-content/uploads/iaem-logo.png",url:"https://iaem.ie"},
   // {name:"Cycling Ireland",cat:"cycling",logo:"https://www.cyclingireland.ie/logo.png",url:"https://www.cyclingireland.ie"},
   // {name:"Dublin Cycling Campaign",cat:"cycling",logo:"https://dublincycling.ie/logo.png",url:"https://dublincycling.ie"},
   // {name:"Cosáin",cat:"transport",logo:null,url:"https://cosain.ie"},
