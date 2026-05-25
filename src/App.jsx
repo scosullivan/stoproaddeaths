@@ -324,6 +324,7 @@ const TRACKER = [
   {n:"Patrick O'Donovan",p:"FG",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-04-21",summary:"'Not my policy role.' Referred to Canney. Offered meeting but no commitment to PQ or demands."},
   {n:"Brian Brennan",p:"FG",con:"Wicklow\u2013Wexford",j:"ROI",status:"generic",responded:"2026-04-18",summary:"'Happy to bring initiatives to Minister.' No commitment to PQ, no position on five demands."},
   {n:"John Paul O'Shea",p:"FG",con:"Cork North-West",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Tabled TWO PQs: one on Commissioner model, one on accountability mechanisms. First FG TD from Cork to engage. Minister gave copy-paste non-answer."},
+  {n:"Gerry Carroll",p:"PBP",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-05-25",summary:"Fully supportive of all five demands. Tabled AQWs on Commissioner, average-speed cameras, and road redesign. Leading local road safety campaign in Dunmurry with Cllr Michael Collins."},
   {n:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Former Ceann Comhairle. Tabled PQ on statutory Road Safety Commissioner. Minister's answer did not address the Commissioner question."},
 ];
 
