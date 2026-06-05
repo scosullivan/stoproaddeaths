@@ -324,7 +324,7 @@ const TRACKER = [
   {n:"Patrick O'Donovan",p:"FG",con:"Limerick County",j:"ROI",status:"generic",responded:"2026-04-21",summary:"'Not my policy role.' Referred to Canney. Offered meeting but no commitment to PQ or demands."},
   {n:"Brian Brennan",p:"FG",con:"Wicklow\u2013Wexford",j:"ROI",status:"generic",responded:"2026-04-18",summary:"'Happy to bring initiatives to Minister.' No commitment to PQ, no position on five demands."},
   {n:"John Paul O'Shea",p:"FG",con:"Cork North-West",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Tabled TWO PQs: one on Commissioner model, one on accountability mechanisms. First FG TD from Cork to engage. Minister gave copy-paste non-answer."},
-  {n:"Gerry Carroll",p:"PBP",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-05-25",summary:"Fully supportive of all five demands. Tabled AQWs on Commissioner, average-speed cameras, and road redesign. Leading local road safety campaign in Dunmurry with Cllr Michael Collins."},
+  {n:"Gerry Carroll",p:"PBP",con:"Belfast West",j:"NI",status:"meaningful",responded:"2026-05-25",summary:"Fully supportive of all five demands. Tabled AQWs on Commissioner, cameras, and road redesign. AQW 46527 on black spot redesign answered 1 June — Kimmins described existing processes but did not commit to a funded programme. Leading local road safety campaign in Dunmurry."},
   {n:"Seán Ó Fearghaíl",p:"FF",con:"Kildare South",j:"ROI",status:"meaningful",responded:"2026-03-18",summary:"Former Ceann Comhairle. Tabled PQ on statutory Road Safety Commissioner. Minister's answer did not address the Commissioner question."},
 ];
 
@@ -544,6 +544,11 @@ const PQS = [
    status:"answered",answered:"2026-05-12",minister:"Seán Canney",
    response:"National Safety Camera Strategy published 29 April. Framework for increased deployment including speeding, red light running, and bus lane infringements. TII takes responsibility for fixed and average speed cameras. NTA assumes primary responsibility for urban traffic management offences. Camera Enforcement Oversight Group (CEOG) 'will soon be established' comprising AGS, NTA, TII, RSA, Courts Service, and LAs. Since 2024: 3 additional average speed zones + 9 static cameras installed. 9,000 GoSafe hours/month.",
    assessment:"Third time McGettigan has asked about 500 cameras. The answer still does not mention 500, Finland, or Sweden. The Strategy was published 29 April but contains no target number of cameras, no deployment timeline, no budget. TII now owns fixed cameras (structural improvement) but the new CEOG oversight group has 6 member organisations — the accountability diffusion problem in miniature. A strategy without a number is a framework, not a plan."},
+  {td:"Gerry Carroll",p:"PBP",con:"Belfast West",date:"2026-06-04",type:"AQW (NI Assembly)",
+   q:"AQW 46527/22-27: To ask the Minister for Infrastructure whether she will support a funded programme to redesign highest-risk road sections managed by DfI Roads.",
+   status:"answered",answered:"2026-06-01",minister:"Liz Kimmins",
+   response:"Department receives annual PSNI collision data, uses it alongside other factors as part of 'evidence-led approach' to assess risk and inform interventions 'within the context of those finite resources.' Officials identify collision trends and high-frequency locations. Speed consultation closed 22 April, response report expected 'early summer.' Keeping people safe is 'a shared responsibility.'",
+   assessment:"Did not commit to a funded programme. 'Within the context of those finite resources' = no new money. 'Shared responsibility' = nobody's responsibility. Same pattern as Kimmins' Commissioner and NSMC answers — describes existing processes, commits to nothing structural. First PBP AQW on road safety; deepens the cross-party record of Kimmins rejecting every structural reform her own party supports."},
 ];
 
 // ===== ORGANISATIONAL SUPPORTERS =====
