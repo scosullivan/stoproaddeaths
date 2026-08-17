@@ -806,7 +806,7 @@ function Counter(){const[c,setC]=useState(0);useEffect(()=>{let n=0;const t=setI
       <div style={{width:1,background:"#444"}}/>
       <div style={{textAlign:"center"}}><div style={{fontFamily:F.h,fontSize:36,color:X.o}}>57</div><div style={{fontFamily:F.m,fontSize:11,color:X.t}}>NORTHERN IRELAND · PSNI</div></div>
     </div>
-    <div style={{fontFamily:F.b,fontSize:15,color:X.t,marginTop:16,lineHeight:1.7,maxWidth:520,margin:"16px auto 0"}}>One person killed every 35 hours. 158+ killed in 32 weeks of 2026.<br/>Roads don't recognise the border. Neither should the response.</div>
+    <div style={{fontFamily:F.b,fontSize:15,color:X.t,marginTop:16,lineHeight:1.7,maxWidth:520,margin:"16px auto 0"}}>One person killed every 35 hours. 158+ killed in 32 weeks of 2026.</div>
   </div>
 )}
 
@@ -1391,10 +1391,10 @@ export default function App(){
                 const baseY=chartH-padB;
                 return(<g key={i}>
                   {isProj?(<>
-                    {/* Dashed outline showing annualised pace */}
-                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <rect x={x} y={baseY-paceH} width={barW} height={paceH} fill="none" stroke={X.r} strokeWidth="2" strokeDasharray="6 3" rx="1" opacity="0.7"/>})()}
+                    {/* Hatched fill showing annualised pace — the tallest bar on the chart */}
+                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <rect x={x} y={baseY-paceH} width={barW} height={paceH} fill="url(#proj-r)" stroke={X.r} strokeWidth="2.5" strokeDasharray="6 3" rx="1" opacity="0.95"/>})()}
                     {/* Pace label above */}
-                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <><text x={x+barW/2} y={baseY-paceH-16} textAnchor="middle" fill={X.c} fontSize="8" fontFamily={F.m} opacity="0.9">PACE</text><text x={x+barW/2} y={baseY-paceH-5} textAnchor="middle" fill={X.c} fontSize="11" fontFamily={F.m} fontWeight="600">~{y.pace}</text></>})()}
+                    {(()=>{const paceH=(y.pace/mx)*(chartH-padT-padB);return <><text x={x+barW/2} y={baseY-paceH-16} textAnchor="middle" fill={X.r} fontSize="8" fontFamily={F.m} fontWeight="600">ON PACE</text><text x={x+barW/2} y={baseY-paceH-5} textAnchor="middle" fill={X.r} fontSize="12" fontFamily={F.m} fontWeight="700">~{y.pace}</text></>})()}
                     {/* Solid bars showing actual YTD */}
                     <rect x={x} y={baseY-hR} width={barW} height={hR} fill={X.r} rx="1"/>
                     <rect x={x} y={baseY-hR-hN-1} width={barW} height={hN} fill={X.o} rx="1"/>
@@ -1405,8 +1405,11 @@ export default function App(){
                   </>)}
                   {!isProj&&<text x={x+barW/2} y={baseY-hR-hN-6} textAnchor="middle" fill={is2025?X.r:"#ccc"} fontSize="10" fontFamily={F.m} fontWeight={is2025?"600":"400"}>{y.t}</text>}
                   <text x={x+barW/2} y={baseY+14} textAnchor="middle" fill={isProj?"#888":is2025?X.r:"#999"} fontSize="9" fontFamily={F.m}>{y.y}</text>
+                  {isProj&&<text x={x+barW/2} y={baseY+24} textAnchor="middle" fill={X.r} fontSize="7" fontFamily={F.m} fontWeight="600">WORST SINCE 2010</text>}
                 </g>);
               })}
+              <text x={padL} y={12} fill={X.r} fontSize="10" fontFamily={F.m} fontWeight="700">IRELAND +26% SINCE 2019</text>
+              <text x={padL+170} y={12} fill={X.g} fontSize="10" fontFamily={F.m}>· EU AVERAGE −19%</text>
             </svg>);
           })()}
           <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:4,flexWrap:"wrap"}}>
@@ -1416,9 +1419,24 @@ export default function App(){
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:20,height:0,borderTop:`2px dashed ${X.c}`}}/><span style={{fontFamily:F.m,fontSize:10,color:X.c}}>GOVT 2030 TARGET</span></div>
             <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,border:`1px dashed ${X.r}`,borderRadius:2}}/><span style={{fontFamily:F.m,fontSize:10,color:"#bbb"}}>2026 PROJECTED</span></div>
           </div>
-          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it. The hatched 2026 bar shows 158+ people killed in 32 weeks — the Republic is 13 ahead of 2025's pace (116 dead by 14 August against 103 last year) and NI is up 56%. With November and December historically the deadliest months, <strong style={{color:X.r}}>2026 is on track to be the worst year on the island in over a decade</strong>.</div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:14}}>The yellow line shows where Ireland would be if it had matched the EU average decline in road deaths (~3% per year). By 2025, that would mean 164 deaths — not 247. That gap is <strong style={{color:X.r}}>83 extra people killed in one year alone</strong> because Ireland went backwards while the rest of Europe improved. The teal line is the government's own 2030 target (~120 all-island). Ireland is more than double it. The hatched 2026 bar is the current pace: ~260 dead, <strong style={{color:X.r}}>the worst year since 2010</strong> — with 158+ already killed in 32 weeks, the Republic 13 ahead of 2025's pace (116 dead by 14 August against 103 last year), NI up 56%, and November and December, historically the deadliest months, still to come.</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="ACTUAL" value="247" sub="All-island 2025"/><Stat label="VS EU AVERAGE" value="+83" sub="Extra deaths" accent={X.g}/><Stat label="2026 SO FAR" value="158+" sub="NI up 56% on 2025" accent={X.o}/></div>
+        <div style={{background:"#1a0808",border:"1px solid rgba(255,26,26,0.35)",borderRadius:4,padding:"22px 26px",marginBottom:16}}>
+          <div style={{fontFamily:F.m,fontSize:11,letterSpacing:"0.18em",color:X.r,marginBottom:4}}>THE CUMULATIVE COST OF GOING BACKWARDS</div>
+          <div style={{fontFamily:F.b,fontSize:13,color:X.t,marginBottom:12}}>Extra deaths versus the EU-average path, added up year by year since 2019:</div>
+          <div style={{display:"flex",alignItems:"flex-end",gap:4,height:100}}>
+            {[{y:"2019",v:0},{y:"2020",v:9},{y:"2021",v:12},{y:"2022",v:50},{y:"2023",v:131},{y:"2024",v:206},{y:"2025",v:289},{y:"2026*",v:390}].map((d,i)=>{
+              const h=Math.max((d.v/390)*82,2);const last=i===7;
+              return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
+                <span style={{fontFamily:F.m,fontSize:last?13:10,color:last?X.r:"#bbb",fontWeight:last?700:400}}>{last?"~390":d.v}</span>
+                <div style={{width:"100%",height:h,background:last?"transparent":X.r,border:last?`2px dashed ${X.r}`:"none",borderRadius:2,opacity:last?1:0.35+((d.v/390)*0.65)}}/>
+                <span style={{fontFamily:F.m,fontSize:9,color:last?X.r:"#999"}}>{d.y}</span>
+              </div>);
+            })}
+          </div>
+          <div style={{fontFamily:F.b,fontSize:14,color:X.t,lineHeight:1.7,marginTop:12}}><strong style={{color:X.r}}>Roughly 290 people</strong> have died on this island since 2019 who would be alive today if Ireland had simply matched the average European decline. Not world-leading Sweden or Norway — just <em style={{color:"#fff"}}>average</em>. On the current pace, that number reaches <strong style={{color:X.r}}>~390 by New Year's Eve</strong>. This is what the accountability gap costs, counted in people.</div>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8}}><Stat label="VS GOVT TARGET" value="+127" sub="Above ~120 target" accent={X.c}/><Stat label="EXCESS SINCE 2019" value="~290" sub="vs EU-average path" accent={X.r}/><Stat label="2026 PACE" value="~260" sub="Worst since 2010" accent={X.o}/><Stat label="2026 SO FAR" value="158+" sub="NI up 56% on 2025" accent={X.g}/></div>
       </div>)}
       {tab==="who"&&(<div style={{maxWidth:700,margin:"0 auto"}}>
         <div style={{background:X.bg,border:`1px solid ${X.br}`,borderRadius:4,padding:"22px 26px",marginBottom:16}}>
